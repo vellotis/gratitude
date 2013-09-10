@@ -7,4 +7,4 @@ A simple Ruby wrapper for the Gittip API.
 
 Copyright John Kelly Ferguson and Contributors, 2013
 
-[MIT Licence](LICENSE)
+[MIT Licence](LICENSE.txt)
