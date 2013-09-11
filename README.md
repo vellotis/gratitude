@@ -1,9 +1,10 @@
 gratitude
 =========
+[![Build Status](https://travis-ci.org/johnkellyferguson/gratitude.png)](https://travis-ci.org/johnkellyferguson/gratitude)
 
 A simple Ruby wrapper for the Gittip API.
 
-**Note**: This gem is currently under development and is not ready for use in a production environment. A stable version is planned for v0.0.1. Please follow the [Changelog](CHANGELOG.md) to check the status of the project.
+**Note**: This gem is currently under development and is not ready for use in a production environment. A stable version is planned for v0.1.0. Please follow the [Changelog](CHANGELOG.md) to check the status of the project.
 
 #### Copyright and License
 
