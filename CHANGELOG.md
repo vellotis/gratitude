@@ -7,7 +7,7 @@
 ### 0.0.3 (9/11/2013)
 * Fix release version.
 
-### O.0.2 (9/11/2013)
+### 0.0.2 (9/11/2013)
 * Add ability to get a Gittip user's public information.
 
 ### 0.0.1 (9/10/2013)
