@@ -1,6 +1,6 @@
 gratitude
 =========
-[![Build Status](https://travis-ci.org/johnkellyferguson/gratitude.png)](https://travis-ci.org/johnkellyferguson/gratitude)
+[![Build Status](https://travis-ci.org/JohnKellyFerguson/gratitude.png?branch=master)](https://travis-ci.org/JohnKellyFerguson/gratitude)
 
 A simple Ruby wrapper for the Gittip API.
 
