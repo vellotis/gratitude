@@ -1,0 +1,62 @@
+{
+  "http_interactions": [
+    {
+      "request": {
+        "method": "get",
+        "uri": "https://www.gittip.com/whit537/public.json",
+        "body": {
+          "encoding": "US-ASCII",
+          "string": ""
+        },
+        "headers": {
+          
+        }
+      },
+      "response": {
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "headers": {
+          "Access-Control-Allow-Origin": [
+            "*"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Date": [
+            "Wed, 11 Sep 2013 15:34:11 GMT"
+          ],
+          "Server": [
+            "Aspen! Cheroot!"
+          ],
+          "Set-Cookie": [
+            "csrf_token=QNlOmd9PC1eiKAaO71X7xFDsjp44mPYo; expires=Wed, 10 Sep 2014 15:34:11 GMT; Path=/"
+          ],
+          "Vary": [
+            "Cookie"
+          ],
+          "X-Frame-Options": [
+            "SAMEORIGIN"
+          ],
+          "X-Gittip-Version": [
+            "10.1.14"
+          ],
+          "Content-Length": [
+            "550"
+          ],
+          "Connection": [
+            "keep-alive"
+          ]
+        },
+        "body": {
+          "encoding": "US-ASCII",
+          "string": "{\n    \"avatar\": \"https://www.gravatar.com/avatar/fb054b407a6461e417ee6b6ae084da37.jpg?s=128\",\n    \"elsewhere\": {\n        \"bitbucket\": \"https://bitbucket.org/api/1.0/users/whit537\",\n        \"bountysource\": \"https://api.bountysource.com/users/whit537\",\n        \"github\": \"https://api.github.com/users/whit537\",\n        \"twitter\": \"https://api.twitter.com/1.1/users/show.json?id=34175404&include_entities=1\"\n    },\n    \"giving\": \"101.41\",\n    \"goal\": null,\n    \"id\": 1451,\n    \"number\": \"singular\",\n    \"receiving\": \"433.00\",\n    \"username\": \"whit537\"\n}"
+        },
+        "http_version": null
+      },
+      "recorded_at": "Wed, 11 Sep 2013 15:34:11 GMT"
+    }
+  ],
+  "recorded_with": "VCR 2.5.0"
+}

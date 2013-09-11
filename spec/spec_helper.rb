@@ -9,6 +9,7 @@ require "webmock"
 
 # VCR config
 VCR.configure do |c|
-  c.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
-  c.stub_with :webmock
+  c.cassette_library_dir = 'spec/cassettes'
+  c.hook_into :webmock
+  c.default_cassette_options = { record: :new_episodes, serialize_with: :json }
 end
