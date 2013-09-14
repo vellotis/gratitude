@@ -1,5 +1,9 @@
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 
+# Coveralls
+require 'coveralls'
+Coveralls.wear!
+
 # dependencies
 require "rubygems"
 require "rspec"
