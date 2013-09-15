@@ -1,0 +1,119 @@
+{
+  "http_interactions": [
+    {
+      "request": {
+        "method": "get",
+        "uri": "https://www.gittip.com/whit537/public.json",
+        "body": {
+          "encoding": "US-ASCII",
+          "string": ""
+        },
+        "headers": {
+          
+        }
+      },
+      "response": {
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "headers": {
+          "Access-Control-Allow-Origin": [
+            "*"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Date": [
+            "Sat, 14 Sep 2013 23:31:10 GMT"
+          ],
+          "Server": [
+            "Aspen! Cheroot!"
+          ],
+          "Set-Cookie": [
+            "csrf_token=aFFfMm7sTDPXzAZ0y59E1EI1dqeMvTxl; expires=Sat, 13 Sep 2014 23:31:10 GMT; Path=/"
+          ],
+          "Vary": [
+            "Cookie"
+          ],
+          "X-Frame-Options": [
+            "SAMEORIGIN"
+          ],
+          "X-Gittip-Version": [
+            "10.1.20"
+          ],
+          "Content-Length": [
+            "550"
+          ],
+          "Connection": [
+            "keep-alive"
+          ]
+        },
+        "body": {
+          "encoding": "UTF-8",
+          "string": "{\n    \"avatar\": \"https://www.gravatar.com/avatar/fb054b407a6461e417ee6b6ae084da37.jpg?s=128\",\n    \"elsewhere\": {\n        \"bitbucket\": \"https://bitbucket.org/api/1.0/users/whit537\",\n        \"bountysource\": \"https://api.bountysource.com/users/whit537\",\n        \"github\": \"https://api.github.com/users/whit537\",\n        \"twitter\": \"https://api.twitter.com/1.1/users/show.json?id=34175404&include_entities=1\"\n    },\n    \"giving\": \"101.41\",\n    \"goal\": null,\n    \"id\": 1451,\n    \"number\": \"singular\",\n    \"receiving\": \"434.25\",\n    \"username\": \"whit537\"\n}"
+        },
+        "http_version": null
+      },
+      "recorded_at": "Sat, 14 Sep 2013 23:31:11 GMT"
+    },
+    {
+      "request": {
+        "method": "get",
+        "uri": "https://www.gittip.com/gratitude_test/public.json",
+        "body": {
+          "encoding": "US-ASCII",
+          "string": ""
+        },
+        "headers": {
+          
+        }
+      },
+      "response": {
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "headers": {
+          "Access-Control-Allow-Origin": [
+            "*"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Date": [
+            "Sat, 14 Sep 2013 23:38:18 GMT"
+          ],
+          "Server": [
+            "Aspen! Cheroot!"
+          ],
+          "Set-Cookie": [
+            "csrf_token=gfzaLTHIVEHm8wQ1xToeV9xBYnglHuLK; expires=Sat, 13 Sep 2014 23:38:18 GMT; Path=/"
+          ],
+          "Vary": [
+            "Cookie"
+          ],
+          "X-Frame-Options": [
+            "SAMEORIGIN"
+          ],
+          "X-Gittip-Version": [
+            "10.1.20"
+          ],
+          "Content-Length": [
+            "441"
+          ],
+          "Connection": [
+            "keep-alive"
+          ]
+        },
+        "body": {
+          "encoding": "UTF-8",
+          "string": "{\n    \"avatar\": \"https://abs.twimg.com/sticky/default_profile_images/default_profile_3.png\",\n    \"elsewhere\": {\n        \"bitbucket\": null,\n        \"bountysource\": null,\n        \"github\": null,\n        \"twitter\": \"https://api.twitter.com/1.1/users/show.json?id=1865385980&include_entities=1\"\n    },\n    \"giving\": \"0.00\",\n    \"goal\": null,\n    \"id\": 196181,\n    \"number\": \"singular\",\n    \"receiving\": \"0.00\",\n    \"username\": \"gratitude_test\"\n}"
+        },
+        "http_version": null
+      },
+      "recorded_at": "Sat, 14 Sep 2013 23:38:19 GMT"
+    }
+  ],
+  "recorded_with": "VCR 2.5.0"
+}

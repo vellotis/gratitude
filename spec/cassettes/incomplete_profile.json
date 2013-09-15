@@ -3,7 +3,7 @@
     {
       "request": {
         "method": "get",
-        "uri": "https://www.gittip.com/whit537/public.json",
+        "uri": "https://www.gittip.com/gratitude_test/public.json",
         "body": {
           "encoding": "US-ASCII",
           "string": ""
@@ -25,13 +25,13 @@
             "application/json"
           ],
           "Date": [
-            "Wed, 11 Sep 2013 15:34:11 GMT"
+            "Sun, 15 Sep 2013 00:01:27 GMT"
           ],
           "Server": [
             "Aspen! Cheroot!"
           ],
           "Set-Cookie": [
-            "csrf_token=QNlOmd9PC1eiKAaO71X7xFDsjp44mPYo; expires=Wed, 10 Sep 2014 15:34:11 GMT; Path=/"
+            "csrf_token=QdabBkoZ59hLsOWzefPWoY2YGTzrOuvT; expires=Sun, 14 Sep 2014 00:01:27 GMT; Path=/"
           ],
           "Vary": [
             "Cookie"
@@ -40,22 +40,22 @@
             "SAMEORIGIN"
           ],
           "X-Gittip-Version": [
-            "10.1.14"
+            "10.1.20"
           ],
           "Content-Length": [
-            "550"
+            "423"
           ],
           "Connection": [
             "keep-alive"
           ]
         },
         "body": {
-          "encoding": "US-ASCII",
-          "string": "{\n    \"avatar\": \"https://www.gravatar.com/avatar/fb054b407a6461e417ee6b6ae084da37.jpg?s=128\",\n    \"elsewhere\": {\n        \"bitbucket\": \"https://bitbucket.org/api/1.0/users/whit537\",\n        \"bountysource\": \"https://api.bountysource.com/users/whit537\",\n        \"github\": \"https://api.github.com/users/whit537\",\n        \"twitter\": \"https://api.twitter.com/1.1/users/show.json?id=34175404&include_entities=1\"\n    },\n    \"giving\": \"101.41\",\n    \"goal\": null,\n    \"id\": 1451,\n    \"number\": \"singular\",\n    \"receiving\": \"433.00\",\n    \"username\": \"whit537\"\n}"
+          "encoding": "UTF-8",
+          "string": "{\n    \"avatar\": \"https://abs.twimg.com/sticky/default_profile_images/default_profile_3.png\",\n    \"elsewhere\": {\n        \"bitbucket\": null,\n        \"bountysource\": null,\n        \"github\": null,\n        \"twitter\": \"https://api.twitter.com/1.1/users/show.json?id=1865385980&include_entities=1\"\n    },\n    \"giving\": \"0.00\",\n    \"id\": 196181,\n    \"number\": \"singular\",\n    \"receiving\": \"0.00\",\n    \"username\": \"gratitude_test\"\n}"
         },
         "http_version": null
       },
-      "recorded_at": "Wed, 11 Sep 2013 15:34:11 GMT"
+      "recorded_at": "Sun, 15 Sep 2013 00:01:28 GMT"
     }
   ],
   "recorded_with": "VCR 2.5.0"

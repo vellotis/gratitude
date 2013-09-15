@@ -1,0 +1,121 @@
+{
+  "http_interactions": [
+    {
+      "request": {
+        "method": "get",
+        "uri": "https://www.gittip.com/johnkellyferguson/public.json",
+        "body": {
+          "encoding": "US-ASCII",
+          "string": ""
+        },
+        "headers": {
+          
+        }
+      },
+      "response": {
+        "status": {
+          "code": 302,
+          "message": "Found"
+        },
+        "headers": {
+          "Content-Type": [
+            "application/json"
+          ],
+          "Date": [
+            "Sun, 15 Sep 2013 00:15:37 GMT"
+          ],
+          "Location": [
+            "/JohnKellyFerguson/public.json"
+          ],
+          "Server": [
+            "Aspen! Cheroot!"
+          ],
+          "Set-Cookie": [
+            "csrf_token=wCYRGR91AtPXQ01kbdciHHjszc6D3rhj; expires=Sun, 14 Sep 2014 00:15:37 GMT; Path=/"
+          ],
+          "Vary": [
+            "Cookie"
+          ],
+          "X-Frame-Options": [
+            "SAMEORIGIN"
+          ],
+          "X-Gittip-Version": [
+            "10.1.20"
+          ],
+          "Content-Length": [
+            "525"
+          ],
+          "Connection": [
+            "keep-alive"
+          ]
+        },
+        "body": {
+          "encoding": "UTF-8",
+          "string": "<html>\n    <head>\n        <title>302 Found</title>\n        <style>\n            \n            BODY {\n                margin: 0;\n                padding: 200px 0 0;\n                text-align: center;\n                font: normal 18pt/18pt Georgia, serif;\n            }\n            PRE {\n                text-align: left;\n                font: normal 10pt/12pt monospace;\n                margin: 50px 200px 0;\n            }\n        </style>\n    </head>\n    <body>\n        Found, program!\n        <pre></pre>\n    </body>\n</html>\n"
+        },
+        "http_version": null
+      },
+      "recorded_at": "Sun, 15 Sep 2013 00:15:38 GMT"
+    },
+    {
+      "request": {
+        "method": "get",
+        "uri": "https://www.gittip.com/JohnKellyFerguson/public.json",
+        "body": {
+          "encoding": "US-ASCII",
+          "string": ""
+        },
+        "headers": {
+          "Cookie": [
+            "csrf_token=wCYRGR91AtPXQ01kbdciHHjszc6D3rhj"
+          ]
+        }
+      },
+      "response": {
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "headers": {
+          "Access-Control-Allow-Origin": [
+            "*"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Date": [
+            "Sun, 15 Sep 2013 00:15:38 GMT"
+          ],
+          "Server": [
+            "Aspen! Cheroot!"
+          ],
+          "Set-Cookie": [
+            "csrf_token=wCYRGR91AtPXQ01kbdciHHjszc6D3rhj; expires=Sun, 14 Sep 2014 00:15:38 GMT; Path=/"
+          ],
+          "Vary": [
+            "Cookie"
+          ],
+          "X-Frame-Options": [
+            "SAMEORIGIN"
+          ],
+          "X-Gittip-Version": [
+            "10.1.20"
+          ],
+          "Content-Length": [
+            "487"
+          ],
+          "Connection": [
+            "keep-alive"
+          ]
+        },
+        "body": {
+          "encoding": "UTF-8",
+          "string": "{\n    \"avatar\": \"https://www.gravatar.com/avatar/b58b357a352eda178941fd2dfd5c6d5d.jpg?s=128\",\n    \"elsewhere\": {\n        \"bitbucket\": null,\n        \"bountysource\": null,\n        \"github\": \"https://api.github.com/users/JohnKellyFerguson\",\n        \"twitter\": \"https://api.twitter.com/1.1/users/show.json?id=954373436&include_entities=1\"\n    },\n    \"giving\": null,\n    \"goal\": \"5.00\",\n    \"id\": 15885,\n    \"number\": \"singular\",\n    \"receiving\": \"0.00\",\n    \"username\": \"JohnKellyFerguson\"\n}"
+        },
+        "http_version": null
+      },
+      "recorded_at": "Sun, 15 Sep 2013 00:15:39 GMT"
+    }
+  ],
+  "recorded_with": "VCR 2.5.0"
+}
