@@ -8,7 +8,7 @@ describe Gratitude::Profile do
       Gratitude::Profile.should include(HTTParty)
     end
 
-    it "should have the base url set to the API endpoint" do
+    it "should have the base uri set to the API endpoint" do
       expect(Gratitude::Profile.base_uri).to eq("https://www.gittip.com")
     end
 
@@ -16,7 +16,7 @@ describe Gratitude::Profile do
       expect(Gratitude::Profile::URI_SUFFIX).to eq("/public.json")
     end
 
-  end
+  end # default attributes
 
   describe "instance methods" do
 
@@ -136,7 +136,7 @@ describe Gratitude::Profile do
         end
       end
 
-    end
+    end # a fully completed profile
 
     context "an account that registered through twitter and linked no other accounts" do
       
@@ -195,7 +195,7 @@ describe Gratitude::Profile do
         end
       end
 
-    end
+    end # an incomplete profile
 
     context "a profile that has defined a gittip goal" do
 
@@ -207,7 +207,6 @@ describe Gratitude::Profile do
         VCR.eject_cassette
       end
 
-
       let(:goal_profile) { Gratitude::Profile.new("johnkellyferguson") }
 
       describe "#goal" do
@@ -216,9 +215,8 @@ describe Gratitude::Profile do
         end
       end
 
-    end
+    end # a profile with a gittip goal
 
-
-  end    
+  end # instance methods   
 
 end

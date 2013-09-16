@@ -1,3 +1,4 @@
 Gemfile.lock
 pkg
 /coverage
+.rake_t_cache
