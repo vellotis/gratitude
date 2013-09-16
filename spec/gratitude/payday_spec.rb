@@ -30,11 +30,59 @@ describe Gratitude::Payday do
 
     describe "#get_paydays_from_gittip" do
       it "returns an array" do
-        expect(Gratitude::Payday.get_paydays_from_gittip.class).to eq(Array)
+        expect(Gratitude::Payday.get_paydays_from_gittip.class).to be(Array)
       end
 
       it "returns the correct number of items in the array" do
         expect(Gratitude::Payday.get_paydays_from_gittip.size).to eq(68)
+      end
+    end
+
+    describe "#collect_paydays" do
+      it "creates all payday objects and puts them in the PAYDAYS constant" do
+        expect {
+          Gratitude::Payday.collect_paydays
+        }.to change { Gratitude::Payday::PAYDAYS.size }.from(0).to(68)
+      end
+    end
+
+    describe "#all" do
+      before do
+        Gratitude::Payday::PAYDAYS = []
+      end
+
+      it "returns an array" do
+        expect(Gratitude::Payday.all.class).to be(Array)
+      end
+
+      it "updates the PAYDAYS constant when it is empty" do
+        expect(Gratitude::Payday.all.size).to eq(68)
+      end
+
+      it "its array should be comprised of Payday objects" do
+        expect(Gratitude::Payday.all.first.class).to be(Gratitude::Payday)
+      end
+    end
+
+    describe "#sort_by_ts_end" do
+      it "places the newest payday first" do
+        expect(Gratitude::Payday.sort_by_ts_end.first.ts_end.year).to eq(2013)
+        expect(Gratitude::Payday.sort_by_ts_end.first.ts_end.month).to eq(9)
+        expect(Gratitude::Payday.sort_by_ts_end.first.ts_end.day).to eq(12)
+      end
+
+      it "places the oldest item last" do
+        expect(Gratitude::Payday.sort_by_ts_end.last.ts_end.year).to eq(2012)
+        expect(Gratitude::Payday.sort_by_ts_end.last.ts_end.month).to eq(6)
+        expect(Gratitude::Payday.sort_by_ts_end.last.ts_end.day).to eq(1)
+      end
+    end
+
+    describe "#most_recent" do
+      it "returns the most recent payday" do
+        expect(Gratitude::Payday.most_recent.ts_end.year).to eq(2013)
+        expect(Gratitude::Payday.most_recent.ts_end.month).to eq(9)
+        expect(Gratitude::Payday.most_recent.ts_end.day).to eq(12)
       end
     end
 
@@ -44,28 +92,28 @@ describe Gratitude::Payday do
 
     it "should add the initialized object to the PAYDAYS constant" do
       expect { Gratitude::Payday.new( {
-        ts_end: "2013-09-12T14:01:41.848587+00:00",
-        ts_start: "2013-09-12T12:36:52.967371+00:00"
+        'ts_end' => "2013-09-12T14:01:41.848587+00:00",
+        'ts_start' => "2013-09-12T12:36:52.967371+00:00"
         } )
-      }.to change{ Gratitude::Payday::PAYDAYS.size }.from(0).to(1)
+      }.to change{ Gratitude::Payday::PAYDAYS.size }.by(1)
     end
 
     let(:payday) { Gratitude::Payday.new( {
-        ach_fees_volume: 0,
-        ach_volume: -2246.96,
-        charge_fees_volume: 216.09,
-        charge_volume: 4583.22,
-        nachs: 53,
-        nactive: 1719,
-        ncc_failing: 178,
-        ncc_missing: 1222,
-        ncharges: 276,
-        nparticipants: 19567,
-        ntippers: 1105,
-        ntransfers: 3309,
-        transfer_volume: 5464.38,
-        ts_end: "2013-09-12T14:01:41.848587+00:00",
-        ts_start: "2013-09-12T12:36:52.967371+00:00"
+        'ach_fees_volume' => 0,
+        'ach_volume' => -2246.96,
+        'charge_fees_volume' => 216.09,
+        'charge_volume' => 4583.22,
+        'nachs' => 53,
+        'nactive' => 1719,
+        'ncc_failing' => 178,
+        'ncc_missing' => 1222,
+        'ncharges' => 276,
+        'nparticipants' => 19567,
+        'ntippers' => 1105,
+        'ntransfers' => 3309,
+        'transfer_volume' => 5464.38,
+        'ts_end' => "2013-09-12T14:01:41.848587+00:00",
+        'ts_start' => "2013-09-12T12:36:52.967371+00:00"
       } )
     }
 
@@ -182,7 +230,6 @@ describe Gratitude::Payday do
         expect(payday.ts_start.day).to eq(12)
       end
     end
-
 
   end # initialization and instance methods
 
