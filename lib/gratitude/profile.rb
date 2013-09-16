@@ -66,6 +66,6 @@ module Gratitude
     def id
       response["id"]
     end
-    
+
   end # Profile
 end # Gratitude

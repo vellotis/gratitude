@@ -87,7 +87,7 @@ describe Gratitude::Profile do
           expect(complete_profile.twitter_api_url).to eq("https://api.twitter.com/1.1/users/show.json?id=34175404&include_entities=1")
         end
       end
-      
+
       describe "#twitter_username" do
         it "should return nil" do
           expect(complete_profile.twitter_username).to be(nil)
@@ -139,7 +139,7 @@ describe Gratitude::Profile do
     end # a fully completed profile
 
     context "an account that registered through twitter and linked no other accounts" do
-      
+
       before do
         VCR.insert_cassette "incomplete_profile"
       end
@@ -217,6 +217,6 @@ describe Gratitude::Profile do
 
     end # a profile with a gittip goal
 
-  end # instance methods   
+  end # instance methods
 
 end
