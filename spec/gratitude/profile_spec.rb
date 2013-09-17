@@ -47,7 +47,7 @@ describe Gratitude::Profile do
           expect(complete_profile.avatar_url).to eq("https://www.gravatar.com/avatar/fb054b407a6461e417ee6b6ae084da37.jpg?s=128")
         end
 
-        it "should return the same value as #avatar" do
+        it "should return the same value as its alias: #avatar" do
           expect(complete_profile.avatar_url).to eq(complete_profile.avatar)
         end
       end
@@ -57,7 +57,7 @@ describe Gratitude::Profile do
           expect(complete_profile.bitbucket_api_url).to eq("https://bitbucket.org/api/1.0/users/whit537")
         end
 
-        it "should return the same value as #bitbucket" do
+        it "should return the same value as its alias: #bitbucket" do
           expect(complete_profile.bitbucket_api_url).to eq(complete_profile.bitbucket)
         end
       end
@@ -85,7 +85,7 @@ describe Gratitude::Profile do
           expect(complete_profile.github_api_url).to eq("https://api.github.com/users/whit537")
         end
 
-        it "should return the same value as #github" do
+        it "should return the same value as its alias: #github" do
           expect(complete_profile.github_api_url).to eq(complete_profile.github)
         end
       end
@@ -101,7 +101,7 @@ describe Gratitude::Profile do
           expect(complete_profile.twitter_api_url).to eq("https://api.twitter.com/1.1/users/show.json?id=34175404&include_entities=1")
         end
 
-        it "should return the same value as #twitter" do
+        it "should return the same value as its alias: #twitter" do
           expect(complete_profile.twitter_api_url).to eq(complete_profile.twitter)
         end
       end
@@ -121,7 +121,7 @@ describe Gratitude::Profile do
           expect(complete_profile.amount_giving).to eq(101.41)
         end
 
-        it "should return the same value as #giving" do
+        it "should return the same value as its alias: #giving" do
           expect(complete_profile.amount_giving).to eq(complete_profile.giving)
         end
       end
@@ -135,7 +135,7 @@ describe Gratitude::Profile do
           expect(complete_profile.amount_receiving).to eq(434.25)
        end
 
-       it "should return the same value as #receiving" do
+       it "should return the same value as its alias: #receiving" do
           expect(complete_profile.amount_receiving).to eq(complete_profile.receiving)
         end
       end
