@@ -32,6 +32,8 @@ describe Gratitude::Profile do
 
       let(:complete_profile) { Gratitude::Profile.new("whit537") }
 
+      subject { :complete_profile }
+
       it "should set the correct username" do
         expect(complete_profile.username).to eq("whit537")
       end
@@ -44,11 +46,19 @@ describe Gratitude::Profile do
         it "should return the correct avatar url" do
           expect(complete_profile.avatar_url).to eq("https://www.gravatar.com/avatar/fb054b407a6461e417ee6b6ae084da37.jpg?s=128")
         end
+
+        it "should return the same value as #avatar" do
+          expect(complete_profile.avatar_url).to eq(complete_profile.avatar)
+        end
       end
 
       describe "#bitbucket_api_url" do
         it "should return the correct bitbucket api url" do
           expect(complete_profile.bitbucket_api_url).to eq("https://bitbucket.org/api/1.0/users/whit537")
+        end
+
+        it "should return the same value as #bitbucket" do
+          expect(complete_profile.bitbucket_api_url).to eq(complete_profile.bitbucket)
         end
       end
 
@@ -74,6 +84,10 @@ describe Gratitude::Profile do
         it "should return the correct github api url" do
           expect(complete_profile.github_api_url).to eq("https://api.github.com/users/whit537")
         end
+
+        it "should return the same value as #github" do
+          expect(complete_profile.github_api_url).to eq(complete_profile.github)
+        end
       end
 
       describe "#github_username" do
@@ -85,6 +99,10 @@ describe Gratitude::Profile do
       describe "#twitter_api_url" do
         it "should return the correct twitter api url" do
           expect(complete_profile.twitter_api_url).to eq("https://api.twitter.com/1.1/users/show.json?id=34175404&include_entities=1")
+        end
+
+        it "should return the same value as #twitter" do
+          expect(complete_profile.twitter_api_url).to eq(complete_profile.twitter)
         end
       end
 
@@ -102,6 +120,10 @@ describe Gratitude::Profile do
         it "should return the correct amount giving" do
           expect(complete_profile.amount_giving).to eq(101.41)
         end
+
+        it "should return the same value as #giving" do
+          expect(complete_profile.amount_giving).to eq(complete_profile.giving)
+        end
       end
 
       describe "#amount_receiving" do
@@ -112,6 +134,10 @@ describe Gratitude::Profile do
         it "should return the correct amount amount receiving" do
           expect(complete_profile.amount_receiving).to eq(434.25)
        end
+
+       it "should return the same value as #receiving" do
+          expect(complete_profile.amount_receiving).to eq(complete_profile.receiving)
+        end
       end
 
       describe "#goal" do

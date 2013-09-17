@@ -10,6 +10,16 @@ module Gratitude
                 :number_of_charges, :number_of_participants, :number_of_tippers,
                 :number_of_transfers, :transfer_volume, :ts_end, :ts_start
 
+    # Provide aliases so all methods can correspond to the original Gittip API names.
+    alias :nachs :number_of_achs
+    alias :nactive :number_active
+    alias :ncc_failing :number_of_failing_credit_cards
+    alias :ncc_missing :number_of_missing_credit_cards
+    alias :ncharges :number_of_charges
+    alias :nparticipants :number_of_participants
+    alias :ntippers :number_of_tippers
+    alias :ntransfers :number_of_transfers
+
     def initialize(options = {})
       @ach_fees_volume = options["ach_fees_volume"]
       @ach_volume = options["ach_volume"]

@@ -145,11 +145,20 @@ describe Gratitude::Payday do
       it "should return the correct number of achs" do
         expect(payday.number_of_achs).to eq(53)
       end
+
+
+      it "should return the same value as #nachs" do
+        expect(payday.number_of_achs).to eq(payday.nachs)
+      end
     end
 
     describe "#number_active" do
       it "should return the correct number active" do
         expect(payday.number_active).to eq(1719)
+      end
+
+      it "should return the same value as #nactive" do
+        expect(payday.number_active).to eq(payday.nactive)
       end
     end
 
@@ -157,11 +166,19 @@ describe Gratitude::Payday do
       it "should return the correct number of failing credit cards" do
         expect(payday.number_of_failing_credit_cards).to eq(178)
       end
+
+      it "should return the same value as #ncc_failing" do
+        expect(payday.number_of_failing_credit_cards).to eq(payday.ncc_failing)
+      end
     end
 
     describe "#number_of_missing_credit_cards" do
       it "should return the correct number of missing credit cards" do
         expect(payday.number_of_missing_credit_cards).to eq(1222)
+      end
+
+      it "should return the same value as #ncc_missing" do
+        expect(payday.number_of_missing_credit_cards).to eq(payday.ncc_missing)
       end
     end
 
@@ -169,11 +186,19 @@ describe Gratitude::Payday do
       it "should return the correct number of charges" do
         expect(payday.number_of_charges).to eq(276)
       end
+
+      it "should return the same value as #ncharges" do
+        expect(payday.number_of_charges).to eq(payday.ncharges)
+      end
     end
 
     describe "#number_of_participants" do
       it "should return the correct number of participants" do
         expect(payday.number_of_participants).to eq(19567)
+      end
+
+      it "should return the same value as #nparticipants" do
+        expect(payday.number_of_participants).to eq(payday.nparticipants)
       end
     end
 
@@ -181,11 +206,19 @@ describe Gratitude::Payday do
       it "should respond to #number_of_tippers" do
         expect(payday.number_of_tippers).to eq(1105)
       end
+
+      it "should return the same value as #ntippers" do
+        expect(payday.number_of_tippers).to eq(payday.ntippers)
+      end
     end
 
     describe "#number_of_transfers" do
       it "should return the correct number of transfers" do
         expect(payday.number_of_transfers).to eq(3309)
+      end
+
+      it "should return the same value as #ntransfers" do
+        expect(payday.number_of_transfers).to eq(payday.ntransfers)
       end
     end
 

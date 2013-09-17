@@ -25,6 +25,8 @@ The gratitude gem has four different components that interact with different asp
 * [Profile](#profile-source-code)
 * [Tips](#tips)
 
+When using gratitude to retrieve data from the Gittip API, please note that many of the JSON key names have been wrapped in more naturally sounding method names. However, all of the original JSON key names have also been maintained as aliases so as to maitain consistency with the original [Gittip API documentation](https://github.com/gittip/www.gittip.com#api).
+
 ##Paydays ([source code](https://github.com/JohnKellyFerguson/gratitude/blob/master/lib/gratitude/payday.rb))
 
 The Gittip API provides access to the historical data of all its paydays. To retrieve this information, simply use the following command:
@@ -49,7 +51,7 @@ The above will return an array of Payday objects. Each Payday object responds to
 * `ts_end`
 * `ts_start`
 
-You can then iterate through this array of payday objects to persist them to a database or get whatever information you neeed.
+You can then iterate through this array of payday objects to persist them to a database or get whatever information you need.
 
 	paydays = Gratitude::Payday.all
 	paydays.each do |payday|
@@ -90,7 +92,7 @@ The following will retrieve the public profile of the above user. You can then a
   * otherwise, returns `nil`.
 * `github_username`
   * returns the user's github username if they have connected a github account.
-  * otherwise, returns `nil`.	
+  * otherwise, returns `nil`.
 * `twitter_api_url`
   * returns the user's twitter api url if they have connected a twitter account.
   * otherwise, returns `nil`.
