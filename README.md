@@ -20,9 +20,9 @@ A simple Ruby wrapper for the [Gittip API](https://github.com/gittip/www.gittip.
 -------
 The gratitude gem has four different components that interact with different aspects of the Gittip API. They are as follows:
 
-* [Paydays](#paydays)
+* [Paydays](#paydays-source-code)
 * [Statistics](#statistics)
-* [Profile](#profile)
+* [Profile](#profile-source-code)
 * [Tips](#tips)
 
 ##Paydays ([source code](https://github.com/JohnKellyFerguson/gratitude/blob/master/lib/gratitude/payday.rb))
