@@ -98,6 +98,7 @@ The following will retrieve the public profile of the above user. You can then a
   * otherwise, returns `nil`.
 * `amount_giving`
   * returns the amount (as a float) the user has pledged to give this week.
+  * if the user has decided to donately privately then this will return 0.00.
 * `amount_receiving`
   * returns an estimate as a float of what the given user is expected to receive this week.
 * `goal`

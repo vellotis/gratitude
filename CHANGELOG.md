@@ -1,6 +1,10 @@
 ### 0.1.0 (Upcoming Stable Release)
 * Implement all aspects of the Gittip API.
 
+### 0.0.5 (9/17/2013)
+* Complete Gittip's Paydays API integration.
+* Add aliases for all methods to correspond to Gittip's original API documentation.
+
 ### 0.0.4 (9/14/2013)
 * Improve integration with Gittip's Public User API to better account for different user settings.
 
