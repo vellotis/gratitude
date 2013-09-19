@@ -1,6 +1,10 @@
 ### 0.1.0 (Upcoming Stable Release)
 * Implement all aspects of the Gittip API.
 
+### 0.0.6 (9/19/2013)
+* Complete Gittip's Statistics API integration.
+* Add more aliases and improve method clarity to signify method intent.
+
 ### 0.0.5 (9/17/2013)
 * Complete Gittip's Paydays API integration.
 * Add aliases for all methods to correspond to Gittip's original API documentation.
