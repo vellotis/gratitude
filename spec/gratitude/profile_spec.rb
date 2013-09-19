@@ -133,9 +133,9 @@ describe Gratitude::Profile do
 
         it "should return the correct amount amount receiving" do
           expect(complete_profile.amount_receiving).to eq(434.25)
-       end
+        end
 
-       it "should return the same value as its alias: #receiving" do
+        it "should return the same value as its alias: #receiving" do
           expect(complete_profile.amount_receiving).to eq(complete_profile.receiving)
         end
       end
@@ -146,9 +146,13 @@ describe Gratitude::Profile do
         end
       end
 
-      describe "#number" do
-        it "should return the correct number" do
-          expect(complete_profile.number).to eq("singular")
+      describe "#account_type" do
+        it "should return the correct account_type" do
+          expect(complete_profile.account_type).to eq("singular")
+        end
+
+        it "should return the same value as its alias: #number" do
+          expect(complete_profile.account_type).to eq(complete_profile.number)
         end
       end
 

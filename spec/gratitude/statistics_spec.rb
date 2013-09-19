@@ -82,16 +82,20 @@ describe Gratitude::Statistics do
       end
 
       describe "#number_of_achs" do
-        it "should return the correct number of achs" do
-          expect(stats.number_of_achs).to eq(299)
+        it "should return the correct number of ach credits" do
+          expect(stats.number_of_ach_credits).to eq(299)
         end
 
         it "should be a fixnum" do
-          expect(stats.number_of_achs.class).to be(Fixnum)
+          expect(stats.number_of_ach_credits.class).to be(Fixnum)
         end
 
         it "should return the same value as its alias: #nach" do
-          expect(stats.number_of_achs).to eq(stats.nach)
+          expect(stats.number_of_ach_credits).to eq(stats.nach)
+        end
+
+        it "should return the same value as its alias: #number_of_achs" do
+          expect(stats.number_of_ach_credits).to eq(stats.number_of_achs)
         end
       end
 
@@ -175,23 +179,31 @@ describe Gratitude::Statistics do
         end
       end
 
-      describe "#pcc" do
-        it "should return the correct value for #pcc" do
-          expect(stats.pcc).to eq("7.6")
+      describe "#percentage_of_users_with_credit_cards" do
+        it "should return the correct value for #percentage_of_users_with_credit_cards" do
+          expect(stats.percentage_of_users_with_credit_cards).to eq("7.6")
         end
 
         it "should be a string" do
-          expect(stats.pcc.class).to be(String)
+          expect(stats.percentage_of_users_with_credit_cards.class).to be(String)
+        end
+
+        it "should return the same value as its alias: #pcc" do
+          expect(stats.percentage_of_users_with_credit_cards).to eq(stats.pcc)
         end
       end
 
-      describe "#punc" do
-        it "should return the correct value for #punc" do
-          expect(stats.punc).to eq(".")
+      describe "#punctuation" do
+        it "should return the correct value for #punctuation" do
+          expect(stats.punctuation).to eq(".")
         end
 
         it "should be a string" do
-          expect(stats.pcc.class).to be(String)
+          expect(stats.punctuation.class).to be(String)
+        end
+
+        it "should return the same value as its alias: #pcc" do
+          expect(stats.punctuation).to eq(stats.punc)
         end
       end
 

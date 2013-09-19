@@ -28,10 +28,11 @@ module Gratitude
       response["last_thursday"]
     end
 
-    def number_of_achs
+    def number_of_ach_credits
       response["nach"].to_i
     end
-    alias :nach :number_of_achs
+    alias :nach :number_of_ach_credits
+    alias :number_of_achs :number_of_ach_credits
 
     def number_of_active_users
       response["nactive"]
@@ -62,13 +63,15 @@ module Gratitude
       response["other_people"]
     end
 
-    def pcc
+    def percentage_of_users_with_credit_cards
       response["pcc"].strip
     end
+    alias :pcc :percentage_of_users_with_credit_cards
 
-    def punc
+    def punctuation
       response["punc"]
     end
+    alias :punc :punctuation
 
     def statements
       response["statements"]

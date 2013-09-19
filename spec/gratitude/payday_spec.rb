@@ -141,24 +141,32 @@ describe Gratitude::Payday do
       end
     end
 
-    describe "#number_of_achs" do
+    describe "#number_of_ach_credits" do
       it "should return the correct number of achs" do
-        expect(payday.number_of_achs).to eq(53)
+        expect(payday.number_of_ach_credits).to eq(53)
       end
 
 
       it "should return the same value as #nachs" do
-        expect(payday.number_of_achs).to eq(payday.nachs)
+        expect(payday.number_of_ach_credits).to eq(payday.nachs)
+      end
+
+      it "should return the same value as #number_of_achs" do
+        expect(payday.number_of_ach_credits).to eq(payday.number_of_achs)
       end
     end
 
-    describe "#number_active" do
+    describe "#number_of_active_users" do
       it "should return the correct number active" do
-        expect(payday.number_active).to eq(1719)
+        expect(payday.number_of_active_users).to eq(1719)
       end
 
       it "should return the same value as #nactive" do
-        expect(payday.number_active).to eq(payday.nactive)
+        expect(payday.number_of_active_users).to eq(payday.nactive)
+      end
+
+      it "should return the same value as #number_active" do
+        expect(payday.number_of_active_users).to eq(payday.number_active)
       end
     end
 
@@ -228,39 +236,47 @@ describe Gratitude::Payday do
       end
     end
 
-    describe "#ts_end" do
+    describe "#transfer_end_time" do
       it "should return a DateTime object" do
-        expect(payday.ts_end.class).to eq(DateTime)
+        expect(payday.transfer_end_time.class).to eq(DateTime)
       end
 
       it "should have the correct year" do
-        expect(payday.ts_end.year).to eq(2013)
+        expect(payday.transfer_end_time.year).to eq(2013)
       end
 
       it "should have the correct month" do
-        expect(payday.ts_end.month).to eq(9)
+        expect(payday.transfer_end_time.month).to eq(9)
       end
 
       it "should have the correct date" do
-        expect(payday.ts_end.day).to eq(12)
+        expect(payday.transfer_end_time.day).to eq(12)
+      end
+
+      it "should return the same value as #ts_end" do
+        expect(payday.transfer_end_time).to eq(payday.ts_end)
       end
     end
 
-    describe "#ts_start" do
+    describe "#transfer_start_time" do
       it "should return a DateTime object" do
-        expect(payday.ts_start.class).to eq(DateTime)
+        expect(payday.transfer_start_time.class).to eq(DateTime)
       end
 
       it "should have the correct year" do
-        expect(payday.ts_start.year).to eq(2013)
+        expect(payday.transfer_start_time.year).to eq(2013)
       end
 
       it "should have the correct month" do
-        expect(payday.ts_start.month).to eq(9)
+        expect(payday.transfer_start_time.month).to eq(9)
       end
 
       it "should have the correct date" do
-        expect(payday.ts_start.day).to eq(12)
+        expect(payday.transfer_start_time.day).to eq(12)
+      end
+
+      it "should return the same value as #ts_start" do
+        expect(payday.transfer_start_time).to eq(payday.ts_start)
       end
     end
 

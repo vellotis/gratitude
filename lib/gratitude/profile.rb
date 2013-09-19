@@ -66,9 +66,10 @@ module Gratitude
       response["goal"].to_f if response["goal"]
     end
 
-    def number
+    def account_type
       response["number"]
     end
+    alias :number :account_type
 
     def id
       response["id"]
