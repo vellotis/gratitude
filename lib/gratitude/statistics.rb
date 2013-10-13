@@ -5,6 +5,10 @@ module Gratitude
 
     attr_reader :response
 
+    class << self
+      alias :current :new
+    end
+
     def initialize
       @response = self.class.get("")
     end
