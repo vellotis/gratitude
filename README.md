@@ -149,11 +149,38 @@ The above will retrieve the public profile of the above user. You can then acces
 
 **TODO:** Implement the `my_tip` method into the Profile section once client authentication is finished.
 
-##Tips
-* **TODO:** Implement Gittip's Tips API into gratitude.
+##Tips ([client authentication source code](https://github.com/JohnKellyFerguson/gratitude/blob/master/lib/gratitude/client.rb), [tips source code](https://github.com/JohnKellyFerguson/gratitude/blob/master/lib/gratitude/tips.rb))
+The Tips aspect of the Gittip API allows you to retrieve the current tips of a user. In order to get this information, you will need your username and API_KEY. To find out your API Key, log into your Gittip account, go to your profile and at the bottom of the page you will find your API_KEY.
+
+![Gittip API Key](api_key.png)
+
+Now that you have your API_KEY, you can find out your current tips using Gratitude.
+
+```
+# First establish a connection to the Gittip API by passing in your credentials to Gratitude::Client.new
+# You will need to pass in your username and api key like so.
+client = Gratitude::Client.new(:username => "my_username", :api_key => "my_api_key")
+# Then, to find out your current tips, simply call the current_tips method.
+client.current_tips
+```
+This will will return an array of hashes that represent your current tips and will look similar to the following.
 
 
-#### Copyright and License
+    [
+      {"amount"=>"1.00", "platform"=>"gittip", "username"=>"whit537"},
+      {"amount"=>"0.25", "platform"=>"gittip", "username"=>"JohnKellyFerguson"},
+      …
+    ]
+
+Please be aware that all of the amounts in the hash are strings and not floats.
+
+
+
+* **TODO:** Add the ability to post and update tips to Gittip's API.
+
+
+
+### Copyright and License
 
 Copyright John Kelly Ferguson and Contributors, 2013
 
