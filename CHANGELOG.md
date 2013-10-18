@@ -1,6 +1,10 @@
 ### 0.1.0 (Upcoming Stable Release)
 * Implement all aspects of the Gittip API.
 
+### 0.0.7 (10/13/2013)
+* Update documentation.
+* Alias new to current in Statistics class.
+
 ### 0.0.6 (9/19/2013)
 * Complete Gittip's Statistics API integration.
 * Add more aliases and improve method clarity to signify method intent.
