@@ -31,7 +31,9 @@ When using gratitude to retrieve data from the Gittip API, please note that many
 
 The Gittip API provides access to the historical data of all its paydays. To retrieve this information, simply use the following command:
 
-	Gratitude::Payday.all
+```ruby
+Gratitude::Payday.all
+```
 
 The above will return an array of Payday objects. Each Payday object responds to the following methods:
 
@@ -53,26 +55,34 @@ The above will return an array of Payday objects. Each Payday object responds to
 
 You can then iterate through this array of payday objects to persist them to a database or get whatever information you need.
 
-	paydays = Gratitude::Payday.all
-	paydays.each do |payday|
-	  # get whatever information you want from the payday object
-	  # using the above mentioned methods.
-	end
+```ruby
+paydays = Gratitude::Payday.all
+paydays.each do |payday|
+  # get whatever information you want from the payday object
+  # using the above mentioned methods.
+end
+```
 
 Finally, if you just want to get the most recent payday, you can do so by using:
 
-	Gratitude::Payday.most_recent
+```ruby
+Gratitude::Payday.most_recent
+```
 
 ##Statistics ([source code](https://github.com/JohnKellyFerguson/gratitude/blob/master/lib/gratitude/statistics.rb))
 The Statistics aspect of the Gittip API provides the current statistics, as of that moment in time, for Gittip. Note that these stats can potentially change when making subsequent requests.
 
 If you would like to get the current Gittip stats, you can do so by using:
 
-    Gratitude::Statistics.current
+```ruby
+Gratitude::Statistics.current
+```
 
 Alternatively, you can also use:
 
-    Gratitude::Statistics.new
+```ruby
+Gratitude::Statistics.new
+```
 
 Each of the above will return an object containing all of the current Gittip stats. You can access each of the Gittip stats using the following methods:
 
@@ -108,7 +118,9 @@ Each of the above will return an object containing all of the current Gittip sta
 
 The Profile aspect of the Gittip API allows you to get the public profile information of any Gittip user. To do so, just pass their username as an initialization argument to the `Gratitude::Profile` class.
 
-	Gratitude::Profile.new("johnkellyferguson")
+```ruby
+Gratitude::Profile.new("johnkellyferguson")
+```
 
 The above will retrieve the public profile of the above user. You can then access all of the different information with the following methods:
 
