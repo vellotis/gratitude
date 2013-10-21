@@ -1,6 +1,9 @@
 ### 0.1.0 (Upcoming Stable Release)
 * Implement all aspects of the Gittip API.
 
+### 0.0.9 (10/19/2013)
+* Add ability to update a user's current tips.
+
 ### 0.0.8 (10/18/2013)
 * Add client authentication.
 * Add ability to retrieve a user's current tips.

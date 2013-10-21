@@ -97,7 +97,7 @@ Each of the above will return an object containing all of the current Gittip sta
 * `this_thursday`
 	* This refers to the upcoming Thursday when payments/transfers are set to occur. Possible values include: "this Thursday", "today", "right now!", and "next Thursday"
 * `tip_distribution_json`
-	* This returns a hash. Each key in the hash is a float which represents a tip amount (for example, $0.01, $0.25 or $1). The value of each key is an array. The first element in the array is an integer representing the total number of users who have pledged that amount. The second element in the array is a float which shows how much this tip amount makes up all of the possible tips. For example, the hash returned will look like the following: `{ 0.01: [11, 0.002153484729835552], … }` 
+	* This returns a hash. Each key in the hash is a float which represents a tip amount (for example, $0.01, $0.25 or $1). The value of each key is an array. The first element in the array is an integer representing the total number of users who have pledged that amount. The second element in the array is a float which shows how much this tip amount makes up of all the possible tips. For example, the hash returned will look like the following: `{ 0.01: [11, 0.002153484729835552], … }` 
 	
 		In this example, the amount being tipped is $0.01. The amount of users tipping this amount is 11, and the total tip amount for this tip size makes up 0.2153484729835552% of all tips distributed. The hash will contain many more elements, each with the same structure.
 * `number_of_tips` (alias: `tip_n`)
@@ -150,13 +150,16 @@ The above will retrieve the public profile of the above user. You can then acces
 **TODO:** Implement the `my_tip` method into the Profile section once client authentication is finished.
 
 ##Tips ([client authentication source code](https://github.com/JohnKellyFerguson/gratitude/blob/master/lib/gratitude/client.rb), [tips source code](https://github.com/JohnKellyFerguson/gratitude/blob/master/lib/gratitude/tips.rb))
-The Tips aspect of the Gittip API allows you to retrieve the current tips of a user. In order to get this information, you will need your username and API_KEY. To find out your API Key, log into your Gittip account, go to your profile and at the bottom of the page you will find your API_KEY.
+The Tips aspect of the Gittip API allows you to retrieve and update the current tips of an authenticated user. In order to interact with this aspect of the API, you will need your username and API_KEY. To find out your API Key, log into your Gittip account, go to your profile and at the bottom of the page you will find your API_KEY.
 
 ![Gittip API Key](api_key.png)
 
-Now that you have your API_KEY, you can find out your current tips using Gratitude.
+Now that you have your API_KEY, you can find out your current tips or update your tips using Gratitude.
 
-```
+### Determing Current Tips 
+To find out the current tips of a user, follow these instructions:
+
+```ruby
 # First establish a connection to the Gittip API by passing in your credentials to Gratitude::Client.new
 # You will need to pass in your username and api key like so.
 client = Gratitude::Client.new(:username => "my_username", :api_key => "my_api_key")
@@ -167,16 +170,101 @@ This will will return an array of hashes that represent your current tips and wi
 
 
     [
+      {"amount"=>"2.00", "platform"=>"gittip", "username"=>"gittip"},
       {"amount"=>"1.00", "platform"=>"gittip", "username"=>"whit537"},
-      {"amount"=>"0.25", "platform"=>"gittip", "username"=>"JohnKellyFerguson"},
-      …
+      {"amount"=>"0.25", "platform"=>"gittip", "username"=>"JohnKellyFerguson"}
     ]
 
 Please be aware that all of the amounts in the hash are strings and not floats.
 
+In addition, you can also find out the current total of all of a user's tips by using the `current_tips_total` method. This will return a float with a total of all of the user's tips.
 
+```ruby
+# Continuing the example
+client.current_tips_total
+=> 3.25
+```
 
-* **TODO:** Add the ability to post and update tips to Gittip's API.
+### Updating Tips
+It is also possible to update a user's tips. To do so, we will once again have to pass in our authentication information (or use our previously stored information).
+
+```ruby
+client = Gratitude::Client.new(:username => "my_username", :api_key => "my_api_key")
+```
+We can then call the `update_tips` method, which accepts an array of hashes containing a user's username and desired tip amount.
+
+```ruby
+client.update_tips([ { :username => "gittip", :amount => "3.50" }, 
+					  { :username => "whit537", :amount => "3.50"}, 
+					  { :username => "JohnKellyFerguson", :amount = "3.50" }])
+```
+
+When tips are successfully updated, the `update_tips` method will return an array representing the successfully updated tips.
+
+```ruby
+[
+  {"amount"=>"3.50", "platform"=>"gittip", "username"=>"gittip"},
+  {"amount"=>"3.50", "platform"=>"gittip", "username"=>"whit537"},
+  {"amount"=>"3.50", "platform"=>"gittip", "username"=>"JohnKellyFerguson"}
+]
+```
+Please note that you do not have to update all of a user's tips when using the `update_tips` method and that it is possible to either update only a subset of a user's tips or to add new tips.
+
+For example:
+
+```ruby
+client.update_tips([ { :username => "gittip", :amount => "4.50" } ])
+```
+will only updates the tips going to the "gittip"" user. All other tips will remain unchanged. We can see this by continuing our example and running the `current_tips` method.
+
+```ruby
+client.current_tips
+=> [
+    {"amount"=>"4.50", "platform"=>"gittip", "username"=>"gittip"},
+    {"amount"=>"3.50", "platform"=>"gittip", "username"=>"whit537"},
+    {"amount"=>"3.50", "platform"=>"gittip", "username"=>"JohnKellyFerguson"}
+   ]
+```
+
+New tips can also be added using the `update_tips` method.
+
+```ruby
+client.update_tips([ { :username => "steveklabnik", :amount=> "1.00" }])
+```
+The new tip will be added to the previously existing tips.
+
+```ruby
+client.current_tips
+=> [
+    {"amount"=>"4.50", "platform"=>"gittip", "username"=>"gittip"},
+    {"amount"=>"3.50", "platform"=>"gittip", "username"=>"whit537"},
+    {"amount"=>"3.50", "platform"=>"gittip", "username"=>"JohnKellyFerguson"},
+    {"amount"=>"1.00", "platform"=>"gittip", "username"=>"steveklabnik"}
+   ]
+```
+
+Finally, gratitude comes with the ability to update a specific tip and remove all other tips. This can be accomplished by using the `update_tips_and_prune` method, which again takes an array of hashes containing a user's username and desired tip amount.
+
+```ruby
+client.update_tips_and_prune([ { :username => "gittip", :amount => "25.00" } ])
+```
+
+Like the `update_tips` method, `update_tips_and_prune` will return an array of the successfully updated tips.
+
+```ruby
+[
+  {"amount"=>"25.00", "platform"=>"gittip", "username"=>"gittip"}
+]
+```
+
+All other tips have been removed, which we can see by using the `current_tips` method.
+
+```ruby
+client.current_tips
+=> [
+     {"amount"=>"25.00", "platform"=>"gittip", "username"=>"gittip"}
+   ]
+```
 
 
 
