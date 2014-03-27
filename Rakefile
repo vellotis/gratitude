@@ -11,3 +11,11 @@ RSpec::Core::RakeTask.new(:spec) do |spec|
 end
 
 task :default => :spec
+
+task :console do
+  require 'irb'
+  require 'irb/completion'
+  require 'gratitude'
+  ARGV.clear
+  IRB.start
+end
