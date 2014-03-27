@@ -107,8 +107,8 @@ Each of the above will return an object containing all of the current Gittip sta
 * `this_thursday`
 	* This refers to the upcoming Thursday when payments/transfers are set to occur. Possible values include: "this Thursday", "today", "right now!", and "next Thursday"
 * `tip_distribution_json`
-	* This returns a hash. Each key in the hash is a float which represents a tip amount (for example, $0.01, $0.25 or $1). The value of each key is an array. The first element in the array is an integer representing the total number of users who have pledged that amount. The second element in the array is a float which shows how much this tip amount makes up of all the possible tips. For example, the hash returned will look like the following: `{ 0.01: [11, 0.002153484729835552], … }` 
-	
+	* This returns a hash. Each key in the hash is a float which represents a tip amount (for example, $0.01, $0.25 or $1). The value of each key is an array. The first element in the array is an integer representing the total number of users who have pledged that amount. The second element in the array is a float which shows how much this tip amount makes up of all the possible tips. For example, the hash returned will look like the following: `{ 0.01: [11, 0.002153484729835552], … }`
+
 		In this example, the amount being tipped is $0.01. The amount of users tipping this amount is 11, and the total tip amount for this tip size makes up 0.2153484729835552% of all tips distributed. The hash will contain many more elements, each with the same structure.
 * `number_of_tips` (alias: `tip_n`)
 * `value_of_total_backed_tips` (alias: `total_backed_tips`)
@@ -168,7 +168,7 @@ The Tips aspect of the Gittip API allows you to retrieve and update the current 
 
 Now that you have your API_KEY, you can find out your current tips or update your tips using Gratitude.
 
-### Determing Current Tips 
+### Determing Current Tips
 To find out the current tips of a user, follow these instructions:
 
 ```ruby
@@ -206,8 +206,8 @@ client = Gratitude::Client.new(:username => "my_username", :api_key => "my_api_k
 We can then call the `update_tips` method, which accepts an array of hashes containing a user's username and desired tip amount.
 
 ```ruby
-client.update_tips([ { :username => "gittip", :amount => "3.50" }, 
-					  { :username => "whit537", :amount => "3.50"}, 
+client.update_tips([ { :username => "gittip", :amount => "3.50" },
+					  { :username => "whit537", :amount => "3.50"},
 					  { :username => "JohnKellyFerguson", :amount = "3.50" }])
 ```
 
@@ -282,7 +282,7 @@ client.current_tips
 
 ### Copyright and License
 
-Copyright John Kelly Ferguson and Contributors, 2013
+Copyright John Kelly Ferguson and Contributors, 2014
 
 [MIT Licence](LICENSE.txt)
 
