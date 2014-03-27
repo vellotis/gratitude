@@ -3,27 +3,29 @@ require "spec_helper"
 describe Gratitude::Client do
 
   describe "default attributes" do
-
-    it "should include httparty methods" do
-      Gratitude::Client.should include(HTTParty)
+    it "includes httparty methods" do
+      expect(Gratitude::Client).to include(HTTParty)
     end
 
-    it "should include tips methods" do
-      Gratitude::Client.should include(Gratitude::Client::Tips)
+    it "includes tips methods" do
+      expect(Gratitude::Client).to include(Gratitude::Client::Tips)
     end
-
-  end # default attributes
+  end
 
   describe "initialization" do
     let(:username) { "JohnKellyFerguson"}
     let(:api_key) { "this_is_an_api_key"}
+    let(:client) do
+      Gratitude::Client.new(:username => username, :api_key => api_key)
+    end
 
-    subject { Gratitude::Client.new(:username => username, :api_key => api_key) }
+    it "assigns the correct username" do
+      expect(client.username).to eq(username)
+    end
 
-    its(:username) { should == username }
-    its(:api_key) { should == api_key }
-
+    it "assigns the correct api key" do
+      expect(client.api_key).to eq(api_key)
+    end
   end
-
 
 end
