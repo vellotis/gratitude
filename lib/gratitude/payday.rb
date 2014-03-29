@@ -54,9 +54,15 @@ module Gratitude
       sort_by_ts_end.first
     end
 
+    def self.oldest_payday
+      sort_by_ts_end.last
+    end
+
     def self.sort_by_ts_end
       all.sort_by { |p| p.ts_end }.reverse
     end
+
+    private
 
     def self.get_paydays_from_gittip
       faraday.get('/about/paydays.json').body.to_a
