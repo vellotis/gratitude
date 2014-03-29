@@ -3,13 +3,8 @@ require "spec_helper"
 describe Gratitude::Payday do
 
   describe "default attributes" do
-    it "includes httparty methods" do
-      expect(Gratitude::Payday).to include(HTTParty)
-    end
-
-    it "has the base uri set to gittip's payday api endpoint" do
-      expect(Gratitude::Payday.base_uri)
-        .to eq("https://www.gittip.com/about/paydays.json")
+    it "extends Gratitude::Connection" do
+      expect(Gratitude::Payday.is_a?(Gratitude::Connection)).to eq(true)
     end
 
     it "initially sets the PAYDAYS constant to an empty array" do

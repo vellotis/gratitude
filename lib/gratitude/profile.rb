@@ -1,79 +1,90 @@
 module Gratitude
   class Profile
-    include HTTParty
-    base_uri "https://www.gittip.com"
-    URI_SUFFIX = "/public.json"
-
-    attr_reader :username, :response
+    include Connection
+    attr_reader :username
 
     def initialize(username)
       @username = username
-      @response = self.class.get("/#{username}#{URI_SUFFIX}")
     end
 
     def avatar_url
-      response["avatar"]
+      response_body["avatar"]
     end
-    alias :avatar :avatar_url
+    alias_method :avatar, :avatar_url
 
     def bitbucket_api_url
-      response["elsewhere"]["bitbucket"]
+      response_body["elsewhere"]["bitbucket"]
     end
-    alias :bitbucket :bitbucket_api_url
+    alias_method :bitbucket, :bitbucket_api_url
 
     def bitbucket_username
-      bitbucket_api_url.gsub("https://bitbucket.org/api/1.0/users/", "") if bitbucket_api_url
+      if bitbucket_api_url
+        bitbucket_api_url.gsub("https://bitbucket.org/api/1.0/users/", "")
+      end
     end
 
     def bountysource_api_url
-      response["elsewhere"]["bountysource"]
+      response_body["elsewhere"]["bountysource"]
     end
-    alias :bountysource :bountysource_api_url
+    alias_method :bountysource, :bountysource_api_url
 
     def bountysource_username
-      bountysource_api_url.gsub("https://api.bountysource.com/users/", "") if bountysource_api_url
+      if bountysource_api_url
+        bountysource_api_url.gsub("https://api.bountysource.com/users/", "")
+      end
     end
 
     def github_api_url
-      response["elsewhere"]["github"]
+      response_body["elsewhere"]["github"]
     end
-    alias :github :github_api_url
+    alias_method :github, :github_api_url
 
     def github_username
-      github_api_url.gsub("https://api.github.com/users/", "") if github_api_url
+      if github_api_url
+        github_api_url.gsub("https://api.github.com/users/", "")
+      end
     end
 
     def twitter_api_url
-      response["elsewhere"]["twitter"]
+      response_body["elsewhere"]["twitter"]
     end
-    alias :twitter :twitter_api_url
+    alias_method :twitter, :twitter_api_url
 
     def twitter_username
       nil
     end
 
     def amount_giving
-      response["giving"].to_f
+      response_body["giving"].to_f
     end
-    alias :giving :amount_giving
+    alias_method :giving, :amount_giving
 
     def amount_receiving
-      response["receiving"].to_f
+      response_body["receiving"].to_f
     end
-    alias :receiving :amount_receiving
+    alias_method :receiving, :amount_receiving
 
     def goal
-      response["goal"].to_f if response["goal"]
+      response_body["goal"].to_f if response_body["goal"]
     end
 
     def account_type
-      response["number"]
+      response_body["number"]
     end
-    alias :number :account_type
+    alias_method :number, :account_type
 
     def id
-      response["id"]
+      response_body["id"]
     end
 
+    private
+
+    def response
+      @response ||= faraday.get("/#{username}/public.json")
+    end
+
+    def response_body
+      @response_body ||= response.body
+    end
   end # Profile
 end # Gratitude

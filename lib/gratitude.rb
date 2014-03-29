@@ -1,6 +1,8 @@
-require "httparty"
+require "faraday"
+require "faraday_middleware"
 
 require "gratitude/client"
+require "gratitude/connection"
 require "gratitude/payday"
 require "gratitude/profile"
 require "gratitude/statistics"

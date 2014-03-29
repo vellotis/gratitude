@@ -1,107 +1,109 @@
 module Gratitude
   class Statistics
-    include HTTParty
-    base_uri "https://www.gittip.com/about/stats.json"
-
-    attr_reader :response
+    include Connection
 
     class << self
       alias :current :new
     end
 
-    def initialize
-      @response = self.class.get("")
-    end
-
     def average_tip_amount
-      response["average_tip"]
+      response_body["average_tip"]
     end
     alias :average_tip :average_tip_amount
 
     def average_number_of_tippees
-      response["average_tippees"]
+      response_body["average_tippees"]
     end
     alias :average_tippees :average_number_of_tippees
 
     def amount_in_escrow
-      response["escrow"]
+      response_body["escrow"]
     end
     alias :escrow :amount_in_escrow
 
     def last_thursday
-      response["last_thursday"]
+      response_body["last_thursday"]
     end
 
     def number_of_ach_credits
-      response["nach"].to_i
+      response_body["nach"].to_i
     end
     alias :nach :number_of_ach_credits
     alias :number_of_achs :number_of_ach_credits
 
     def number_of_active_users
-      response["nactive"]
+      response_body["nactive"]
     end
     alias :nactive :number_of_active_users
 
     def number_of_credit_cards
-      response["ncc"]
+      response_body["ncc"]
     end
     alias :ncc :number_of_credit_cards
 
     def number_of_givers
-      response["ngivers"]
+      response_body["ngivers"]
     end
     alias :ngivers :number_of_givers
 
     def number_who_give_and_receive
-      response["noverlap"]
+      response_body["noverlap"]
     end
     alias :noverlap :number_who_give_and_receive
 
     def number_of_receivers
-      response["nreceivers"]
+      response_body["nreceivers"]
     end
     alias :nreceivers :number_of_receivers
 
     def other_people
-      response["other_people"]
+      response_body["other_people"]
     end
 
     def percentage_of_users_with_credit_cards
-      response["pcc"].strip
+      response_body["pcc"].strip
     end
     alias :pcc :percentage_of_users_with_credit_cards
 
     def punctuation
-      response["punc"]
+      response_body["punc"]
     end
     alias :punc :punctuation
 
     def statements
-      response["statements"]
+      response_body["statements"]
     end
 
     def this_thursday
-      response["this_thursday"]
+      response_body["this_thursday"]
     end
 
     def tip_distribution_json
-      response["tip_distribution_json"]
+      response_body["tip_distribution_json"]
     end
 
     def number_of_tips
-      response["tip_n"]
+      response_body["tip_n"]
     end
     alias :tip_n :number_of_tips
 
     def value_of_total_backed_tips
-      response["total_backed_tips"]
+      response_body["total_backed_tips"]
     end
     alias :total_backed_tips :value_of_total_backed_tips
 
     def transfer_volume
-      response["transfer_volume"]
+      response_body["transfer_volume"]
     end
 
+    private
+
+    def response
+      @response ||= faraday.get('/about/stats.json')
+    end
+
+    def response_body
+      @response_body ||= response.body
+    end
   end # Statistics
 end # Gratitude

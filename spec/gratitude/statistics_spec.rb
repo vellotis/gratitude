@@ -3,13 +3,8 @@ require "spec_helper"
 describe Gratitude::Statistics do
 
   describe "default attributes" do
-    it "includes httparty methods" do
-      expect(Gratitude::Statistics).to include(HTTParty)
-    end
-
-    it "sets the base uri equal to gittip's payday api endpoint" do
-      expect(Gratitude::Statistics.base_uri)
-        .to eq("https://www.gittip.com/about/stats.json")
+    it "includes Gratitude::Connection" do
+      expect(Gratitude::Statistics).to include(Gratitude::Connection)
     end
   end
 
@@ -17,10 +12,6 @@ describe Gratitude::Statistics do
     before { VCR.insert_cassette "statistics" }
     after { VCR.eject_cassette }
     let(:stats) { Gratitude::Statistics.current }
-
-    it "responds to #repsonse" do
-      expect(stats).to respond_to(:response)
-    end
 
     describe "#average_tip_amount" do
       it "returns the correct average tip amount" do

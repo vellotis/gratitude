@@ -3,7 +3,7 @@ module Gratitude
     module Tips
 
       def current_tips
-        self.class.get(tips_url, basic_auth).parsed_response
+        faraday.get(tips_url).body
       end
 
       def current_tips_total
@@ -11,30 +11,27 @@ module Gratitude
       end
 
       def update_tips(array_of_hashes_with_usernames_and_amounts)
-        self.class.post(
-          tips_url, request_payload(array_of_hashes_with_usernames_and_amounts)
-          )
+        faraday.post do |request|
+          payload_for(request, array_of_hashes_with_usernames_and_amounts)
+        end.body
       end
 
       def update_tips_and_prune(array_of_hashes_with_usernames_and_amounts)
-        self.class.post(
-          tips_url,
-          request_payload(array_of_hashes_with_usernames_and_amounts)
-            .merge(:query => { :also_prune => "true"})
-        )
+        faraday.post do |request|
+          payload_for(request, array_of_hashes_with_usernames_and_amounts)
+          request.params = { :also_prune => "true"}
+        end.body
       end
 
     private
 
       def tips_url
-        "https://www.gittip.com/#{username}/tips.json"
+        "/#{username}/tips.json"
       end
 
-      def request_payload(array_of_hashes)
-        {
-          :body => prepared_tips_array(array_of_hashes).to_json,
-          :headers => json_header
-        }.merge(basic_auth)
+      def payload_for(request, array_of_hashes)
+        request.url(tips_url)
+        request.body = prepared_tips_array(array_of_hashes).to_json
       end
 
       def prepared_tips_array(array_of_hashes)
@@ -51,14 +48,6 @@ module Gratitude
           "platform" => "gittip",
           "username" => "#{username}"
         }
-      end
-
-      def json_header
-        { 'Content-Type' => 'application/json', 'Accept' => 'application/json'}
-      end
-
-      def basic_auth
-        { :basic_auth => { :username => api_key } }
       end
 
     end # Tips

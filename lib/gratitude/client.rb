@@ -1,8 +1,9 @@
+require "gratitude/connection"
 require "gratitude/tips"
 
 module Gratitude
   class Client
-    include HTTParty
+    include Gratitude::Connection
     include Gratitude::Client::Tips
 
     attr_reader :username, :api_key
@@ -10,6 +11,7 @@ module Gratitude
     def initialize(options = {})
       @username = options[:username]
       @api_key = options[:api_key]
+      faraday.basic_auth(api_key, "")
     end
 
   end # Payday

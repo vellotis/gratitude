@@ -1,7 +1,6 @@
 module Gratitude
   class Payday
-    include HTTParty
-    base_uri "https://www.gittip.com/about/paydays.json"
+    extend Connection
     PAYDAYS = []
 
     attr_reader :ach_fees_volume, :ach_volume, :charge_fees_volume,
@@ -11,19 +10,20 @@ module Gratitude
                 :number_of_transfers, :transfer_volume, :transfer_end_time,
                 :transfer_start_time
 
-    # Provide aliases so all methods can correspond to the original Gittip API names.
-    alias :nachs :number_of_ach_credits
-    alias :number_of_achs :number_of_ach_credits
-    alias :nactive :number_of_active_users
-    alias :number_active :number_of_active_users
-    alias :ncc_failing :number_of_failing_credit_cards
-    alias :ncc_missing :number_of_missing_credit_cards
-    alias :ncharges :number_of_charges
-    alias :nparticipants :number_of_participants
-    alias :ntippers :number_of_tippers
-    alias :ntransfers :number_of_transfers
-    alias :ts_end :transfer_end_time
-    alias :ts_start :transfer_start_time
+    # Provide aliases so all methods can correspond to the original
+    # Gittip API names.
+    alias_method :nachs, :number_of_ach_credits
+    alias_method :number_of_achs, :number_of_ach_credits
+    alias_method :nactive, :number_of_active_users
+    alias_method :number_active, :number_of_active_users
+    alias_method :ncc_failing, :number_of_failing_credit_cards
+    alias_method :ncc_missing, :number_of_missing_credit_cards
+    alias_method :ncharges, :number_of_charges
+    alias_method :nparticipants, :number_of_participants
+    alias_method :ntippers, :number_of_tippers
+    alias_method :ntransfers, :number_of_transfers
+    alias_method :ts_end, :transfer_end_time
+    alias_method :ts_start, :transfer_start_time
 
     def initialize(options = {})
       @ach_fees_volume = options["ach_fees_volume"]
@@ -59,7 +59,7 @@ module Gratitude
     end
 
     def self.get_paydays_from_gittip
-      get(base_uri).to_a
+      faraday.get('/about/paydays.json').body.to_a
     end
 
     def self.collect_paydays

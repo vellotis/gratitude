@@ -3,8 +3,8 @@ require "spec_helper"
 describe Gratitude::Client do
 
   describe "default attributes" do
-    it "includes httparty methods" do
-      expect(Gratitude::Client).to include(HTTParty)
+    it "includes Gratitude::Connection" do
+      expect(Gratitude::Client).to include(Gratitude::Connection)
     end
 
     it "includes tips methods" do

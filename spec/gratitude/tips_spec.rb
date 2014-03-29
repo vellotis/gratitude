@@ -43,7 +43,7 @@ describe Gratitude::Client::Tips do
           expect(
             client.update_tips(
               [{ :username => "whit537", :amount => "5" }]
-              ).parsed_response).to eq(single_tip_response)
+              )).to eq(single_tip_response)
         end
       end #update_tips
 
@@ -63,7 +63,7 @@ describe Gratitude::Client::Tips do
             client.update_tips(
               [{ :username => "whit537", :amount => "10" },
                { :username => "JohnKellyFerguson", :amount => "4"}]
-              ).parsed_response).to eq(multi_tip_response)
+              )).to eq(multi_tip_response)
         end
       end # updating multiple tips
 

@@ -3,16 +3,8 @@ require "spec_helper"
 describe Gratitude::Profile do
 
   describe "default attributes" do
-    it "includes httparty methods" do
-      expect(Gratitude::Profile).to include(HTTParty)
-    end
-
-    it "sets the base uri equal to the API endpoint" do
-      expect(Gratitude::Profile.base_uri).to eq("https://www.gittip.com")
-    end
-
-    it "has the correct uri suffix" do
-      expect(Gratitude::Profile::URI_SUFFIX).to eq("/public.json")
+    it "includes Gratitude::Connection" do
+      expect(Gratitude::Profile).to include(Gratitude::Connection)
     end
   end
 
@@ -23,12 +15,8 @@ describe Gratitude::Profile do
       after { VCR.eject_cassette }
       let(:complete_profile) { Gratitude::Profile.new("whit537") }
 
-      it "should set the correct username" do
+      it "sets the correct username" do
         expect(complete_profile.username).to eq("whit537")
-      end
-
-      it "should respond to #response" do
-        expect(complete_profile).to respond_to(:response)
       end
 
       describe "#avatar_url" do
@@ -217,7 +205,7 @@ describe Gratitude::Profile do
     context "a profile that has defined a gittip goal" do
       before { VCR.insert_cassette "goal_profile" }
       after { VCR.eject_cassette }
-      let(:goal_profile) { Gratitude::Profile.new("johnkellyferguson") }
+      let(:goal_profile) { Gratitude::Profile.new("JohnKellyFerguson") }
 
       describe "#goal" do
         it "returns the correct goal amount" do
