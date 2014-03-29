@@ -16,4 +16,5 @@ VCR.configure do |c|
   c.cassette_library_dir = 'spec/cassettes'
   c.hook_into :webmock
   c.default_cassette_options = { record: :new_episodes, serialize_with: :json }
+  c.default_cassette_options = { re_record_interval: 604800 }
 end
