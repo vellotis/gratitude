@@ -41,16 +41,16 @@ describe Gratitude::Chart do
       end
     end
 
-    describe "#most_recent" do
+    describe "#newest" do
       it "returns the most recent payday" do
-        expect(Gratitude::Chart.most_recent)
+        expect(Gratitude::Chart.newest)
           .to eq(Gratitude::Chart.sort_by_date.first)
       end
     end
 
-    describe "#oldest_payday" do
-      it "returns the oldest payday" do
-        expect(Gratitude::Chart.oldest_chart)
+    describe "#oldest" do
+      it "returns the oldest chart" do
+        expect(Gratitude::Chart.oldest)
           .to eq(Gratitude::Chart.sort_by_date.last)
       end
     end

@@ -6,10 +6,7 @@ gratitude
 [![Code Climate](https://codeclimate.com/github/JohnKellyFerguson/gratitude.png)](https://codeclimate.com/github/JohnKellyFerguson/gratitude)
 [![Coverage Status](https://coveralls.io/repos/JohnKellyFerguson/gratitude/badge.png)](https://coveralls.io/r/JohnKellyFerguson/gratitude)
 
-
-A simple Ruby wrapper for the [Gittip API](https://github.com/gittip/www.gittip.com#api).
-
-**Note**: This gem is currently under development. A feature complete version that implements all features of the original Gittip API is planned for v0.1.0. Please follow the [Changelog](CHANGELOG.md) to check the status of the project.
+A simple Ruby wrapper for the [Gittip API](https://github.com/gittip/www.gittip.com#api). Please follow the [Changelog](CHANGELOG.md) to check the status of the project.
 
 
 # Installation
@@ -18,14 +15,55 @@ A simple Ruby wrapper for the [Gittip API](https://github.com/gittip/www.gittip.
 
 # Usage
 
-The gratitude gem has four different components that interact with different aspects of the Gittip API. They are as follows:
+The gratitude gem interacts with the six different endpoints of the Gittip API. They are as follows:
 
+* [Charts](#charts-source-code)
 * [Paydays](#paydays-source-code)
 * [Statistics](#statistics-source-code)
+* [User Charts](#user-charts-source-code)
 * [Profile](#profile-source-code)
 * [Tips](#tips-client-authentication-source-code-tips-source-code)
 
 When using gratitude to retrieve data from the Gittip API, please note that many of the JSON key names have been wrapped in more naturally sounding method names. However, all of the original JSON key names have also been maintained as aliases so as to maitain consistency with the original [Gittip API documentation](https://github.com/gittip/www.gittip.com#api).
+
+##Charts ([source code](https://github.com/JohnKellyFerguson/gratitude/blob/master/lib/gratitude/chart.rb))
+The Chart endpoint of the Gittip API provides aggregate statistics over time which are used in Gittip's [chart page](https://www.gittip.com/about/charts.html). To retrieve this information, use the following command:
+
+```ruby
+Gratitude::Chart.all
+```
+
+The above will return an array of Chart objects. Each Chart object responds to the following methods:
+
+* `active_users`
+* `charges`
+* `date`
+* `total_gifts`
+* `total_users`
+* `weekly_gifts`
+* `withdrawals`
+
+You can then iterate through this array of chart objects to persist them to a database or get whatever information you need.
+
+```ruby
+charts = Gratitude::Chart.all
+charts.each do |chart|
+  # get whatever information you want from the chart object
+  # using the above mentioned methods.
+end
+```
+
+If you want to get the oldest chart:
+```ruby
+Gratitude::Chart.oldest
+```
+
+Finally, if you just want to get the most recent chart, you can do so by using:
+
+```ruby
+Gratitude::Chart.newest
+```
+
 
 ##Paydays ([source code](https://github.com/JohnKellyFerguson/gratitude/blob/master/lib/gratitude/payday.rb))
 
@@ -65,13 +103,13 @@ end
 
 If you want to get the oldest payday:
 ```ruby
-Gratitude::Payday.oldest_payday
+Gratitude::Payday.oldest
 ```
 
 Finally, if you just want to get the most recent payday, you can do so by using:
 
 ```ruby
-Gratitude::Payday.most_recent
+Gratitude::Payday.newest
 ```
 
 ##Statistics ([source code](https://github.com/JohnKellyFerguson/gratitude/blob/master/lib/gratitude/statistics.rb))
@@ -119,12 +157,41 @@ Each of the above will return an object containing all of the current Gittip sta
 * `value_of_total_backed_tips` (alias: `total_backed_tips`)
 * `transfer_volume`
 
+##User Charts ([source code](https://github.com/JohnKellyFerguson/gratitude/blob/master/lib/gratitude/user_chart.rb))
+The User Chart endpoint of the Gittip API provides aggregate stats over time for a given user.
+
+To retrieve this information, do the following:
+
+```ruby
+Gratitude::UserChart.all_for_user("JohnKellyFerguson")
+```
+
+This will return an array of `UserChart` objects for the requested username. Each `UserChart` object provides the following data:
+
+* `username`
+* `date`
+* `number_of_patrons` (alias: `npatrons`)
+* `receipts`
+
+
+If you want to get the oldest chart for a given user:
+
+```ruby
+Gratitude::UserChart.oldest_for("JohnKellyFerguson")
+```
+
+Finally, if you just want to get the most recent chart, you can do so by using:
+
+```ruby
+Gratitude::UserChart.newest_for("JohnKellyFerguson")
+```
+
 ##Profile ([source code](https://github.com/JohnKellyFerguson/gratitude/blob/master/lib/gratitude/profile.rb))
 
 The Profile aspect of the Gittip API allows you to get the public profile information of any Gittip user. To do so, just pass their username as an initialization argument to the `Gratitude::Profile` class.
 
 ```ruby
-Gratitude::Profile.new("johnkellyferguson")
+Gratitude::Profile.new("JohnKellyFerguson")
 ```
 
 The above will retrieve the public profile of the above user. You can then access all of the different information with the following methods:
@@ -167,7 +234,7 @@ The above will retrieve the public profile of the above user. You can then acces
   * otherwise, returns `nil`.
 * `venmo_username`
   * returns the user's venmo username if they have connected a venmo account.
-  * otherwise, returns `nil`. 
+  * otherwise, returns `nil`.
 * `amount_giving` (alias: `giving`)
   * returns the amount (as a float) the user has pledged to give this week.
   * if the user has decided to donately privately then this will return 0.00.

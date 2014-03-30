@@ -20,11 +20,11 @@ module Gratitude
       USER_CHARTS
     end
 
-    def self.most_recent_for_user(username)
+    def self.newest_for(username)
       sort_by_date_for_user(username).first
     end
 
-    def self.oldest_chart_for_user(username)
+    def self.oldest_for(username)
       sort_by_date_for_user(username).last
     end
 

@@ -22,11 +22,11 @@ module Gratitude
       CHARTS
     end
 
-    def self.most_recent
+    def self.newest
       sort_by_date.first
     end
 
-    def self.oldest_chart
+    def self.oldest
       sort_by_date.last
     end
 

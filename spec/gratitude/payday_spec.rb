@@ -41,16 +41,16 @@ describe Gratitude::Payday do
       end
     end
 
-    describe "#most_recent" do
+    describe "#newest" do
       it "returns the most recent payday" do
-        expect(Gratitude::Payday.most_recent)
+        expect(Gratitude::Payday.newest)
           .to eq(Gratitude::Payday.sort_by_ts_end.first)
       end
     end
 
-    describe "#oldest_payday" do
+    describe "#oldest" do
       it "returns the oldest payday" do
-        expect(Gratitude::Payday.oldest_payday)
+        expect(Gratitude::Payday.oldest)
           .to eq(Gratitude::Payday.sort_by_ts_end.last)
       end
     end
@@ -67,7 +67,7 @@ describe Gratitude::Payday do
       }.to change{ Gratitude::Payday::PAYDAYS.size }.by(1)
     end
 
-    let(:payday) { Gratitude::Payday.oldest_payday }
+    let(:payday) { Gratitude::Payday.oldest }
 
     # Actual Oldest Payday response
     # ach_fees_volume: 0,

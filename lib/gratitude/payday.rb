@@ -52,11 +52,11 @@ module Gratitude
       PAYDAYS
     end
 
-    def self.most_recent
+    def self.newest
       sort_by_ts_end.first
     end
 
-    def self.oldest_payday
+    def self.oldest
       sort_by_ts_end.last
     end
 

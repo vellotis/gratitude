@@ -49,16 +49,16 @@ describe Gratitude::UserChart do
       end
     end
 
-    describe "#most_recent_for_user" do
+    describe "#newest_for" do
       it "returns the most recent payday" do
-        expect(Gratitude::UserChart.most_recent_for_user("Gittip"))
+        expect(Gratitude::UserChart.newest_for("Gittip"))
           .to eq(Gratitude::UserChart.sort_by_date_for_user("Gittip").first)
       end
     end
 
-    describe "#oldest_payday" do
+    describe "#oldest" do
       it "returns the oldest payday" do
-        expect(Gratitude::UserChart.oldest_chart_for_user("Gittip"))
+        expect(Gratitude::UserChart.oldest_for("Gittip"))
           .to eq(Gratitude::UserChart.sort_by_date_for_user("Gittip").last)
       end
     end
