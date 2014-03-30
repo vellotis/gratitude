@@ -8,7 +8,7 @@ describe Gratitude::Client::Tips do
   end
 
   describe "GET Requests" do
-    before { VCR.insert_cassette "get_tips" }
+    before { VCR.insert_cassette "current_tips" }
     after { VCR.eject_cassette }
     let(:current_tips) do
       [
@@ -32,63 +32,45 @@ describe Gratitude::Client::Tips do
 
   describe "POST Requests" do
     describe "#update_tips" do
-      context "when updating a single tip" do
-        before { VCR.insert_cassette "post_single_tip" }
-        after { VCR.eject_cassette }
-        let(:single_tip_response) do
-          [{"amount"=>"5", "platform"=>"gittip", "username"=>"whit537"}]
-        end
+      before { VCR.insert_cassette "update_tips" }
+      after { VCR.eject_cassette }
 
-        it "updates the correct tip information" do
-          expect(
-            client.update_tips(
-              [{ :username => "whit537", :amount => "5" }]
-              )).to eq(single_tip_response)
-        end
-      end #update_tips
+      let(:multiple_tips) do
+        [
+          {"amount"=>"1.00", "platform"=>"gittip", "username"=>"whit537"},
+          {"amount"=>"0.25", "platform"=>"gittip", "username"=>"JohnKellyFerguson"},
+          {"amount"=>"1.00", "platform"=>"gittip", "username"=>"Gittip"}
+        ]
+      end
 
-      context "when updating multiple tips" do
-        before { VCR.insert_cassette "post_multiple_tips" }
-        after { VCR.eject_cassette }
-
-        let(:multi_tip_response) do
-          [
-            {"amount"=>"10", "platform"=>"gittip", "username"=>"whit537"},
-            {"amount"=>"4", "platform"=>"gittip", "username"=>"JohnKellyFerguson"}
-          ]
-        end
-
-        it "updates the correct tip information" do
-          expect(
-            client.update_tips(
-              [{ :username => "whit537", :amount => "10" },
-               { :username => "JohnKellyFerguson", :amount => "4"}]
-              )).to eq(multi_tip_response)
-        end
-      end # updating multiple tips
-
+      it "updates the correct tip information" do
+        expect(client.update_tips(multiple_tips)).to eq(multiple_tips)
+      end
     end #update_tips
 
     describe "#update_tips_and_prune" do
+      before { VCR.insert_cassette "update_and_prune" }
+      after { VCR.eject_cassette }
+
       let(:previous_tips) do
+        [
+          {"amount"=>"1.00", "platform"=>"gittip", "username"=>"whit537"},
+          {"amount"=>"0.25", "platform"=>"gittip", "username"=>"JohnKellyFerguson"},
+          {"amount"=>"1.00", "platform"=>"gittip", "username"=>"Gittip"}
+        ]
+      end
+      let(:pruned_tips) do
         [
           {"amount"=>"1.00", "platform"=>"gittip", "username"=>"whit537"},
           {"amount"=>"0.25", "platform"=>"gittip", "username"=>"JohnKellyFerguson"}
         ]
       end
-      let(:pruned_tips) do
-        [{ "amount"=>"1.00", "platform"=>"gittip", "username"=>"whit537" }]
-      end
-
-      before { VCR.insert_cassette "update_and_prune" }
-      after { VCR.eject_cassette }
 
       it "removes tips that were not part of the request" do
         expect { client.update_tips_and_prune(pruned_tips) }
           .to change { client.current_tips }
-          .from(previous_tips).to(pruned_tips)
+          .to(pruned_tips)
       end
-
     end
 
   end #POST Requests
