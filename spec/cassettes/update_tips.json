@@ -1,1 +1,74 @@
-{"http_interactions":[{"request":{"method":"post","uri":"https://5962b93a-5bf7-4cb6-ae6f-aa4114c5e4f2:@www.gittip.com/gratitude_test/tips.json","body":{"encoding":"UTF-8","string":"[{\"amount\":\"1.00\",\"platform\":\"gittip\",\"username\":\"whit537\"},{\"amount\":\"0.25\",\"platform\":\"gittip\",\"username\":\"JohnKellyFerguson\"},{\"amount\":\"1.00\",\"platform\":\"gittip\",\"username\":\"Gittip\"}]"},"headers":{"User-Agent":["Faraday v0.8.9"],"Accept-Encoding":["gzip;q=1.0,deflate;q=0.6,identity;q=0.3"],"Accept":["*/*"]}},"response":{"status":{"code":200,"message":"OK"},"headers":{"Content-Language":["en"],"Content-Type":["application/json"],"Date":["Sun, 30 Mar 2014 02:04:01 GMT"],"Expires":["Thu, 01 Jan 1970 00:00:00 GMT"],"Server":["Aspen! Cheroot!"],"Set-Cookie":["csrf_token=N8bOZ2pxIKJWwxwyRTtTjUTB7emonNEN; expires=Sun, 29 Mar 2015 02:04:01 GMT; Path=/","session=None; expires=Sun, 06 Apr 2014 02:04:01 GMT; httponly; Path=/; secure"],"Vary":["Cookie"],"X-Frame-Options":["SAMEORIGIN"],"X-Gittip-Version":["12.2.2"],"Content-Length":["308"],"Connection":["keep-alive"]},"body":{"encoding":"UTF-8","string":"[\n    {\n        \"amount\": \"1.00\",\n        \"platform\": \"gittip\",\n        \"username\": \"whit537\"\n    },\n    {\n        \"amount\": \"0.25\",\n        \"platform\": \"gittip\",\n        \"username\": \"JohnKellyFerguson\"\n    },\n    {\n        \"amount\": \"1.00\",\n        \"platform\": \"gittip\",\n        \"username\": \"Gittip\"\n    }\n]"},"http_version":null},"recorded_at":"Sun, 30 Mar 2014 02:04:00 GMT"}],"recorded_with":"VCR 2.9.0"}
+{
+  "http_interactions": [
+    {
+      "request": {
+        "method": "post",
+        "uri": "https://5962b93a-5bf7-4cb6-ae6f-aa4114c5e4f2:@www.gittip.com/gratitude_test/tips.json",
+        "body": {
+          "encoding": "UTF-8",
+          "string": "[{\"amount\":\"1.00\",\"platform\":\"gittip\",\"username\":\"whit537\"},{\"amount\":\"0.25\",\"platform\":\"gittip\",\"username\":\"JohnKellyFerguson\"},{\"amount\":\"1.00\",\"platform\":\"gittip\",\"username\":\"Gittip\"}]"
+        },
+        "headers": {
+          "User-Agent": [
+            "Faraday v0.8.9"
+          ],
+          "Accept-Encoding": [
+            "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+          ],
+          "Accept": [
+            "*/*"
+          ]
+        }
+      },
+      "response": {
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "headers": {
+          "Content-Language": [
+            "en"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Date": [
+            "Sun, 30 Mar 2014 02:04:01 GMT"
+          ],
+          "Expires": [
+            "Thu, 01 Jan 1970 00:00:00 GMT"
+          ],
+          "Server": [
+            "Aspen! Cheroot!"
+          ],
+          "Set-Cookie": [
+            "csrf_token=N8bOZ2pxIKJWwxwyRTtTjUTB7emonNEN; expires=Sun, 29 Mar 2015 02:04:01 GMT; Path=/",
+            "session=None; expires=Sun, 06 Apr 2014 02:04:01 GMT; httponly; Path=/; secure"
+          ],
+          "Vary": [
+            "Cookie"
+          ],
+          "X-Frame-Options": [
+            "SAMEORIGIN"
+          ],
+          "X-Gittip-Version": [
+            "12.2.2"
+          ],
+          "Content-Length": [
+            "308"
+          ],
+          "Connection": [
+            "keep-alive"
+          ]
+        },
+        "body": {
+          "encoding": "UTF-8",
+          "string": "[\n    {\n        \"amount\": \"1.00\",\n        \"platform\": \"gittip\",\n        \"username\": \"whit537\"\n    },\n    {\n        \"amount\": \"0.25\",\n        \"platform\": \"gittip\",\n        \"username\": \"JohnKellyFerguson\"\n    },\n    {\n        \"amount\": \"1.00\",\n        \"platform\": \"gittip\",\n        \"username\": \"Gittip\"\n    }\n]"
+        },
+        "http_version": null
+      },
+      "recorded_at": "Sun, 30 Mar 2014 02:04:00 GMT"
+    }
+  ],
+  "recorded_with": "VCR 2.9.0"
+}

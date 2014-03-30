@@ -21,9 +21,9 @@ A simple Ruby wrapper for the [Gittip API](https://github.com/gittip/www.gittip.
 The gratitude gem has four different components that interact with different aspects of the Gittip API. They are as follows:
 
 * [Paydays](#paydays-source-code)
-* [Statistics](#statistics)
+* [Statistics](#statistics-source-code)
 * [Profile](#profile-source-code)
-* [Tips](#tips)
+* [Tips](#tips-client-authentication-source-code-tips-source-code)
 
 When using gratitude to retrieve data from the Gittip API, please note that many of the JSON key names have been wrapped in more naturally sounding method names. However, all of the original JSON key names have also been maintained as aliases so as to maitain consistency with the original [Gittip API documentation](https://github.com/gittip/www.gittip.com#api).
 
@@ -61,6 +61,11 @@ paydays.each do |payday|
   # get whatever information you want from the payday object
   # using the above mentioned methods.
 end
+```
+
+If you want to get the oldest payday:
+```ruby
+Gratitude::Payday.oldest_payday
 ```
 
 Finally, if you just want to get the most recent payday, you can do so by using:
@@ -125,32 +130,53 @@ Gratitude::Profile.new("johnkellyferguson")
 The above will retrieve the public profile of the above user. You can then access all of the different information with the following methods:
 
 * `avatar_url` (alias: `avatar`)
-* `bitbucket_api_url` (alias: `bitbucket`)
-  * returns the user's bitbucket api url if they have connected a bitbucket account.
+* `bitcoin`
+	* returns a link to the user's bitcoin address
+* `bitbucket`
+  * returns a hash containing their bitbucket username, id, and user id if the user has connected their bitbucket account.
   * otherwise, returns `nil`.
 * `bitbucket_username`
   * returns the user's bitbucket username if they have connected a bitbucket account.
   * otherwise, returns `nil`.
-* `bountysource_api_url` (alias: `bountysource`)
-  * returns the user's bountysource api url if they have connected a bountysource account.
+* `bountysource`
+  * returns a hash containing their bountysource username, id, and user id if the user has connected their bountysource account.
   * otherwise, returns `nil`.
 * `bountysource_username`
   * returns the user's bountysource username if they have connected a bountysource account.
   * otherwise, returns `nil`.
-* `github_api_url` (alias: `github`)
-  * returns the user's github api url if they have connected a github account.
+* `github`
+  * returns a hash containing their github username, id, and user id if the user has connected their github account.
   * otherwise, returns `nil`.
 * `github_username`
   * returns the user's github username if they have connected a github account.
   * otherwise, returns `nil`.
-* `twitter_api_url` (alias: `twitter`)
-  * returns the user's twitter api url if they have connected a twitter account.
+* `openstreetmap`
+  * returns a hash containing their openstreetmap username, id, and user id if the user has connected their openstreetmap account.
   * otherwise, returns `nil`.
+* `openstreetmap_username`
+  * returns the user's openstreetmap username if they have connected a openstreetmap account.
+  * otherwise, returns `nil`.
+* `twitter`
+  * returns a hash containing their twitter username, id, and user id if the user has connected their twitter account.
+  * otherwise, returns `nil`.
+* `twitter_username`
+  * returns the user's twitter username if they have connected a twitter account.
+  * otherwise, returns `nil`.
+* `venmo`
+  * returns a hash containing their venmo username, id, and user id if the user has connected their venmo account.
+  * otherwise, returns `nil`.
+* `venmo_username`
+  * returns the user's venmo username if they have connected a venmo account.
+  * otherwise, returns `nil`. 
 * `amount_giving` (alias: `giving`)
   * returns the amount (as a float) the user has pledged to give this week.
   * if the user has decided to donately privately then this will return 0.00.
 * `amount_receiving` (alias: `receiving`)
   * returns an estimate as a float of what the given user is expected to receive this week.
+* `number_of_patrons` (alias: `npatrons`)
+	*  returns the number of other gittipers that donate to the user being queried.
+* `on`
+	* returns the platform name: "gittip"
 * `goal`
   * returns the amount (as a float) that the user would like to receive weekly if the user set such a goal.
   * returns `nil` if the user has defined themselves as a patron or has not set a specific monetary goal.
@@ -159,7 +185,6 @@ The above will retrieve the public profile of the above user. You can then acces
 * `id`
   * the id of the user.
 
-**TODO:** Implement the `my_tip` method into the Profile section once client authentication is finished.
 
 ##Tips ([client authentication source code](https://github.com/JohnKellyFerguson/gratitude/blob/master/lib/gratitude/client.rb), [tips source code](https://github.com/JohnKellyFerguson/gratitude/blob/master/lib/gratitude/tips.rb))
 The Tips aspect of the Gittip API allows you to retrieve and update the current tips of an authenticated user. In order to interact with this aspect of the API, you will need your username and API_KEY. To find out your API Key, log into your Gittip account, go to your profile and at the bottom of the page you will find your API_KEY.
