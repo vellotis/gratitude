@@ -68,6 +68,7 @@ describe Gratitude::Payday do
     end
 
     let(:payday) { Gratitude::Payday.oldest_payday }
+
     # Actual Oldest Payday response
     # ach_fees_volume: 0,
     # ach_volume: 0,

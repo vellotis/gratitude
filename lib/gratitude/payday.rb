@@ -39,8 +39,10 @@ module Gratitude
       @number_of_tippers = options["ntippers"]
       @number_of_transfers = options["ntransfers"]
       @transfer_volume = options["transfer_volume"]
-      @transfer_end_time = DateTime.parse(options["ts_end"])
-      @transfer_start_time = DateTime.parse(options["ts_start"])
+      @transfer_end_time = DateTime.parse(options["ts_end"]) if options["ts_end"]
+      if options["ts_start"]
+        @transfer_start_time = DateTime.parse(options["ts_start"])
+      end
       PAYDAYS << self
     end
 
