@@ -12,46 +12,56 @@ module Gratitude
     end
     alias_method :avatar, :avatar_url
 
-    def bitbucket_api_url
+    def bitcoin
+      response_body["bitcoin"]
+    end
+
+    def bitbucket
       response_body["elsewhere"]["bitbucket"]
     end
-    alias_method :bitbucket, :bitbucket_api_url
 
     def bitbucket_username
-      if bitbucket_api_url
-        bitbucket_api_url.gsub("https://bitbucket.org/api/1.0/users/", "")
-      end
+      bitbucket["user_name"] if bitbucket
     end
 
-    def bountysource_api_url
+    def bountysource
       response_body["elsewhere"]["bountysource"]
     end
-    alias_method :bountysource, :bountysource_api_url
 
     def bountysource_username
-      if bountysource_api_url
-        bountysource_api_url.gsub("https://api.bountysource.com/users/", "")
-      end
+      bountysource["user_name"] if bountysource
     end
 
-    def github_api_url
-      response_body["elsewhere"]["github"]
+    def github
+      response_body["elsewhere"]["bountysource"]
     end
-    alias_method :github, :github_api_url
 
     def github_username
-      if github_api_url
-        github_api_url.gsub("https://api.github.com/users/", "")
-      end
+      github["user_name"] if github
     end
 
-    def twitter_api_url
+    def openstreetmap
+      response_body["elsewhere"]["openstreetmap"]
+    end
+
+    def openstreetmap_username
+      openstreetmap["user_name"] if openstreetmap
+    end
+
+    def twitter
       response_body["elsewhere"]["twitter"]
     end
-    alias_method :twitter, :twitter_api_url
 
     def twitter_username
-      nil
+      twitter["user_name"] if twitter
+    end
+
+    def venmo
+      response_body["elsewhere"]["venmo"]
+    end
+
+    def venmo_username
+      venmo["user_name"] if venmo
     end
 
     def amount_giving
@@ -77,6 +87,15 @@ module Gratitude
       response_body["id"]
     end
 
+    def number_of_patrons
+      response_body["npatrons"]
+    end
+    alias_method :npatrons, :number_of_patrons
+
+    def on
+      response_body["on"]
+    end
+
     private
 
     def response
@@ -86,5 +105,6 @@ module Gratitude
     def response_body
       @response_body ||= response.body
     end
+
   end # Profile
 end # Gratitude

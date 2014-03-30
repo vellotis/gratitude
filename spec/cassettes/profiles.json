@@ -1,0 +1,209 @@
+{
+  "http_interactions": [
+    {
+      "request": {
+        "method": "get",
+        "uri": "https://www.gittip.com/JohnKellyFerguson/public.json",
+        "body": {
+          "encoding": "US-ASCII",
+          "string": ""
+        },
+        "headers": {
+          "User-Agent": [
+            "Faraday v0.8.9"
+          ],
+          "Accept-Encoding": [
+            "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+          ],
+          "Accept": [
+            "*/*"
+          ]
+        }
+      },
+      "response": {
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "headers": {
+          "Access-Control-Allow-Origin": [
+            "*"
+          ],
+          "Content-Language": [
+            "en"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Date": [
+            "Sun, 30 Mar 2014 01:06:23 GMT"
+          ],
+          "Server": [
+            "Aspen! Cheroot!"
+          ],
+          "Set-Cookie": [
+            "csrf_token=MFayjlMwOeJJ4W8u042YXtUeqRwMLPSV; expires=Sun, 29 Mar 2015 01:06:23 GMT; Path=/"
+          ],
+          "Vary": [
+            "Cookie"
+          ],
+          "X-Frame-Options": [
+            "SAMEORIGIN"
+          ],
+          "X-Gittip-Version": [
+            "12.2.2"
+          ],
+          "Transfer-Encoding": [
+            "chunked"
+          ],
+          "Connection": [
+            "keep-alive"
+          ]
+        },
+        "body": {
+          "encoding": "UTF-8",
+          "string": "{\n    \"avatar\": \"https://www.gravatar.com/avatar/b58b357a352eda178941fd2dfd5c6d5d?s=128\",\n    \"bitcoin\": \"http://blockchain.info/address/1HMaJmtuvbWh6fsY8VG6xeVjoJdEHQgJsd\",\n    \"elsewhere\": {\n        \"bitbucket\": {\n            \"id\": 441196,\n            \"user_id\": \"jkf\",\n            \"user_name\": \"jkf\"\n        },\n        \"bountysource\": {\n            \"id\": 441197,\n            \"user_id\": \"21486\",\n            \"user_name\": \"JohnKellyFerguson\"\n        },\n        \"github\": {\n            \"id\": 56248,\n            \"user_id\": \"2823694\",\n            \"user_name\": \"JohnKellyFerguson\"\n        },\n        \"openstreetmap\": {\n            \"id\": 441199,\n            \"user_id\": \"2008394\",\n            \"user_name\": \"johnkferguson\"\n        },\n        \"twitter\": {\n            \"id\": 56249,\n            \"user_id\": \"954373436\",\n            \"user_name\": \"johnkferguson\"\n        },\n        \"venmo\": {\n            \"id\": 441198,\n            \"user_id\": \"1292194388377600087\",\n            \"user_name\": \"johnkferguson\"\n        }\n    },\n    \"giving\": null,\n    \"goal\": \"5.00\",\n    \"id\": 15885,\n    \"npatrons\": 0,\n    \"number\": \"singular\",\n    \"on\": \"gittip\",\n    \"receiving\": \"0.00\",\n    \"username\": \"JohnKellyFerguson\"\n}"
+        },
+        "http_version": null
+      },
+      "recorded_at": "Sun, 30 Mar 2014 01:06:23 GMT"
+    },
+    {
+      "request": {
+        "method": "get",
+        "uri": "https://www.gittip.com/gratitude_test/public.json",
+        "body": {
+          "encoding": "US-ASCII",
+          "string": ""
+        },
+        "headers": {
+          "User-Agent": [
+            "Faraday v0.8.9"
+          ],
+          "Accept-Encoding": [
+            "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+          ],
+          "Accept": [
+            "*/*"
+          ]
+        }
+      },
+      "response": {
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "headers": {
+          "Access-Control-Allow-Origin": [
+            "*"
+          ],
+          "Content-Language": [
+            "en"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Date": [
+            "Sun, 30 Mar 2014 01:06:23 GMT"
+          ],
+          "Server": [
+            "Aspen! Cheroot!"
+          ],
+          "Set-Cookie": [
+            "csrf_token=nyOUCs3aEWJVFfYjKbUAo7Uv4ej8tf4I; expires=Sun, 29 Mar 2015 01:06:23 GMT; Path=/"
+          ],
+          "Vary": [
+            "Cookie"
+          ],
+          "X-Frame-Options": [
+            "SAMEORIGIN"
+          ],
+          "X-Gittip-Version": [
+            "12.2.2"
+          ],
+          "Content-Length": [
+            "420"
+          ],
+          "Connection": [
+            "keep-alive"
+          ]
+        },
+        "body": {
+          "encoding": "UTF-8",
+          "string": "{\n    \"avatar\": \"https://abs.twimg.com/sticky/default_profile_images/default_profile_3.png\",\n    \"elsewhere\": {\n        \"twitter\": {\n            \"id\": 256293,\n            \"user_id\": \"1865385980\",\n            \"user_name\": \"gratitude_test\"\n        }\n    },\n    \"giving\": \"14.00\",\n    \"id\": 196181,\n    \"npatrons\": 0,\n    \"number\": \"singular\",\n    \"on\": \"gittip\",\n    \"receiving\": \"0.00\",\n    \"username\": \"gratitude_test\"\n}"
+        },
+        "http_version": null
+      },
+      "recorded_at": "Sun, 30 Mar 2014 01:06:24 GMT"
+    },
+    {
+      "request": {
+        "method": "get",
+        "uri": "https://www.gittip.com/goya/public.json",
+        "body": {
+          "encoding": "US-ASCII",
+          "string": ""
+        },
+        "headers": {
+          "User-Agent": [
+            "Faraday v0.8.9"
+          ],
+          "Accept-Encoding": [
+            "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+          ],
+          "Accept": [
+            "*/*"
+          ]
+        }
+      },
+      "response": {
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "headers": {
+          "Access-Control-Allow-Origin": [
+            "*"
+          ],
+          "Content-Language": [
+            "en"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Date": [
+            "Sun, 30 Mar 2014 01:06:24 GMT"
+          ],
+          "Server": [
+            "Aspen! Cheroot!"
+          ],
+          "Set-Cookie": [
+            "csrf_token=mTe5nRBoRDfWlgznMfbWZUjWqE76NxwA; expires=Sun, 29 Mar 2015 01:06:24 GMT; Path=/"
+          ],
+          "Vary": [
+            "Cookie"
+          ],
+          "X-Frame-Options": [
+            "SAMEORIGIN"
+          ],
+          "X-Gittip-Version": [
+            "12.2.2"
+          ],
+          "Content-Length": [
+            "409"
+          ],
+          "Connection": [
+            "keep-alive"
+          ]
+        },
+        "body": {
+          "encoding": "UTF-8",
+          "string": "{\n    \"avatar\": \"https://www.gravatar.com/avatar/78cd75a0a67b97af278f6d42cc4c1f58?s=128\",\n    \"elsewhere\": {\n        \"github\": {\n            \"id\": 326508,\n            \"user_id\": \"208774\",\n            \"user_name\": \"goya\"\n        }\n    },\n    \"giving\": \"0.00\",\n    \"goal\": null,\n    \"id\": 266397,\n    \"npatrons\": 0,\n    \"number\": \"singular\",\n    \"on\": \"gittip\",\n    \"receiving\": \"0.00\",\n    \"username\": \"goya\"\n}"
+        },
+        "http_version": null
+      },
+      "recorded_at": "Sun, 30 Mar 2014 01:06:24 GMT"
+    }
+  ],
+  "recorded_with": "VCR 2.9.0"
+}
