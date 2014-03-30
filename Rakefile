@@ -19,3 +19,10 @@ task :console do
   ARGV.clear
   IRB.start
 end
+
+task :pry do
+  require 'pry'
+  require 'gratitude'
+  ARGV.clear
+  Pry.start
+end

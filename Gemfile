@@ -3,8 +3,9 @@ source "https://rubygems.org"
 gemspec
 
 group :development do
-  gem "pry"
-  gem "awesome_print"
+  gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
+  gem 'pry-byebug'
+  gem 'pry-coolline'
   gem "guard-rspec"
   gem "terminal-notifier-guard", require: false
 end
