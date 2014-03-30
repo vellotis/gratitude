@@ -13,11 +13,36 @@ describe Gratitude::Statistics do
     after { VCR.eject_cassette }
     let(:stats) { Gratitude::Statistics.current }
 
-    describe "#average_tip_amount" do
-      it "returns the correct average tip amount" do
-        expect(stats.average_tip_amount).to eq(1.2348237280979524)
+    describe "json response" do
+      it "returns the correct keys in the json hash" do
+        expect(stats.send(:response_body).keys)
+          .to eq(
+            [
+              "average_tip",
+              "average_tippees",
+              "escrow",
+              "last_thursday",
+              "nach",
+              "nactive",
+              "ncc",
+              "ngivers",
+              "noverlap",
+              "nreceivers",
+              "other_people",
+              "pcc",
+              "punc",
+              "statements",
+              "this_thursday",
+              "tip_distribution_json",
+              "tip_n",
+              "total_backed_tips",
+              "transfer_volume"
+              ]
+          )
       end
+    end
 
+    describe "#average_tip_amount" do
       it "returns a float" do
         expect(stats.average_tip_amount.class).to be(Float)
       end
@@ -28,10 +53,6 @@ describe Gratitude::Statistics do
     end
 
     describe "#average_number_of_tippees" do
-      it "returns the correct average number of tippees" do
-        expect(stats.average_number_of_tippees).to eq(3)
-      end
-
       it "returns a fixnum" do
         expect(stats.average_number_of_tippees.class).to be(Fixnum)
       end
@@ -42,10 +63,6 @@ describe Gratitude::Statistics do
     end
 
     describe "#amount_in_escrow" do
-      it "returns the correct amount in escrow" do
-        expect(stats.amount_in_escrow).to eq(50441.17)
-      end
-
       it "returns a float" do
         expect(stats.amount_in_escrow.class).to be(Float)
       end
@@ -56,20 +73,12 @@ describe Gratitude::Statistics do
     end
 
     describe "#last_thursday" do
-      it "returns the correct value for last thursday" do
-        expect(stats.last_thursday).to eq("last Thursday")
-      end
-
       it "returns a string" do
         expect(stats.last_thursday.class).to be(String)
       end
     end
 
     describe "#number_of_achs" do
-      it "returns the correct number of ach credits" do
-        expect(stats.number_of_ach_credits).to eq(299)
-      end
-
       it "returns a fixnum" do
         expect(stats.number_of_ach_credits.class).to be(Fixnum)
       end
@@ -84,10 +93,6 @@ describe Gratitude::Statistics do
     end
 
     describe "#number_of_active_users" do
-      it "returns the correct number of active users" do
-        expect(stats.number_of_active_users).to eq(1719)
-      end
-
       it "returns a fixnum" do
         expect(stats.number_of_active_users.class).to be(Fixnum)
       end
@@ -98,10 +103,6 @@ describe Gratitude::Statistics do
     end
 
     describe "#number_of_credit_cards" do
-      it "returns the correct number of credit cards on file" do
-        expect(stats.number_of_credit_cards).to eq(1496)
-      end
-
       it "returns a fixnum" do
         expect(stats.number_of_credit_cards.class).to be(Fixnum)
       end
@@ -112,10 +113,6 @@ describe Gratitude::Statistics do
     end
 
     describe "#number_of_givers" do
-      it "returns the correct number of givers" do
-        expect(stats.number_of_givers).to eq(1113)
-      end
-
       it "returns a fixnum" do
         expect(stats.number_of_givers.class).to be(Fixnum)
       end
@@ -126,10 +123,6 @@ describe Gratitude::Statistics do
     end
 
     describe "#number_who_give_and_receive" do
-      it "returns the correct number of users who both give and receive" do
-        expect(stats.number_who_give_and_receive).to eq(301)
-      end
-
       it "returns a fixnum" do
         expect(stats.number_who_give_and_receive.class).to be(Fixnum)
       end
@@ -140,10 +133,6 @@ describe Gratitude::Statistics do
     end
 
     describe "#number_of_receivers" do
-      it "returns the correct number of receivers" do
-        expect(stats.number_of_receivers).to eq(907)
-      end
-
       it "returns a fixnum" do
         expect(stats.number_of_receivers.class).to be(Fixnum)
       end
@@ -154,20 +143,12 @@ describe Gratitude::Statistics do
     end
 
     describe "#other_people" do
-      it "returns the correct value for #other_people" do
-        expect(stats.other_people).to eq("three other people")
-      end
-
       it "returns a string" do
         expect(stats.other_people.class).to be(String)
       end
     end
 
     describe "#percentage_of_users_with_credit_cards" do
-      it "returns the correct value for #percentage_of_users_with_credit_cards" do
-        expect(stats.percentage_of_users_with_credit_cards).to eq("7.6")
-      end
-
       it "returns a string" do
         expect(stats.percentage_of_users_with_credit_cards.class).to be(String)
       end
@@ -178,10 +159,6 @@ describe Gratitude::Statistics do
     end
 
     describe "#punctuation" do
-      it "returns the correct value for #punctuation" do
-        expect(stats.punctuation).to eq(".")
-      end
-
       it "returns a string" do
         expect(stats.punctuation.class).to be(String)
       end
@@ -205,19 +182,19 @@ describe Gratitude::Statistics do
       end
 
       it "has statement as a key in each hash element" do
-        expect(stats.statements.first.has_key?("statement")).to be(true)
+        stats.statements.each do |statement|
+          expect(statement.has_key?("statement")).to be(true)
+        end
       end
 
       it "has username as a key in each hash element" do
-        expect(stats.statements.first.has_key?("username")).to be(true)
+        stats.statements.each do  |statement|
+          expect(statement.has_key?("username")).to be(true)
+        end
       end
     end
 
     describe "#this_thursday" do
-      it "returns the correct value for this thursday" do
-        expect(stats.this_thursday).to eq("this Thursday")
-      end
-
       it "returns a string" do
         expect(stats.this_thursday.class).to be(String)
       end
@@ -230,10 +207,6 @@ describe Gratitude::Statistics do
     end
 
     describe "#number_of_tips" do
-      it "returns the correct number of tips" do
-        expect(stats.number_of_tips).to eq(4710)
-      end
-
       it "returns a fixnum" do
         expect(stats.number_of_tips.class).to be(Fixnum)
       end
@@ -244,10 +217,6 @@ describe Gratitude::Statistics do
     end
 
     describe "#value_of_total_backed_tips" do
-      it "returns the correct value of total backed tips" do
-        expect(stats.value_of_total_backed_tips).to eq(5849.36)
-      end
-
       it "returns a float" do
         expect(stats.value_of_total_backed_tips.class).to be(Float)
       end
@@ -258,10 +227,6 @@ describe Gratitude::Statistics do
     end
 
     describe "#transfer_volume" do
-      it "returns the correct transfer volume" do
-        expect(stats.transfer_volume).to eq(5464.38)
-      end
-
       it "returns a float" do
         expect(stats.transfer_volume.class).to be(Float)
       end
