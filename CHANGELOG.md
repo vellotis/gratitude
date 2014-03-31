@@ -1,6 +1,10 @@
 ### 0.1.0 (Upcoming Stable Release)
 * Implement all aspects of the Gittip API.
 
+### 0.0.12 (March 30, 2014)
+* Add support for Chart API endpoint
+* Add support for User Chart API endpoint
+
 ### 0.0.11 (March 29, 2014)
 * Change to Faraday instead of HTTParty
 * Update api methods to match current Gittip api implementation
