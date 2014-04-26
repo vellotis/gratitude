@@ -43,7 +43,7 @@ describe Gratitude::UserChart do
       end
 
       context "when the requested Gittip user does not exist" do
-        before { VCR.insert_cassette "user_not_found" }
+        before { VCR.insert_cassette "user_chart_not_found" }
         after { VCR.eject_cassette }
 
         it "raises a UsernameNotFoundError" do

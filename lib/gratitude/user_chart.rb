@@ -40,7 +40,6 @@ module Gratitude
 
     def self.get_user_charts_from_gittip(username)
       response = faraday.get("/#{username}/charts.json").body.to_a
-      # binding.pry
       raise UsernameNotFoundError.new(username) if response.empty?
       response
     end

@@ -36,13 +36,13 @@
             "application/json"
           ],
           "Date": [
-            "Sat, 26 Apr 2014 02:28:15 GMT"
+            "Sat, 26 Apr 2014 02:44:24 GMT"
           ],
           "Server": [
             "Aspen! Cheroot!"
           ],
           "Set-Cookie": [
-            "csrf_token=UPrmekf1LXW89nvskyItBrVoNXNWWJF7; expires=Sat, 25 Apr 2015 02:28:15 GMT; Path=/"
+            "csrf_token=qPHbhabHp5Rz34MH7nB0nXCyMNJBgAwN; expires=Sat, 25 Apr 2015 02:44:24 GMT; Path=/"
           ],
           "Vary": [
             "Cookie"
@@ -66,7 +66,7 @@
         },
         "http_version": null
       },
-      "recorded_at": "Sat, 26 Apr 2014 02:28:15 GMT"
+      "recorded_at": "Sat, 26 Apr 2014 02:44:23 GMT"
     }
   ],
   "recorded_with": "VCR 2.9.0"
