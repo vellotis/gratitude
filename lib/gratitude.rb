@@ -2,6 +2,7 @@ require "faraday"
 require "faraday_middleware"
 
 require "gratitude/client"
+require "gratitude/error"
 require "gratitude/connection"
 require "gratitude/chart"
 require "gratitude/user_chart"

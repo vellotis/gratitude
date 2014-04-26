@@ -1,0 +1,73 @@
+{
+  "http_interactions": [
+    {
+      "request": {
+        "method": "get",
+        "uri": "https://www.gittip.com/non_existing_user/charts.json",
+        "body": {
+          "encoding": "US-ASCII",
+          "string": ""
+        },
+        "headers": {
+          "User-Agent": [
+            "Faraday v0.8.9"
+          ],
+          "Accept-Encoding": [
+            "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+          ],
+          "Accept": [
+            "*/*"
+          ]
+        }
+      },
+      "response": {
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "headers": {
+          "Access-Control-Allow-Origin": [
+            "*"
+          ],
+          "Content-Language": [
+            "en"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Date": [
+            "Sat, 26 Apr 2014 02:28:15 GMT"
+          ],
+          "Server": [
+            "Aspen! Cheroot!"
+          ],
+          "Set-Cookie": [
+            "csrf_token=UPrmekf1LXW89nvskyItBrVoNXNWWJF7; expires=Sat, 25 Apr 2015 02:28:15 GMT; Path=/"
+          ],
+          "Vary": [
+            "Cookie"
+          ],
+          "X-Frame-Options": [
+            "SAMEORIGIN"
+          ],
+          "X-Gittip-Version": [
+            "12.6.1"
+          ],
+          "Content-Length": [
+            "2"
+          ],
+          "Connection": [
+            "keep-alive"
+          ]
+        },
+        "body": {
+          "encoding": "UTF-8",
+          "string": "[]"
+        },
+        "http_version": null
+      },
+      "recorded_at": "Sat, 26 Apr 2014 02:28:15 GMT"
+    }
+  ],
+  "recorded_with": "VCR 2.9.0"
+}

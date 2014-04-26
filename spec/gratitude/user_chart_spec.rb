@@ -22,21 +22,33 @@ describe Gratitude::UserChart do
           .to be(Array)
       end
 
-      it "updates the USER_CHARTS constant when it is empty" do
-        expect { Gratitude::UserChart.all_for_user("Gittip") }
-          .to change { Gratitude::UserChart::USER_CHARTS.size }.from(0)
-      end
+      context "when the requested Gittip user exists" do
+        it "updates the USER_CHARTS constant when it is empty" do
+          expect { Gratitude::UserChart.all_for_user("Gittip") }
+            .to change { Gratitude::UserChart::USER_CHARTS.size }.from(0)
+        end
 
-      it "its array should be comprised of User_Chart objects" do
-        Gratitude::UserChart.all_for_user("Gittip").each do |user_chart|
-          expect(user_chart.class).to eq(Gratitude::UserChart)
+        it "its array should be comprised of User_Chart objects" do
+          Gratitude::UserChart.all_for_user("Gittip").each do |user_chart|
+            expect(user_chart.class).to eq(Gratitude::UserChart)
+          end
+        end
+
+        it "only includes charts for a given username" do
+          Gratitude::UserChart.all_for_user("whit537")
+          Gratitude::UserChart.all_for_user("Gittip").each do |user_chart|
+            expect(user_chart.username).to eq("Gittip")
+          end
         end
       end
 
-      it "only includes charts for a given username" do
-        Gratitude::UserChart.all_for_user("whit537")
-        Gratitude::UserChart.all_for_user("Gittip").each do |user_chart|
-          expect(user_chart.username).to eq("Gittip")
+      context "when the requested Gittip user does not exist" do
+        before { VCR.insert_cassette "user_not_found" }
+        after { VCR.eject_cassette }
+
+        it "raises a UsernameNotFoundError" do
+          expect { Gratitude::UserChart.all_for_user("non_existing_user") }
+            .to raise_error(Gratitude::UsernameNotFoundError)
         end
       end
     end
