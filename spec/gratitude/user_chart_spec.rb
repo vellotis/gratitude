@@ -53,11 +53,11 @@ describe Gratitude::UserChart do
       end
     end
 
-
     describe "#sort_by_date_for_user" do
       it "places the newest user chart before the oldest user chart" do
         expect(Gratitude::UserChart.sort_by_date_for_user("Gittip").first.date)
-          .to be > (Gratitude::UserChart.sort_by_date_for_user("Gittip").last.date)
+          .to be >
+            (Gratitude::UserChart.sort_by_date_for_user("Gittip").last.date)
       end
     end
 
@@ -75,21 +75,20 @@ describe Gratitude::UserChart do
       end
     end
   end
+
   describe "initialization and instance methods" do
 
     it "adds the initialized object to the CHARTS constant" do
-      expect { Gratitude::UserChart.new() }
-        .to change{ Gratitude::UserChart::USER_CHARTS.size }.by(1)
+      expect { Gratitude::UserChart.new }
+        .to change { Gratitude::UserChart::USER_CHARTS.size }.by(1)
     end
 
     let(:user_chart) do
       Gratitude::UserChart.new(
-        {
           "username" => "Gittip",
           "date" => "2014-03-27",
           "npatrons" => 137,
           "receipts" => 416.94
-        }
       )
     end
 

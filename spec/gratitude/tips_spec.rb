@@ -4,17 +4,23 @@ describe Gratitude::Client::Tips do
   let(:username) { "gratitude_test" }
   let(:api_key) { "5962b93a-5bf7-4cb6-ae6f-aa4114c5e4f2" }
   let(:client) do
-    Gratitude::Client.new(:username => username, :api_key => api_key)
+    Gratitude::Client.new(username: username, api_key: api_key)
   end
   let(:unauthenticated_client) do
-    Gratitude::Client.new(:username => username, :api_key => "bad_key")
+    Gratitude::Client.new(username: username, api_key: "bad_key")
   end
 
   describe "GET Requests" do
     let(:current_tips) do
       [
-        {"amount"=>"1.00", "platform"=>"gittip", "username"=>"whit537"},
-        {"amount"=>"0.25", "platform"=>"gittip", "username"=>"JohnKellyFerguson"}
+        { "amount" => "1.00",
+          "platform" => "gittip",
+          "username" => "whit537"
+        },
+        { "amount" => "0.25",
+          "platform" => "gittip",
+          "username" => "JohnKellyFerguson"
+        }
       ]
     end
 
@@ -23,7 +29,7 @@ describe Gratitude::Client::Tips do
         before { VCR.insert_cassette "current_tips" }
         after { VCR.eject_cassette }
         it "returns the correct array of current tips" do
-          expect(client.current_tips).to eq (current_tips)
+          expect(client.current_tips).to eq(current_tips)
         end
       end
 
@@ -46,15 +52,25 @@ describe Gratitude::Client::Tips do
         expect(client.current_tips_total).to eq(1.25)
       end
     end
-  end #GET Requests
+  end # GET Requests
 
   describe "POST Requests" do
     describe "#update_tips" do
       let(:multiple_tips) do
         [
-          {"amount"=>"1.00", "platform"=>"gittip", "username"=>"whit537"},
-          {"amount"=>"0.25", "platform"=>"gittip", "username"=>"JohnKellyFerguson"},
-          {"amount"=>"1.00", "platform"=>"gittip", "username"=>"Gittip"}
+          { "amount" => "1.00",
+            "platform" => "gittip",
+            "username" => "whit537"
+          },
+          { "amount" => "0.25",
+            "platform" => "gittip",
+            "username" => "JohnKellyFerguson"
+          },
+          {
+            "amount" => "1.00",
+            "platform" => "gittip",
+            "username" => "Gittip"
+          }
         ]
       end
 
@@ -77,16 +93,31 @@ describe Gratitude::Client::Tips do
         end
       end
 
-
       context "when there are bad request parameters" do
         before { VCR.insert_cassette "update_bad_request" }
         after { VCR.eject_cassette }
         let(:incorrect_tips) do
           [
-            {"amount"=>"1.00", "platform"=>"gittip", "username"=>"not_a_user_so_fake"},
-            {"amount"=>"0.25", "platform"=>"gittip", "username"=>"lol_this_will_be_an_error"},
-            {"amount"=>"1.00", "platform"=>"gittip", "username"=>"whit537"},
-            {"amount"=>"0.25", "platform"=>"gittip", "username"=>"JohnKellyFerguson"}
+            {
+              "amount" => "1.00",
+              "platform" => "gittip",
+              "username" => "not_a_user_so_fake"
+            },
+            {
+              "amount" => "0.25",
+              "platform" => "gittip",
+              "username" => "lol_this_will_be_an_error"
+            },
+            {
+              "amount" => "1.00",
+              "platform" => "gittip",
+              "username" => "whit537"
+            },
+            {
+              "amount" => "0.25",
+              "platform" => "gittip",
+              "username" => "JohnKellyFerguson"
+            }
           ]
         end
 
@@ -95,20 +126,40 @@ describe Gratitude::Client::Tips do
             .to raise_error(Gratitude::TipUpdateError)
         end
       end
-    end #update_tips
+    end # update_tips
 
     describe "#update_tips_and_prune" do
       let(:previous_tips) do
         [
-          {"amount"=>"1.00", "platform"=>"gittip", "username"=>"whit537"},
-          {"amount"=>"0.25", "platform"=>"gittip", "username"=>"JohnKellyFerguson"},
-          {"amount"=>"1.00", "platform"=>"gittip", "username"=>"Gittip"}
+          {
+            "amount" => "1.00",
+            "platform" => "gittip",
+            "username" => "whit537"
+          },
+          {
+            "amount" => "0.25",
+            "platform" => "gittip",
+            "username" => "JohnKellyFerguson"
+          },
+          {
+            "amount" => "1.00",
+            "platform" => "gittip",
+            "username" => "Gittip"
+          }
         ]
       end
       let(:pruned_tips) do
         [
-          {"amount"=>"1.00", "platform"=>"gittip", "username"=>"whit537"},
-          {"amount"=>"0.25", "platform"=>"gittip", "username"=>"JohnKellyFerguson"}
+          {
+            "amount" => "1.00",
+            "platform" => "gittip",
+            "username" => "whit537"
+          },
+          {
+            "amount" => "0.25",
+            "platform" => "gittip",
+            "username" => "JohnKellyFerguson"
+          }
         ]
       end
 
@@ -128,8 +179,15 @@ describe Gratitude::Client::Tips do
         after { VCR.eject_cassette }
         let(:incorrect_tips) do
           [
-            {"amount"=>"1.00", "platform"=>"gittip", "username"=>"not_a_user_so_fake"},
-            {"amount"=>"0.25", "platform"=>"gittip", "username"=>"will_be_an_error"}
+            { "amount" => "1.00",
+              "platform" => "gittip",
+              "username" => "not_a_user_so_fake"
+            },
+            {
+              "amount" => "0.25",
+              "platform" => "gittip",
+              "username" => "will_be_an_error"
+            }
           ]
         end
 
@@ -138,7 +196,6 @@ describe Gratitude::Client::Tips do
             .to raise_error(Gratitude::TipUpdateError)
         end
       end
-
 
       context "when not properly authenticated" do
         before { VCR.insert_cassette "prune_tips_not_authenticated" }
@@ -151,5 +208,5 @@ describe Gratitude::Client::Tips do
       end
     end
 
-  end #POST Requests
+  end # POST Requests
 end
