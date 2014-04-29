@@ -1,14 +1,13 @@
 module Gratitude
   class Client
     module Tips
-
       def current_tips
         begin
           response = faraday.get(tips_url)
         rescue Faraday::Error::ParsingError
           raise AuthenticationError
         end
-          response.body
+        response.body
       end
 
       def current_tips_total
@@ -21,8 +20,7 @@ module Gratitude
 
       def update_tips_and_prune(array_of_hashes_with_usernames_and_amounts)
         post_tips_to_gittip(
-          array_of_hashes_with_usernames_and_amounts,
-          { :prune => true }
+          array_of_hashes_with_usernames_and_amounts, prune: true
         )
       end
 
@@ -40,7 +38,7 @@ module Gratitude
       def faraday_post_response(array_of_hashes, options = {})
         faraday.post do |request|
           payload_for(request, array_of_hashes)
-          request.params = { :also_prune => "true"} if options[:prune] == true
+          request.params = { also_prune: "true" } if options[:prune] == true
         end
       rescue
         raise AuthenticationError
@@ -69,7 +67,7 @@ module Gratitude
 
       def return_response_body_or_raise_update_error(response)
         if usernames_with_errors(response.body).size > 0
-          raise TipUpdateError.new(usernames_with_errors(response.body))
+          raise TipUpdateError, usernames_with_errors(response.body)
         else
           response.body
         end
@@ -77,10 +75,11 @@ module Gratitude
 
       def usernames_with_errors(response_body)
         response_body.each_with_object([]) do |user_tip_response, array|
-          array << user_tip_response["username"] if user_tip_response.key?("error")
+          if user_tip_response.key?("error")
+            array << user_tip_response["username"]
+          end
         end
       end
-
     end # Tips
   end # Client
 end # Gratitude

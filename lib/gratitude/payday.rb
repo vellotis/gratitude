@@ -4,9 +4,10 @@ module Gratitude
     PAYDAYS = []
 
     attr_reader :ach_fees_volume, :ach_volume, :charge_fees_volume,
-                :charge_volume, :number_of_ach_credits, :number_of_active_users,
-                :number_of_failing_credit_cards, :number_of_missing_credit_cards,
-                :number_of_charges, :number_of_participants, :number_of_tippers,
+                :charge_volume, :number_of_ach_credits,
+                :number_of_active_users, :number_of_failing_credit_cards,
+                :number_of_missing_credit_cards, :number_of_charges,
+                :number_of_participants, :number_of_tippers,
                 :number_of_transfers, :transfer_volume, :transfer_end_time,
                 :transfer_start_time
 
@@ -39,7 +40,9 @@ module Gratitude
       @number_of_tippers = options["ntippers"]
       @number_of_transfers = options["ntransfers"]
       @transfer_volume = options["transfer_volume"]
-      @transfer_end_time = DateTime.parse(options["ts_end"]) if options["ts_end"]
+      if options["ts_end"]
+        @transfer_end_time = DateTime.parse(options["ts_end"])
+      end
       if options["ts_start"]
         @transfer_start_time = DateTime.parse(options["ts_start"])
       end
@@ -64,17 +67,14 @@ module Gratitude
       all.sort_by { |p| p.ts_end }.reverse
     end
 
-    private
-
-    def self.get_paydays_from_gittip
-      faraday.get('/about/paydays.json').body.to_a
+    def self.paydays_from_gittip
+      faraday.get("/about/paydays.json").body.to_a
     end
 
     def self.collect_paydays
-      get_paydays_from_gittip.each do |payday_hash|
+      paydays_from_gittip.each do |payday_hash|
         Payday.new(payday_hash)
       end
     end
-
   end # Payday
 end # Gratitude

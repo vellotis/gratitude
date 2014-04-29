@@ -100,13 +100,12 @@ module Gratitude
 
     def response
       @response ||= faraday.get("/#{username}/public.json")
-      raise UsernameNotFoundError.new(username) if @response.status == 406
+      raise UsernameNotFoundError, username if @response.status == 406
       @response
     end
 
     def response_body
       @response_body ||= response.body
     end
-
   end # Profile
 end # Gratitude

@@ -17,27 +17,27 @@ describe Gratitude::Statistics do
       it "returns the correct keys in the json hash" do
         expect(stats.send(:response_body).keys)
           .to eq(
-            [
-              "average_tip",
-              "average_tippees",
-              "escrow",
-              "last_thursday",
-              "nach",
-              "nactive",
-              "ncc",
-              "ngivers",
-              "noverlap",
-              "nreceivers",
-              "other_people",
-              "pcc",
-              "punc",
-              "statements",
-              "this_thursday",
-              "tip_distribution_json",
-              "tip_n",
-              "total_backed_tips",
-              "transfer_volume"
-              ]
+            %w(
+              average_tip
+              average_tippees
+              escrow
+              last_thursday
+              nach
+              nactive
+              ncc
+              ngivers
+              noverlap
+              nreceivers
+              other_people
+              pcc
+              punc
+              statements
+              this_thursday
+              tip_distribution_json
+              tip_n
+              total_backed_tips
+              transfer_volume
+              )
           )
       end
     end
@@ -183,13 +183,13 @@ describe Gratitude::Statistics do
 
       it "has statement as a key in each hash element" do
         stats.statements.each do |statement|
-          expect(statement.has_key?("statement")).to be(true)
+          expect(statement.key?("statement")).to be(true)
         end
       end
 
       it "has username as a key in each hash element" do
         stats.statements.each do  |statement|
-          expect(statement.has_key?("username")).to be(true)
+          expect(statement.key?("username")).to be(true)
         end
       end
     end

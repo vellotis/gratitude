@@ -30,19 +30,19 @@ describe Gratitude::Profile do
       it "returns the correct keys in the json hash" do
         expect(complete_profile.send(:response_body).keys)
           .to eq(
-            [
-              "avatar",
-              "bitcoin",
-              "elsewhere",
-              "giving",
-              "goal",
-              "id",
-              "npatrons",
-              "number",
-              "on",
-              "receiving",
-              "username"
-              ]
+            %w(
+              avatar
+              bitcoin
+              elsewhere
+              giving
+              goal
+              id
+              npatrons
+              number
+              on
+              receiving
+              username
+              )
             )
       end
     end

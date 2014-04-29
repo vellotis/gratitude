@@ -1,0 +1,34 @@
+AllCops:
+  Exclude:
+    - vendor/**/**
+    - bin/**
+    - gratitude.gemspec
+
+CollectionMethods:
+  # Mapping from undesired method to desired_method
+  # e.g. to use `detect` over `find`:
+  #
+  # CollectionMethods:
+  #   PreferredMethods:
+  #     find: detect
+  PreferredMethods:
+    map: 'collect'
+    map!: 'collect!'
+    reduce: 'inject'
+    find: 'detect'
+    find_all: 'select'
+
+Documentation:
+  Enabled: false
+
+MethodLength:
+  Enabled: false
+
+SignalException:
+  Enabled: false
+
+SingleLineBlockParams:
+  Enabled: false
+
+StringLiterals:
+  EnforcedStyle: double_quotes

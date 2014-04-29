@@ -32,21 +32,19 @@ module Gratitude
       all_for_user(username).sort_by { |chart| chart.date }.reverse
     end
 
-    private
-
     def self.user_charts_contains_other_usernames?(username)
-      USER_CHARTS.map { |chart| chart.username }.uniq != [username]
+      USER_CHARTS.collect { |chart| chart.username }.uniq != [username]
     end
 
-    def self.get_user_charts_from_gittip(username)
+    def self.user_charts_from_gittip(username)
       response = faraday.get("/#{username}/charts.json").body.to_a
-      raise UsernameNotFoundError.new(username) if response.empty?
+      raise UsernameNotFoundError, username if response.empty?
       response
     end
 
     def self.collect_charts_for(username)
-      get_user_charts_from_gittip(username).each do |chart_hash|
-        UserChart.new(chart_hash.merge({ "username" => username }))
+      user_charts_from_gittip(username).each do |chart_hash|
+        UserChart.new(chart_hash.merge("username" => username))
       end
     end
   end

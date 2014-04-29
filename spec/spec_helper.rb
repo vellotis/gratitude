@@ -1,7 +1,7 @@
-$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
+$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), "..", "lib"))
 
 # Coveralls
-require 'coveralls'
+require "coveralls"
 Coveralls.wear!
 
 # dependencies
@@ -13,8 +13,8 @@ require "webmock"
 
 # VCR config
 VCR.configure do |c|
-  c.cassette_library_dir = 'spec/cassettes'
+  c.cassette_library_dir = "spec/cassettes"
   c.hook_into :webmock
   c.default_cassette_options = { record: :new_episodes, serialize_with: :json }
-  c.default_cassette_options = { re_record_interval: 604800 }
+  c.default_cassette_options = { re_record_interval: 604_800 }
 end

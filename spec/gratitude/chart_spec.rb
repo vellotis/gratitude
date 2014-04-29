@@ -59,21 +59,19 @@ describe Gratitude::Chart do
   describe "initialization and instance methods" do
 
     it "adds the initialized object to the CHARTS constant" do
-      expect { Gratitude::Chart.new() }
-        .to change{ Gratitude::Chart::CHARTS.size }.by(1)
+      expect { Gratitude::Chart.new }
+        .to change { Gratitude::Chart::CHARTS.size }.by(1)
     end
 
     let(:chart) do
       Gratitude::Chart.new(
-        {
-          "active_users" => 25,
-          "charges" => 25.28,
-          "date" => "2012-06-08",
-          "total_gifts" => 27.76,
-          "total_users" => 175,
-          "weekly_gifts" => 24.80,
-          "withdrawals" => 0.00
-        }
+        "active_users" => 25,
+        "charges" => 25.28,
+        "date" => "2012-06-08",
+        "total_gifts" => 27.76,
+        "total_users" => 175,
+        "weekly_gifts" => 24.80,
+        "withdrawals" => 0.00
       )
     end
 
