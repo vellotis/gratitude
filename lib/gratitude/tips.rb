@@ -3,7 +3,12 @@ module Gratitude
     module Tips
 
       def current_tips
-        faraday.get(tips_url).body
+        begin
+          response = faraday.get(tips_url)
+        rescue Faraday::Error::ParsingError
+          raise AuthenticationError
+        end
+          response.body
       end
 
       def current_tips_total
@@ -11,22 +16,34 @@ module Gratitude
       end
 
       def update_tips(array_of_hashes_with_usernames_and_amounts)
-        faraday.post do |request|
-          payload_for(request, array_of_hashes_with_usernames_and_amounts)
-        end.body
+        post_tips_to_gittip(array_of_hashes_with_usernames_and_amounts)
       end
 
       def update_tips_and_prune(array_of_hashes_with_usernames_and_amounts)
-        faraday.post do |request|
-          payload_for(request, array_of_hashes_with_usernames_and_amounts)
-          request.params = { :also_prune => "true"}
-        end.body
+        post_tips_to_gittip(
+          array_of_hashes_with_usernames_and_amounts,
+          { :prune => true }
+        )
       end
 
-    private
+      private
 
       def tips_url
         "/#{username}/tips.json"
+      end
+
+      def post_tips_to_gittip(array_of_hashes, options = {})
+        response = faraday_post_response(array_of_hashes, options)
+        return_response_body_or_raise_update_error(response)
+      end
+
+      def faraday_post_response(array_of_hashes, options = {})
+        faraday.post do |request|
+          payload_for(request, array_of_hashes)
+          request.params = { :also_prune => "true"} if options[:prune] == true
+        end
+      rescue
+        raise AuthenticationError
       end
 
       def payload_for(request, array_of_hashes)
@@ -48,6 +65,20 @@ module Gratitude
           "platform" => "gittip",
           "username" => "#{username}"
         }
+      end
+
+      def return_response_body_or_raise_update_error(response)
+        if usernames_with_errors(response.body).size > 0
+          raise TipUpdateError.new(usernames_with_errors(response.body))
+        else
+          response.body
+        end
+      end
+
+      def usernames_with_errors(response_body)
+        response_body.each_with_object([]) do |user_tip_response, array|
+          array << user_tip_response["username"] if user_tip_response.key?("error")
+        end
       end
 
     end # Tips

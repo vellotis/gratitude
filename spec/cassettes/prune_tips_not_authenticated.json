@@ -3,10 +3,10 @@
     {
       "request": {
         "method": "post",
-        "uri": "https://5962b93a-5bf7-4cb6-ae6f-aa4114c5e4f2:@www.gittip.com/gratitude_test/tips.json",
+        "uri": "https://bad_key:@www.gittip.com/gratitude_test/tips.json?also_prune=true",
         "body": {
           "encoding": "UTF-8",
-          "string": "[{\"amount\":\"1.00\",\"platform\":\"gittip\",\"username\":\"whit537\"},{\"amount\":\"0.25\",\"platform\":\"gittip\",\"username\":\"JohnKellyFerguson\"},{\"amount\":\"1.00\",\"platform\":\"gittip\",\"username\":\"Gittip\"}]"
+          "string": "[{\"amount\":\"1.00\",\"platform\":\"gittip\",\"username\":\"whit537\"},{\"amount\":\"0.25\",\"platform\":\"gittip\",\"username\":\"JohnKellyFerguson\"}]"
         },
         "headers": {
           "User-Agent": [
@@ -22,8 +22,8 @@
       },
       "response": {
         "status": {
-          "code": 200,
-          "message": "OK"
+          "code": 302,
+          "message": "Found"
         },
         "headers": {
           "Content-Language": [
@@ -33,17 +33,16 @@
             "application/json"
           ],
           "Date": [
-            "Tue, 29 Apr 2014 02:12:59 GMT"
+            "Tue, 29 Apr 2014 02:13:13 GMT"
           ],
-          "Expires": [
-            "Thu, 01 Jan 1970 00:00:00 GMT"
+          "Location": [
+            "/gratitude_test/"
           ],
           "Server": [
             "Aspen! Cheroot!"
           ],
           "Set-Cookie": [
-            "csrf_token=GpQqBG8Tax8vN6Ow78XXmB4ZFKkwIeuC; expires=Tue, 28 Apr 2015 02:12:59 GMT; Path=/",
-            "session=9650d316c7434be9b4986b260cf31646; expires=Tue, 06 May 2014 02:12:59 GMT; httponly; Path=/; secure"
+            "csrf_token=gzRQ5QYkRyCPp2gN64jTot2qwZJuAWkR; expires=Tue, 28 Apr 2015 02:13:13 GMT; Path=/"
           ],
           "Vary": [
             "Cookie"
@@ -55,7 +54,7 @@
             "12.6.1"
           ],
           "Content-Length": [
-            "308"
+            "6"
           ],
           "Connection": [
             "keep-alive"
@@ -63,11 +62,11 @@
         },
         "body": {
           "encoding": "UTF-8",
-          "string": "[\n    {\n        \"amount\": \"1.00\",\n        \"platform\": \"gittip\",\n        \"username\": \"whit537\"\n    },\n    {\n        \"amount\": \"0.25\",\n        \"platform\": \"gittip\",\n        \"username\": \"JohnKellyFerguson\"\n    },\n    {\n        \"amount\": \"1.00\",\n        \"platform\": \"gittip\",\n        \"username\": \"Gittip\"\n    }\n]"
+          "string": "*sigh*"
         },
         "http_version": null
       },
-      "recorded_at": "Tue, 29 Apr 2014 02:12:58 GMT"
+      "recorded_at": "Tue, 29 Apr 2014 02:13:12 GMT"
     }
   ],
   "recorded_with": "VCR 2.9.0"
