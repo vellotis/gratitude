@@ -34,14 +34,12 @@ module Gratitude
       all.sort_by { |chart| chart.date }.reverse
     end
 
-    private
-
-    def self.get_charts_from_gittip
-      faraday.get('/about/charts.json').body.to_a
+    def self.charts_from_gittip
+      faraday.get("/about/charts.json").body.to_a
     end
 
     def self.collect_charts
-      get_charts_from_gittip.each do |chart_hash|
+      charts_from_gittip.each do |chart_hash|
         Chart.new(chart_hash)
       end
     end

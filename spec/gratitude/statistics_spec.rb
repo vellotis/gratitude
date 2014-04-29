@@ -18,24 +18,24 @@ describe Gratitude::Statistics do
         expect(stats.send(:response_body).keys)
           .to eq(
             %w(
-              average_tip,
-              average_tippees,
-              escrow,
-              last_thursday,
-              nach,
-              nactive,
-              ncc,
-              ngivers,
-              noverlap,
-              nreceivers,
-              other_people,
-              pcc,
-              punc,
-              statements,
-              this_thursday,
-              tip_distribution_json,
-              tip_n,
-              total_backed_tips,
+              average_tip
+              average_tippees
+              escrow
+              last_thursday
+              nach
+              nactive
+              ncc
+              ngivers
+              noverlap
+              nreceivers
+              other_people
+              pcc
+              punc
+              statements
+              this_thursday
+              tip_distribution_json
+              tip_n
+              total_backed_tips
               transfer_volume
               )
           )

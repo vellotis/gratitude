@@ -12,6 +12,5 @@ require "gratitude/statistics"
 require "gratitude/tips"
 require "gratitude/version"
 
-
 module Gratitude
 end

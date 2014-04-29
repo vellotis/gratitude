@@ -2,8 +2,7 @@ AllCops:
   Exclude:
     - vendor/**/**
     - bin/**
-
-
+    - gratitude.gemspec
 
 CollectionMethods:
   # Mapping from undesired method to desired_method
@@ -18,6 +17,18 @@ CollectionMethods:
     reduce: 'inject'
     find: 'detect'
     find_all: 'select'
+
+Documentation:
+  Enabled: false
+
+MethodLength:
+  Enabled: false
+
+SignalException:
+  Enabled: false
+
+SingleLineBlockParams:
+  Enabled: false
 
 StringLiterals:
   EnforcedStyle: double_quotes

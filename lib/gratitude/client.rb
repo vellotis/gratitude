@@ -13,6 +13,5 @@ module Gratitude
       @api_key = options[:api_key]
       faraday.basic_auth(api_key, "")
     end
-
   end # Payday
 end # Gratitude

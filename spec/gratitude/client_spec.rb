@@ -13,10 +13,10 @@ describe Gratitude::Client do
   end
 
   describe "initialization" do
-    let(:username) { "JohnKellyFerguson"}
-    let(:api_key) { "this_is_an_api_key"}
+    let(:username) { "JohnKellyFerguson" }
+    let(:api_key) { "this_is_an_api_key" }
     let(:client) do
-      Gratitude::Client.new(:username => username, :api_key => api_key)
+      Gratitude::Client.new(username: username, api_key: api_key)
     end
 
     it "assigns the correct username" do

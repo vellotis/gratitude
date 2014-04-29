@@ -60,11 +60,13 @@ describe Gratitude::Payday do
   describe "initialization and instance methods" do
 
     it "adds the initialized object to the PAYDAYS constant" do
-      expect { Gratitude::Payday.new( {
-        'ts_end' => "2013-09-12T14:01:41.848587+00:00",
-        'ts_start' => "2013-09-12T12:36:52.967371+00:00"
-        } )
-      }.to change{ Gratitude::Payday::PAYDAYS.size }.by(1)
+      start_and_end = {
+        "ts_end" => "2013-09-12T14:01:41.848587+00:00",
+        "ts_start" => "2013-09-12T12:36:52.967371+00:00"
+      }
+
+      expect { Gratitude::Payday.new(start_and_end) }
+        .to change { Gratitude::Payday::PAYDAYS.size }.by(1)
     end
 
     let(:payday) { Gratitude::Payday.oldest }
