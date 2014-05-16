@@ -371,6 +371,9 @@ client.current_tips
 ```
 
 
+### Contributing
+
+If you'd like to contribute to Gratitude, please check out our [CONTRIBUTING guidelines](CONTRIBUTING.md).
 
 ### Copyright and License
 
