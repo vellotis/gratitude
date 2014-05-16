@@ -6,10 +6,13 @@ group :development do
   gem "jazz_hands", github: "nixme/jazz_hands", branch: "bring-your-own-debugger"
   gem "pry-byebug"
   gem "pry-coolline"
-  gem "rubocop"
   gem "guard-rubocop", require: false
   gem "guard-rspec", require: false
   gem "terminal-notifier-guard", require: false
+end
+
+group :development, :test do
+  gem "rubocop"
 end
 
 group :test do
