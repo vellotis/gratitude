@@ -1,5 +1,5 @@
-### 0.1.0 (Upcoming Stable Release)
-* Implement all aspects of the Gittip API.
+### 0.1.0 (May 16, 2014)
+* Add custom errors for authentication issues, incorrect usernames and tip update errors.
 
 ### 0.0.12 (March 30, 2014)
 * Add support for Chart API endpoint
