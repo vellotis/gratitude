@@ -36,13 +36,16 @@
             "application/json"
           ],
           "Date": [
-            "Tue, 29 Apr 2014 02:13:20 GMT"
+            "Sat, 17 May 2014 00:13:39 GMT"
+          ],
+          "Expires": [
+            "Thu, 01 Jan 1970 00:00:00 GMT"
           ],
           "Server": [
             "Aspen! Cheroot!"
           ],
           "Set-Cookie": [
-            "csrf_token=3yoRq5UAZxNtRYhVrUTYNm3dEtoNv6BS; expires=Tue, 28 Apr 2015 02:13:20 GMT; Path=/"
+            "csrf_token=b2k7EmJOXsxy3Rs7ys1wR54cMTQvvBt8; expires=Sat, 24 May 2014 00:13:39 GMT; Path=/"
           ],
           "Vary": [
             "Cookie"
@@ -51,7 +54,7 @@
             "SAMEORIGIN"
           ],
           "X-Gittip-Version": [
-            "12.6.1"
+            "12.11.2"
           ],
           "Content-Length": [
             "2"
@@ -66,7 +69,7 @@
         },
         "http_version": null
       },
-      "recorded_at": "Tue, 29 Apr 2014 02:13:19 GMT"
+      "recorded_at": "Sat, 17 May 2014 00:13:39 GMT"
     }
   ],
   "recorded_with": "VCR 2.9.0"

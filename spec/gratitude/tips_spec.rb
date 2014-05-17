@@ -9,24 +9,24 @@ describe Gratitude::Client::Tips do
   let(:unauthenticated_client) do
     Gratitude::Client.new(username: username, api_key: "bad_key")
   end
+  let(:current_tips) do
+    [
+      { "amount" => "1.00",
+        "platform" => "gittip",
+        "username" => "whit537"
+      },
+      { "amount" => "0.25",
+        "platform" => "gittip",
+        "username" => "JohnKellyFerguson"
+      }
+    ]
+  end
 
   describe "GET Requests" do
-    let(:current_tips) do
-      [
-        { "amount" => "1.00",
-          "platform" => "gittip",
-          "username" => "whit537"
-        },
-        { "amount" => "0.25",
-          "platform" => "gittip",
-          "username" => "JohnKellyFerguson"
-        }
-      ]
-    end
-
     describe "#current_tips" do
       context "when properly authenticated" do
         before { VCR.insert_cassette "current_tips" }
+        before { client.update_tips(current_tips) }
         after { VCR.eject_cassette }
         it "returns the correct array of current tips" do
           expect(client.current_tips).to eq(current_tips)
@@ -74,15 +74,6 @@ describe Gratitude::Client::Tips do
         ]
       end
 
-      context "when properly authenticated" do
-        before { VCR.insert_cassette "update_tips" }
-        after { VCR.eject_cassette }
-
-        it "updates the correct tip information" do
-          expect(client.update_tips(multiple_tips)).to eq(multiple_tips)
-        end
-      end
-
       context "when not properly authenticated" do
         before { VCR.insert_cassette "update_tips_not_authenticated" }
         after { VCR.eject_cassette }
@@ -126,28 +117,18 @@ describe Gratitude::Client::Tips do
             .to raise_error(Gratitude::TipUpdateError)
         end
       end
+
+      context "when properly authenticated" do
+        before { VCR.insert_cassette "update_tips" }
+        after { VCR.eject_cassette }
+
+        it "updates the correct tip information" do
+          expect(client.update_tips(multiple_tips)).to eq(multiple_tips)
+        end
+      end
     end # update_tips
 
     describe "#update_tips_and_prune" do
-      let(:previous_tips) do
-        [
-          {
-            "amount" => "1.00",
-            "platform" => "gittip",
-            "username" => "whit537"
-          },
-          {
-            "amount" => "0.25",
-            "platform" => "gittip",
-            "username" => "JohnKellyFerguson"
-          },
-          {
-            "amount" => "1.00",
-            "platform" => "gittip",
-            "username" => "Gittip"
-          }
-        ]
-      end
       let(:pruned_tips) do
         [
           {
@@ -166,10 +147,30 @@ describe Gratitude::Client::Tips do
       context "when properly authenticated" do
         before { VCR.insert_cassette "update_and_prune" }
         after { VCR.eject_cassette }
+        let(:previous_tips) do
+          [
+            {
+              "amount" => "1.00",
+              "platform" => "gittip",
+              "username" => "Gittip"
+            },
+            {
+              "amount" => "1.00",
+              "platform" => "gittip",
+              "username" => "whit537"
+            },
+            {
+              "amount" => "0.25",
+              "platform" => "gittip",
+              "username" => "JohnKellyFerguson"
+            }
+          ]
+        end
 
         it "removes tips that were not part of the request" do
           expect { client.update_tips_and_prune(pruned_tips) }
             .to change { client.current_tips }
+            .from(previous_tips)
             .to(pruned_tips)
         end
       end
@@ -207,6 +208,5 @@ describe Gratitude::Client::Tips do
         end
       end
     end
-
   end # POST Requests
 end

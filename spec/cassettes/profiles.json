@@ -27,7 +27,7 @@
         },
         "headers": {
           "Date": [
-            "Tue, 29 Apr 2014 02:12:45 GMT"
+            "Sat, 17 May 2014 00:13:21 GMT"
           ],
           "Server": [
             "Aspen! Cheroot!"
@@ -45,7 +45,7 @@
         },
         "http_version": null
       },
-      "recorded_at": "Tue, 29 Apr 2014 02:12:44 GMT"
+      "recorded_at": "Sat, 17 May 2014 00:13:21 GMT"
     },
     {
       "request": {
@@ -83,13 +83,16 @@
             "application/json"
           ],
           "Date": [
-            "Tue, 29 Apr 2014 02:12:46 GMT"
+            "Sat, 17 May 2014 00:13:21 GMT"
+          ],
+          "Expires": [
+            "Thu, 01 Jan 1970 00:00:00 GMT"
           ],
           "Server": [
             "Aspen! Cheroot!"
           ],
           "Set-Cookie": [
-            "csrf_token=wDVjlkM0xUmMdgrUUoUMF6CSCO9BNsi8; expires=Tue, 28 Apr 2015 02:12:46 GMT; Path=/"
+            "csrf_token=LGMr4FeQ6rERP6g4ZaXpJKBeZWEhv2hH; expires=Sat, 24 May 2014 00:13:21 GMT; Path=/"
           ],
           "Vary": [
             "Cookie"
@@ -98,10 +101,10 @@
             "SAMEORIGIN"
           ],
           "X-Gittip-Version": [
-            "12.6.1"
+            "12.11.2"
           ],
-          "Transfer-Encoding": [
-            "chunked"
+          "Content-Length": [
+            "1179"
           ],
           "Connection": [
             "keep-alive"
@@ -109,11 +112,11 @@
         },
         "body": {
           "encoding": "UTF-8",
-          "string": "{\n    \"avatar\": \"https://avatars.githubusercontent.com/u/2823694?s=128\",\n    \"bitcoin\": \"http://blockchain.info/address/1HMaJmtuvbWh6fsY8VG6xeVjoJdEHQgJsd\",\n    \"elsewhere\": {\n        \"bitbucket\": {\n            \"id\": 441196,\n            \"user_id\": \"jkf\",\n            \"user_name\": \"jkf\"\n        },\n        \"bountysource\": {\n            \"id\": 441197,\n            \"user_id\": \"21486\",\n            \"user_name\": \"JohnKellyFerguson\"\n        },\n        \"github\": {\n            \"id\": 56248,\n            \"user_id\": \"2823694\",\n            \"user_name\": \"JohnKellyFerguson\"\n        },\n        \"openstreetmap\": {\n            \"id\": 441199,\n            \"user_id\": \"2008394\",\n            \"user_name\": \"johnkferguson\"\n        },\n        \"twitter\": {\n            \"id\": 56249,\n            \"user_id\": \"954373436\",\n            \"user_name\": \"johnkferguson\"\n        },\n        \"venmo\": {\n            \"id\": 441198,\n            \"user_id\": \"1292194388377600087\",\n            \"user_name\": \"johnkferguson\"\n        }\n    },\n    \"giving\": null,\n    \"goal\": \"5.00\",\n    \"id\": 15885,\n    \"npatrons\": 0,\n    \"number\": \"singular\",\n    \"on\": \"gittip\",\n    \"receiving\": \"0.00\",\n    \"username\": \"JohnKellyFerguson\"\n}"
+          "string": "{\n    \"avatar\": \"https://avatars.githubusercontent.com/u/2823694?s=128\",\n    \"bitcoin\": \"https://blockchain.info/address/1HMaJmtuvbWh6fsY8VG6xeVjoJdEHQgJsd\",\n    \"elsewhere\": {\n        \"bitbucket\": {\n            \"id\": 441196,\n            \"user_id\": \"jkf\",\n            \"user_name\": \"jkf\"\n        },\n        \"bountysource\": {\n            \"id\": 441197,\n            \"user_id\": \"21486\",\n            \"user_name\": \"JohnKellyFerguson\"\n        },\n        \"github\": {\n            \"id\": 56248,\n            \"user_id\": \"2823694\",\n            \"user_name\": \"JohnKellyFerguson\"\n        },\n        \"openstreetmap\": {\n            \"id\": 441199,\n            \"user_id\": \"2008394\",\n            \"user_name\": \"johnkferguson\"\n        },\n        \"twitter\": {\n            \"id\": 56249,\n            \"user_id\": \"954373436\",\n            \"user_name\": \"johnkferguson\"\n        },\n        \"venmo\": {\n            \"id\": 441198,\n            \"user_id\": \"1292194388377600087\",\n            \"user_name\": \"johnkferguson\"\n        }\n    },\n    \"giving\": null,\n    \"goal\": \"5.00\",\n    \"id\": 15885,\n    \"npatrons\": 0,\n    \"number\": \"singular\",\n    \"on\": \"gittip\",\n    \"receiving\": \"0.00\",\n    \"username\": \"JohnKellyFerguson\"\n}"
         },
         "http_version": null
       },
-      "recorded_at": "Tue, 29 Apr 2014 02:12:45 GMT"
+      "recorded_at": "Sat, 17 May 2014 00:13:21 GMT"
     },
     {
       "request": {
@@ -151,13 +154,16 @@
             "application/json"
           ],
           "Date": [
-            "Tue, 29 Apr 2014 02:12:48 GMT"
+            "Sat, 17 May 2014 00:13:23 GMT"
+          ],
+          "Expires": [
+            "Thu, 01 Jan 1970 00:00:00 GMT"
           ],
           "Server": [
             "Aspen! Cheroot!"
           ],
           "Set-Cookie": [
-            "csrf_token=0b4rs4VkEPQmcp8v9u8OGFNHLGAeB1LZ; expires=Tue, 28 Apr 2015 02:12:48 GMT; Path=/"
+            "csrf_token=33BwvfkMlIJOfyGMovlOYshLIGMKig2s; expires=Sat, 24 May 2014 00:13:23 GMT; Path=/"
           ],
           "Vary": [
             "Cookie"
@@ -166,7 +172,7 @@
             "SAMEORIGIN"
           ],
           "X-Gittip-Version": [
-            "12.6.1"
+            "12.11.2"
           ],
           "Content-Length": [
             "419"
@@ -177,11 +183,11 @@
         },
         "body": {
           "encoding": "UTF-8",
-          "string": "{\n    \"avatar\": \"https://abs.twimg.com/sticky/default_profile_images/default_profile_3.png\",\n    \"elsewhere\": {\n        \"twitter\": {\n            \"id\": 256293,\n            \"user_id\": \"1865385980\",\n            \"user_name\": \"gratitude_test\"\n        }\n    },\n    \"giving\": \"1.25\",\n    \"id\": 196181,\n    \"npatrons\": 0,\n    \"number\": \"singular\",\n    \"on\": \"gittip\",\n    \"receiving\": \"0.00\",\n    \"username\": \"gratitude_test\"\n}"
+          "string": "{\n    \"avatar\": \"https://abs.twimg.com/sticky/default_profile_images/default_profile_3.png\",\n    \"elsewhere\": {\n        \"twitter\": {\n            \"id\": 256293,\n            \"user_id\": \"1865385980\",\n            \"user_name\": \"gratitude_test\"\n        }\n    },\n    \"giving\": \"0.00\",\n    \"id\": 196181,\n    \"npatrons\": 0,\n    \"number\": \"singular\",\n    \"on\": \"gittip\",\n    \"receiving\": \"0.00\",\n    \"username\": \"gratitude_test\"\n}"
         },
         "http_version": null
       },
-      "recorded_at": "Tue, 29 Apr 2014 02:12:48 GMT"
+      "recorded_at": "Sat, 17 May 2014 00:13:23 GMT"
     },
     {
       "request": {
@@ -219,13 +225,16 @@
             "application/json"
           ],
           "Date": [
-            "Tue, 29 Apr 2014 02:12:50 GMT"
+            "Sat, 17 May 2014 00:13:24 GMT"
+          ],
+          "Expires": [
+            "Thu, 01 Jan 1970 00:00:00 GMT"
           ],
           "Server": [
             "Aspen! Cheroot!"
           ],
           "Set-Cookie": [
-            "csrf_token=RdWVFlefvmhRloXPNUjF6w79HfwRWSDL; expires=Tue, 28 Apr 2015 02:12:50 GMT; Path=/"
+            "csrf_token=icNSny66y9G9VxzmZBAEjW1rBS47WEUM; expires=Sat, 24 May 2014 00:13:24 GMT; Path=/"
           ],
           "Vary": [
             "Cookie"
@@ -234,7 +243,7 @@
             "SAMEORIGIN"
           ],
           "X-Gittip-Version": [
-            "12.6.1"
+            "12.11.2"
           ],
           "Content-Length": [
             "409"
@@ -249,7 +258,7 @@
         },
         "http_version": null
       },
-      "recorded_at": "Tue, 29 Apr 2014 02:12:49 GMT"
+      "recorded_at": "Sat, 17 May 2014 00:13:24 GMT"
     }
   ],
   "recorded_with": "VCR 2.9.0"
