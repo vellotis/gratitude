@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 module Gratitude
   class UsernameNotFoundError < StandardError
     def initialize(username)
