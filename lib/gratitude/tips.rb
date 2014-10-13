@@ -4,12 +4,8 @@ module Gratitude
   class Client
     module Tips
       def current_tips
-        begin
-          response = faraday.get(tips_url)
-        rescue Faraday::Error::ParsingError
-          raise AuthenticationError
-        end
-        response.body
+        response = faraday.get(tips_path)
+        return_response_body_or_raise_error(response.body)
       end
 
       def current_tips_total
@@ -17,38 +13,32 @@ module Gratitude
       end
 
       def update_tips(array_of_hashes_with_usernames_and_amounts)
-        post_tips_to_gittip(array_of_hashes_with_usernames_and_amounts)
+        post_tips_to_gratipay(array_of_hashes_with_usernames_and_amounts)
       end
 
       def update_tips_and_prune(array_of_hashes_with_usernames_and_amounts)
-        post_tips_to_gittip(
+        post_tips_to_gratipay(
           array_of_hashes_with_usernames_and_amounts, prune: true
         )
       end
 
       private
 
-      def tips_url
-        "/#{username}/tips.json"
-      end
-
-      def post_tips_to_gittip(array_of_hashes, options = {})
+      def post_tips_to_gratipay(array_of_hashes, options = {})
         response = faraday_post_response(array_of_hashes, options)
-        return_response_body_or_raise_update_error(response)
+        return_response_body_or_raise_error(response.body)
       end
 
       def faraday_post_response(array_of_hashes, options = {})
         faraday.post do |request|
-          payload_for(request, array_of_hashes)
+          request.url(tips_path)
+          request.body = prepared_tips_array(array_of_hashes).to_json
           request.params = { also_prune: "true" } if options[:prune] == true
         end
-      rescue
-        raise AuthenticationError
       end
 
-      def payload_for(request, array_of_hashes)
-        request.url(tips_url)
-        request.body = prepared_tips_array(array_of_hashes).to_json
+      def tips_path
+        "/#{username}/tips.json"
       end
 
       def prepared_tips_array(array_of_hashes)
@@ -62,16 +52,18 @@ module Gratitude
       def tip_hash_based_upon(username, amount)
         {
           "amount" => "#{amount}",
-          "platform" => "gittip",
+          "platform" => "gratipay",
           "username" => "#{username}"
         }
       end
 
-      def return_response_body_or_raise_update_error(response)
-        if usernames_with_errors(response.body).size > 0
-          raise TipUpdateError, usernames_with_errors(response.body)
+      def return_response_body_or_raise_error(response_body)
+        if response_body.is_a?(Hash) && response_body.key?("error_code")
+          raise AuthenticationError
+        elsif usernames_with_errors(response_body).size > 0
+          raise TipUpdateError, usernames_with_errors(response_body)
         else
-          response.body
+          response_body
         end
       end
 

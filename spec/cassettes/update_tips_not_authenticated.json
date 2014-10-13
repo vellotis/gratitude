@@ -3,14 +3,14 @@
     {
       "request": {
         "method": "post",
-        "uri": "https://bad_key:@www.gittip.com/gratitude_test/tips.json",
+        "uri": "https://bad_key:@gratipay.com/gratitude_test/tips.json",
         "body": {
           "encoding": "UTF-8",
-          "string": "[{\"amount\":\"1.00\",\"platform\":\"gittip\",\"username\":\"whit537\"},{\"amount\":\"0.25\",\"platform\":\"gittip\",\"username\":\"JohnKellyFerguson\"},{\"amount\":\"1.00\",\"platform\":\"gittip\",\"username\":\"Gittip\"}]"
+          "string": "[{\"amount\":\"1.00\",\"platform\":\"gratipay\",\"username\":\"whit537\"},{\"amount\":\"0.25\",\"platform\":\"gratipay\",\"username\":\"JohnKellyFerguson\"},{\"amount\":\"1.00\",\"platform\":\"gratipay\",\"username\":\"Gratipay\"}]"
         },
         "headers": {
           "User-Agent": [
-            "Faraday v0.8.9"
+            "Faraday v0.9.0"
           ],
           "Accept-Encoding": [
             "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
@@ -22,8 +22,8 @@
       },
       "response": {
         "status": {
-          "code": 302,
-          "message": "Found"
+          "code": 403,
+          "message": "Forbidden"
         },
         "headers": {
           "Content-Language": [
@@ -33,19 +33,16 @@
             "application/json"
           ],
           "Date": [
-            "Sat, 17 May 2014 00:13:31 GMT"
+            "Mon, 13 Oct 2014 20:40:40 GMT"
           ],
           "Expires": [
             "Thu, 01 Jan 1970 00:00:00 GMT"
           ],
-          "Location": [
-            "/gratitude_test/"
-          ],
           "Server": [
-            "Aspen! Cheroot!"
+            "gunicorn/18.0"
           ],
           "Set-Cookie": [
-            "csrf_token=XVDbfan2H3FGaW9Vqw6qGRUsohdnU6l8; expires=Sat, 24 May 2014 00:13:31 GMT; Path=/"
+            "csrf_token=mwwyph01buOWGh1RfNle2BYJTt9sIUz2; expires=Mon, 20 Oct 2014 20:40:40 GMT; Path=/; secure"
           ],
           "Vary": [
             "Cookie"
@@ -53,11 +50,11 @@
           "X-Frame-Options": [
             "SAMEORIGIN"
           ],
-          "X-Gittip-Version": [
-            "12.11.2"
+          "X-Gratipay-Version": [
+            "17.1.3"
           ],
           "Content-Length": [
-            "6"
+            "95"
           ],
           "Connection": [
             "keep-alive"
@@ -65,12 +62,12 @@
         },
         "body": {
           "encoding": "UTF-8",
-          "string": "*sigh*"
+          "string": "{\n    \"error_code\": 403,\n    \"error_message_long\": \"\",\n    \"error_message_short\": \"Forbidden\"\n}"
         },
         "http_version": null
       },
-      "recorded_at": "Sat, 17 May 2014 00:13:31 GMT"
+      "recorded_at": "Mon, 13 Oct 2014 20:40:40 GMT"
     }
   ],
-  "recorded_with": "VCR 2.9.0"
+  "recorded_with": "VCR 2.9.2"
 }

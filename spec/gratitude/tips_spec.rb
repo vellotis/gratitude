@@ -14,11 +14,11 @@ describe Gratitude::Client::Tips do
   let(:current_tips) do
     [
       { "amount" => "1.00",
-        "platform" => "gittip",
+        "platform" => "gratipay",
         "username" => "whit537"
       },
       { "amount" => "0.25",
-        "platform" => "gittip",
+        "platform" => "gratipay",
         "username" => "JohnKellyFerguson"
       }
     ]
@@ -61,17 +61,17 @@ describe Gratitude::Client::Tips do
       let(:multiple_tips) do
         [
           { "amount" => "1.00",
-            "platform" => "gittip",
+            "platform" => "gratipay",
             "username" => "whit537"
           },
           { "amount" => "0.25",
-            "platform" => "gittip",
+            "platform" => "gratipay",
             "username" => "JohnKellyFerguson"
           },
           {
             "amount" => "1.00",
-            "platform" => "gittip",
-            "username" => "Gittip"
+            "platform" => "gratipay",
+            "username" => "Gratipay"
           }
         ]
       end
@@ -93,22 +93,22 @@ describe Gratitude::Client::Tips do
           [
             {
               "amount" => "1.00",
-              "platform" => "gittip",
+              "platform" => "gratipay",
               "username" => "not_a_user_so_fake"
             },
             {
               "amount" => "0.25",
-              "platform" => "gittip",
+              "platform" => "gratipay",
               "username" => "lol_this_will_be_an_error"
             },
             {
               "amount" => "1.00",
-              "platform" => "gittip",
+              "platform" => "gratipay",
               "username" => "whit537"
             },
             {
               "amount" => "0.25",
-              "platform" => "gittip",
+              "platform" => "gratipay",
               "username" => "JohnKellyFerguson"
             }
           ]
@@ -135,12 +135,12 @@ describe Gratitude::Client::Tips do
         [
           {
             "amount" => "1.00",
-            "platform" => "gittip",
+            "platform" => "gratipay",
             "username" => "whit537"
           },
           {
             "amount" => "0.25",
-            "platform" => "gittip",
+            "platform" => "gratipay",
             "username" => "JohnKellyFerguson"
           }
         ]
@@ -153,17 +153,17 @@ describe Gratitude::Client::Tips do
           [
             {
               "amount" => "1.00",
-              "platform" => "gittip",
-              "username" => "Gittip"
+              "platform" => "gratipay",
+              "username" => "Gratipay"
             },
             {
               "amount" => "1.00",
-              "platform" => "gittip",
+              "platform" => "gratipay",
               "username" => "whit537"
             },
             {
               "amount" => "0.25",
-              "platform" => "gittip",
+              "platform" => "gratipay",
               "username" => "JohnKellyFerguson"
             }
           ]
@@ -183,12 +183,12 @@ describe Gratitude::Client::Tips do
         let(:incorrect_tips) do
           [
             { "amount" => "1.00",
-              "platform" => "gittip",
+              "platform" => "gratipay",
               "username" => "not_a_user_so_fake"
             },
             {
               "amount" => "0.25",
-              "platform" => "gittip",
+              "platform" => "gratipay",
               "username" => "will_be_an_error"
             }
           ]
