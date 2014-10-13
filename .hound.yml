@@ -3,6 +3,7 @@ AllCops:
     - vendor/**/**
     - bin/**
     - gratitude.gemspec
+    - Guardfile
 
 CollectionMethods:
   # Mapping from undesired method to desired_method
@@ -32,3 +33,6 @@ SingleLineBlockParams:
 
 StringLiterals:
   EnforcedStyle: double_quotes
+
+Style/DotPosition:
+  EnforcedStyle: leading

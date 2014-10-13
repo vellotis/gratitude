@@ -33,3 +33,6 @@ SingleLineBlockParams:
 
 StringLiterals:
   EnforcedStyle: double_quotes
+
+Style/DotPosition:
+  EnforcedStyle: leading
