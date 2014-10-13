@@ -68,13 +68,16 @@ module Gratitude
     def self.sort_by_ts_end
       all.sort_by(&:ts_end).reverse
     end
+    private_class_method :sort_by_ts_end
 
     def self.paydays_from_gratipay
       faraday.get("/about/paydays.json").body.to_a
     end
+    private_class_method :paydays_from_gratipay
 
     def self.collect_paydays
       paydays_from_gratipay.each { |payday_hash| Payday.new(payday_hash) }
     end
+    private_class_method :collect_paydays
   end # Payday
 end # Gratitude

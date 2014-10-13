@@ -55,26 +55,21 @@ describe Gratitude::UserChart do
       end
     end
 
-    describe "#sort_by_date_for_user" do
-      it "places the newest user chart before the oldest user chart" do
-        expect(
-          Gratitude::UserChart.sort_by_date_for_user("Gratipay").first.date
-        ).to be >
-          (Gratitude::UserChart.sort_by_date_for_user("Gratipay").last.date)
-      end
-    end
-
     describe "#newest_for" do
       it "returns the most recent payday" do
         expect(Gratitude::UserChart.newest_for("Gratipay"))
-          .to eq(Gratitude::UserChart.sort_by_date_for_user("Gratipay").first)
+          .to eq(
+            Gratitude::UserChart.send(:sort_by_date_for_user, "Gratipay").first
+          )
       end
     end
 
     describe "#oldest" do
       it "returns the oldest payday" do
         expect(Gratitude::UserChart.oldest_for("Gratipay"))
-          .to eq(Gratitude::UserChart.sort_by_date_for_user("Gratipay").last)
+          .to eq(
+            Gratitude::UserChart.send(:sort_by_date_for_user, "Gratipay").last
+          )
       end
     end
   end
