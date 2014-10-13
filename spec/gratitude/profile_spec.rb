@@ -44,31 +44,31 @@ describe Gratitude::Profile do
               on
               receiving
               username
-              )
             )
+          )
       end
     end
 
-    describe "#avatar_url" do
+    describe "#avatar" do
       it "returns a string" do
-        expect(complete_profile.avatar_url.class).to be(String)
+        expect(complete_profile.avatar).to be_a(String)
       end
 
-      it "returns the same value as its alias: #avatar" do
-        expect(complete_profile.avatar_url).to eq(complete_profile.avatar)
+      it "returns the same value as its alias: #avatar_url" do
+        expect(complete_profile.avatar).to eq(complete_profile.avatar_url)
       end
     end
 
     describe "#bitcoin" do
       context "a user with an associated bitcoin address" do
         it "returns a string" do
-          expect(complete_profile.bitcoin.class).to be(String)
+          expect(complete_profile.bitcoin).to be_a(String)
         end
       end
 
       context "a user without an associated bitcoin address" do
         it "returns a string" do
-          expect(incomplete_profile.bitcoin).to be(nil)
+          expect(incomplete_profile.bitcoin).to be_nil
         end
       end
     end
@@ -76,13 +76,13 @@ describe Gratitude::Profile do
     describe "#bitbucket" do
       context "a user with an associated bitbucket account" do
         it "returns a hash" do
-          expect(complete_profile.bitbucket.class).to be(Hash)
+          expect(complete_profile.bitbucket).to be_a(Hash)
         end
       end
 
       context "a user without an associated bitbucket acount" do
         it "returns a string" do
-          expect(incomplete_profile.bitbucket).to be(nil)
+          expect(incomplete_profile.bitbucket).to be_nil
         end
       end
     end
@@ -90,13 +90,13 @@ describe Gratitude::Profile do
     describe "#bitbucket_username" do
       context "a user with an associated bitbucket account" do
         it "returns a string" do
-          expect(complete_profile.bitbucket_username.class).to be(String)
+          expect(complete_profile.bitbucket_username).to be_a(String)
         end
       end
 
       context "a user without an associated bitbucket acount" do
         it "returns a string" do
-          expect(incomplete_profile.bitbucket_username).to be(nil)
+          expect(incomplete_profile.bitbucket_username).to be_nil
         end
       end
     end
@@ -104,27 +104,27 @@ describe Gratitude::Profile do
     describe "#bountysource" do
       context "a user with an associated bountysource account" do
         it "returns a hash" do
-          expect(complete_profile.bountysource.class).to be(Hash)
+          expect(complete_profile.bountysource).to be_a(Hash)
         end
       end
 
       context "a user without an associated bountysource acount" do
         it "returns a string" do
-          expect(incomplete_profile.bountysource).to be(nil)
+          expect(incomplete_profile.bountysource).to be_nil
         end
       end
     end
 
     describe "#bountysource_username" do
       context "a user with an associated bountysource account" do
-        it "returns a string" do
-          expect(complete_profile.bountysource_username.class).to be(String)
+        it "returns nil" do
+          expect(complete_profile.bountysource_username).to be_nil
         end
       end
 
       context "a user without an associated bountysource acount" do
         it "returns a string" do
-          expect(incomplete_profile.bountysource_username).to be(nil)
+          expect(incomplete_profile.bountysource_username).to be_nil
         end
       end
     end
@@ -132,13 +132,13 @@ describe Gratitude::Profile do
     describe "#github" do
       context "a user with an associated github account" do
         it "returns a hash" do
-          expect(complete_profile.github.class).to be(Hash)
+          expect(complete_profile.github).to be_a(Hash)
         end
       end
 
       context "a user without an associated github acount" do
         it "returns a string" do
-          expect(incomplete_profile.github).to be(nil)
+          expect(incomplete_profile.github).to be_nil
         end
       end
     end
@@ -146,13 +146,13 @@ describe Gratitude::Profile do
     describe "#github_username" do
       context "a user with an associated github account" do
         it "returns a string" do
-          expect(complete_profile.github_username.class).to be(String)
+          expect(complete_profile.github_username).to be_a(String)
         end
       end
 
       context "a user without an associated github acount" do
         it "returns a string" do
-          expect(incomplete_profile.github_username).to be(nil)
+          expect(incomplete_profile.github_username).to be_nil
         end
       end
     end
@@ -160,13 +160,13 @@ describe Gratitude::Profile do
     describe "#openstreetmap" do
       context "a user with an associated openstreetmap account" do
         it "returns a hash" do
-          expect(complete_profile.openstreetmap.class).to be(Hash)
+          expect(complete_profile.openstreetmap).to be_a(Hash)
         end
       end
 
       context "a user without an associated openstreetmap acount" do
         it "returns a string" do
-          expect(incomplete_profile.openstreetmap).to be(nil)
+          expect(incomplete_profile.openstreetmap).to be_nil
         end
       end
     end
@@ -174,13 +174,13 @@ describe Gratitude::Profile do
     describe "#openstreetmap_username" do
       context "a user with an associated openstreetmap account" do
         it "returns a string" do
-          expect(complete_profile.openstreetmap_username.class).to be(String)
+          expect(complete_profile.openstreetmap_username).to be_a(String)
         end
       end
 
       context "a user without an associated openstreetmap acount" do
         it "returns a string" do
-          expect(incomplete_profile.openstreetmap_username).to be(nil)
+          expect(incomplete_profile.openstreetmap_username).to be_nil
         end
       end
     end
@@ -188,13 +188,13 @@ describe Gratitude::Profile do
     describe "#twitter" do
       context "a user with an associated twitter account" do
         it "returns a hash" do
-          expect(complete_profile.twitter.class).to be(Hash)
+          expect(complete_profile.twitter).to be_a(Hash)
         end
       end
 
       context "a user without an associated twitter acount" do
         it "returns a string" do
-          expect(no_twitter_profile.twitter).to be(nil)
+          expect(no_twitter_profile.twitter).to be_nil
         end
       end
     end
@@ -202,13 +202,13 @@ describe Gratitude::Profile do
     describe "#twitter_username" do
       context "a user with an associated twitter account" do
         it "returns a string" do
-          expect(complete_profile.twitter_username.class).to be(String)
+          expect(complete_profile.twitter_username).to be_a(String)
         end
       end
 
       context "a user without an associated twitter acount" do
         it "returns a string" do
-          expect(no_twitter_profile.twitter_username).to be(nil)
+          expect(no_twitter_profile.twitter_username).to be_nil
         end
       end
     end
@@ -216,7 +216,7 @@ describe Gratitude::Profile do
     describe "#venmo" do
       context "a user with an associated venmo account" do
         it "returns a hash" do
-          expect(complete_profile.venmo.class).to be(Hash)
+          expect(complete_profile.venmo).to be_a(Hash)
         end
       end
     end
@@ -224,20 +224,20 @@ describe Gratitude::Profile do
     describe "#venmo_username" do
       context "a user with an associated venmo account" do
         it "returns a string" do
-          expect(complete_profile.venmo_username.class).to be(String)
+          expect(complete_profile.venmo_username).to be_a(String)
         end
       end
 
       context "a user without an associated venmo acount" do
         it "returns a string" do
-          expect(incomplete_profile.openstreetmap_username).to be(nil)
+          expect(incomplete_profile.openstreetmap_username).to be_nil
         end
       end
     end
 
     describe "#amount_giving" do
       it "returns a float" do
-        expect(complete_profile.amount_giving.class).to be(Float)
+        expect(complete_profile.amount_giving).to be_a(Float)
       end
 
       it "returns the same value as its alias: #giving" do
@@ -247,7 +247,7 @@ describe Gratitude::Profile do
 
     describe "#amount_receiving" do
       it "returns a float" do
-        expect(complete_profile.amount_receiving.class).to be(Float)
+        expect(complete_profile.amount_receiving).to be_a(Float)
       end
 
       it "returns the same value as its alias: #receiving" do
@@ -259,47 +259,47 @@ describe Gratitude::Profile do
     describe "#goal" do
       context "a user who has defined a goal" do
         it "returns a Float" do
-          expect(complete_profile.goal.class).to be(Float)
+          expect(complete_profile.goal).to be_a(Float)
         end
       end
 
       context "a user who has not defined a goal" do
         it "returns nil" do
-          expect(incomplete_profile.goal).to be(nil)
+          expect(incomplete_profile.goal).to be_nil
         end
       end
     end
 
-    describe "#account_type" do
+    describe "#number" do
       it "returns a string" do
-        expect(complete_profile.account_type.class).to be(String)
+        expect(complete_profile.number).to be_a(String)
       end
 
-      it "returns the same value as its alias: #number" do
-        expect(complete_profile.account_type).to eq(complete_profile.number)
+      it "returns the same value as its alias: #account_type" do
+        expect(complete_profile.number).to eq(complete_profile.account_type)
       end
     end
 
     describe "#id" do
       it "returns a fixnum" do
-        expect(complete_profile.id.class).to be(Fixnum)
+        expect(complete_profile.id).to be_a(Fixnum)
       end
     end
 
-    describe "#number_of_patrons" do
+    describe "#npatrons" do
       it "returns a Fixnum" do
-        expect(complete_profile.number_of_patrons.class).to be(Fixnum)
+        expect(complete_profile.npatrons).to be_a(Fixnum)
       end
 
-      it "returns the same value as its alias: #npatrons" do
-        expect(complete_profile.number_of_patrons)
-          .to eq(complete_profile.npatrons)
+      it "returns the same value as its alias: #number_of_patrons" do
+        expect(complete_profile.npatrons)
+          .to eq(complete_profile.number_of_patrons)
       end
     end
 
     describe "#on" do
       it "returns a string" do
-        expect(complete_profile.on.class).to be(String)
+        expect(complete_profile.on).to be_a(String)
       end
     end
 
