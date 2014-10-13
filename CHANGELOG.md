@@ -1,3 +1,8 @@
+### 0.2.0 (October 13, 2014)
+* Update interface to interact with new Gratipay API (formerly called Gittip
+  API).
+* Privatize internally used class methods.
+
 ### 0.1.0 (May 16, 2014)
 * Add custom errors for authentication issues, incorrect usernames and tip update errors.
 
