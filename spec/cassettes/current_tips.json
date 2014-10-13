@@ -3,14 +3,14 @@
     {
       "request": {
         "method": "post",
-        "uri": "https://5962b93a-5bf7-4cb6-ae6f-aa4114c5e4f2:@www.gittip.com/gratitude_test/tips.json",
+        "uri": "https://5962b93a-5bf7-4cb6-ae6f-aa4114c5e4f2:@gratipay.com/gratitude_test/tips.json",
         "body": {
           "encoding": "UTF-8",
-          "string": "[{\"amount\":\"1.00\",\"platform\":\"gittip\",\"username\":\"whit537\"},{\"amount\":\"0.25\",\"platform\":\"gittip\",\"username\":\"JohnKellyFerguson\"}]"
+          "string": "[{\"amount\":\"1.00\",\"platform\":\"gratipay\",\"username\":\"whit537\"},{\"amount\":\"0.25\",\"platform\":\"gratipay\",\"username\":\"JohnKellyFerguson\"}]"
         },
         "headers": {
           "User-Agent": [
-            "Faraday v0.8.9"
+            "Faraday v0.9.0"
           ],
           "Accept-Encoding": [
             "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
@@ -33,17 +33,16 @@
             "application/json"
           ],
           "Date": [
-            "Sat, 17 May 2014 00:14:04 GMT"
+            "Mon, 13 Oct 2014 20:40:39 GMT"
           ],
           "Expires": [
             "Thu, 01 Jan 1970 00:00:00 GMT"
           ],
           "Server": [
-            "Aspen! Cheroot!"
+            "gunicorn/18.0"
           ],
           "Set-Cookie": [
-            "csrf_token=d8tYvYEFTIm6bAwqdj1ihyLTR6sQKAPk; expires=Sat, 24 May 2014 00:14:04 GMT; Path=/",
-            "session=456dbf6a2d524e72ae45bc72ff8e8378; expires=Sat, 24 May 2014 00:14:04 GMT; httponly; Path=/; secure"
+            "csrf_token=Lh8JxukUnKOQCBCKKfqKSvuLIPIujdfP; expires=Mon, 20 Oct 2014 20:40:39 GMT; Path=/; secure"
           ],
           "Vary": [
             "Cookie"
@@ -51,11 +50,11 @@
           "X-Frame-Options": [
             "SAMEORIGIN"
           ],
-          "X-Gittip-Version": [
-            "12.11.2"
+          "X-Gratipay-Version": [
+            "17.1.3"
           ],
           "Content-Length": [
-            "210"
+            "214"
           ],
           "Connection": [
             "keep-alive"
@@ -63,23 +62,23 @@
         },
         "body": {
           "encoding": "UTF-8",
-          "string": "[\n    {\n        \"amount\": \"1.00\",\n        \"platform\": \"gittip\",\n        \"username\": \"whit537\"\n    },\n    {\n        \"amount\": \"0.25\",\n        \"platform\": \"gittip\",\n        \"username\": \"JohnKellyFerguson\"\n    }\n]"
+          "string": "[\n    {\n        \"amount\": \"1.00\",\n        \"platform\": \"gratipay\",\n        \"username\": \"whit537\"\n    },\n    {\n        \"amount\": \"0.25\",\n        \"platform\": \"gratipay\",\n        \"username\": \"JohnKellyFerguson\"\n    }\n]"
         },
         "http_version": null
       },
-      "recorded_at": "Sat, 17 May 2014 00:14:04 GMT"
+      "recorded_at": "Mon, 13 Oct 2014 20:40:39 GMT"
     },
     {
       "request": {
         "method": "get",
-        "uri": "https://5962b93a-5bf7-4cb6-ae6f-aa4114c5e4f2:@www.gittip.com/gratitude_test/tips.json",
+        "uri": "https://5962b93a-5bf7-4cb6-ae6f-aa4114c5e4f2:@gratipay.com/gratitude_test/tips.json",
         "body": {
           "encoding": "US-ASCII",
           "string": ""
         },
         "headers": {
           "User-Agent": [
-            "Faraday v0.8.9"
+            "Faraday v0.9.0"
           ],
           "Accept-Encoding": [
             "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
@@ -102,17 +101,16 @@
             "application/json"
           ],
           "Date": [
-            "Sat, 17 May 2014 00:14:06 GMT"
+            "Mon, 13 Oct 2014 20:40:39 GMT"
           ],
           "Expires": [
             "Thu, 01 Jan 1970 00:00:00 GMT"
           ],
           "Server": [
-            "Aspen! Cheroot!"
+            "gunicorn/18.0"
           ],
           "Set-Cookie": [
-            "csrf_token=n3OsPDla53v7lymuRz1KQPLO71xoccky; expires=Sat, 24 May 2014 00:14:06 GMT; Path=/",
-            "session=456dbf6a2d524e72ae45bc72ff8e8378; expires=Sat, 24 May 2014 00:14:05 GMT; httponly; Path=/; secure"
+            "csrf_token=uiepfMfnxVF10KqgsHAIIGGndPAOuJX0; expires=Mon, 20 Oct 2014 20:40:39 GMT; Path=/; secure"
           ],
           "Vary": [
             "Cookie"
@@ -120,11 +118,11 @@
           "X-Frame-Options": [
             "SAMEORIGIN"
           ],
-          "X-Gittip-Version": [
-            "12.11.2"
+          "X-Gratipay-Version": [
+            "17.1.3"
           ],
           "Content-Length": [
-            "210"
+            "214"
           ],
           "Connection": [
             "keep-alive"
@@ -132,12 +130,12 @@
         },
         "body": {
           "encoding": "UTF-8",
-          "string": "[\n    {\n        \"amount\": \"1.00\",\n        \"platform\": \"gittip\",\n        \"username\": \"whit537\"\n    },\n    {\n        \"amount\": \"0.25\",\n        \"platform\": \"gittip\",\n        \"username\": \"JohnKellyFerguson\"\n    }\n]"
+          "string": "[\n    {\n        \"amount\": \"1.00\",\n        \"platform\": \"gratipay\",\n        \"username\": \"whit537\"\n    },\n    {\n        \"amount\": \"0.25\",\n        \"platform\": \"gratipay\",\n        \"username\": \"JohnKellyFerguson\"\n    }\n]"
         },
         "http_version": null
       },
-      "recorded_at": "Sat, 17 May 2014 00:14:06 GMT"
+      "recorded_at": "Mon, 13 Oct 2014 20:40:39 GMT"
     }
   ],
-  "recorded_with": "VCR 2.9.0"
+  "recorded_with": "VCR 2.9.2"
 }

@@ -21,7 +21,7 @@ describe Gratitude::Payday do
       before { Gratitude::Payday::PAYDAYS = [] }
 
       it "returns an array" do
-        expect(Gratitude::Payday.all.class).to be(Array)
+        expect(Gratitude::Payday.all).to be_a(Array)
       end
 
       it "updates the PAYDAYS constant when it is empty" do
@@ -36,24 +36,17 @@ describe Gratitude::Payday do
       end
     end
 
-    describe "#sort_by_ts_end" do
-      it "places the newest payday before the oldest payday" do
-        expect(Gratitude::Payday.sort_by_ts_end.first.ts_end)
-          .to be > (Gratitude::Payday.sort_by_ts_end.last.ts_end)
-      end
-    end
-
     describe "#newest" do
       it "returns the most recent payday" do
         expect(Gratitude::Payday.newest)
-          .to eq(Gratitude::Payday.sort_by_ts_end.first)
+          .to eq(Gratitude::Payday.send(:sort_by_ts_end).first)
       end
     end
 
     describe "#oldest" do
       it "returns the oldest payday" do
         expect(Gratitude::Payday.oldest)
-          .to eq(Gratitude::Payday.sort_by_ts_end.last)
+          .to eq(Gratitude::Payday.send(:sort_by_ts_end).last)
       end
     end
 

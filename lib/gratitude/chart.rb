@@ -33,17 +33,18 @@ module Gratitude
     end
 
     def self.sort_by_date
-      all.sort_by { |chart| chart.date }.reverse
+      all.sort_by(&:date).reverse
     end
+    private_class_method :sort_by_date
 
-    def self.charts_from_gittip
+    def self.charts_from_gratipay
       faraday.get("/about/charts.json").body.to_a
     end
+    private_class_method :charts_from_gratipay
 
     def self.collect_charts
-      charts_from_gittip.each do |chart_hash|
-        Chart.new(chart_hash)
-      end
+      charts_from_gratipay.each { |chart_hash| Chart.new(chart_hash) }
     end
+    private_class_method :collect_charts
   end
 end

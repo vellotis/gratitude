@@ -3,14 +3,14 @@
     {
       "request": {
         "method": "get",
-        "uri": "https://www.gittip.com/non_existing_user/charts.json",
+        "uri": "https://gratipay.com/non_existing_user/charts.json",
         "body": {
           "encoding": "US-ASCII",
           "string": ""
         },
         "headers": {
           "User-Agent": [
-            "Faraday v0.8.9"
+            "Faraday v0.9.0"
           ],
           "Accept-Encoding": [
             "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
@@ -36,16 +36,16 @@
             "application/json"
           ],
           "Date": [
-            "Sat, 17 May 2014 00:13:39 GMT"
+            "Mon, 13 Oct 2014 21:02:25 GMT"
           ],
           "Expires": [
             "Thu, 01 Jan 1970 00:00:00 GMT"
           ],
           "Server": [
-            "Aspen! Cheroot!"
+            "gunicorn/18.0"
           ],
           "Set-Cookie": [
-            "csrf_token=b2k7EmJOXsxy3Rs7ys1wR54cMTQvvBt8; expires=Sat, 24 May 2014 00:13:39 GMT; Path=/"
+            "csrf_token=PHbq3j7rnfbLdRQmFfSuloJPGSNomXob; expires=Mon, 20 Oct 2014 21:02:25 GMT; Path=/; secure"
           ],
           "Vary": [
             "Cookie"
@@ -53,8 +53,8 @@
           "X-Frame-Options": [
             "SAMEORIGIN"
           ],
-          "X-Gittip-Version": [
-            "12.11.2"
+          "X-Gratipay-Version": [
+            "17.1.3"
           ],
           "Content-Length": [
             "2"
@@ -69,8 +69,8 @@
         },
         "http_version": null
       },
-      "recorded_at": "Sat, 17 May 2014 00:13:39 GMT"
+      "recorded_at": "Mon, 13 Oct 2014 21:02:25 GMT"
     }
   ],
-  "recorded_with": "VCR 2.9.0"
+  "recorded_with": "VCR 2.9.2"
 }

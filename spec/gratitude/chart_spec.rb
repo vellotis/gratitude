@@ -21,7 +21,7 @@ describe Gratitude::Chart do
       before { Gratitude::Chart::CHARTS = [] }
 
       it "returns an array" do
-        expect(Gratitude::Chart.all.class).to be(Array)
+        expect(Gratitude::Chart.all).to be_a(Array)
       end
 
       it "updates the CHARTS constant when it is empty" do
@@ -36,24 +36,17 @@ describe Gratitude::Chart do
       end
     end
 
-    describe "#sort_by_date" do
-      it "places the newest chart before the oldest chart" do
-        expect(Gratitude::Chart.sort_by_date.first.date)
-          .to be > (Gratitude::Chart.sort_by_date.last.date)
-      end
-    end
-
     describe "#newest" do
       it "returns the most recent payday" do
         expect(Gratitude::Chart.newest)
-          .to eq(Gratitude::Chart.sort_by_date.first)
+          .to eq(Gratitude::Chart.send(:sort_by_date).first)
       end
     end
 
     describe "#oldest" do
       it "returns the oldest chart" do
         expect(Gratitude::Chart.oldest)
-          .to eq(Gratitude::Chart.sort_by_date.last)
+          .to eq(Gratitude::Chart.send(:sort_by_date).last)
       end
     end
   end

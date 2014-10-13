@@ -14,9 +14,9 @@ describe TestObject do
       expect(test_object.faraday.class).to eq(Faraday::Connection)
     end
 
-    it "sets the correct gittip base url" do
+    it "sets the correct gratipay base url" do
       expect(test_object.faraday.url_prefix.to_s)
-        .to eq("https://www.gittip.com/")
+        .to eq("https://gratipay.com/")
     end
   end
 end

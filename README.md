@@ -6,7 +6,7 @@ gratitude
 [![Code Climate](https://codeclimate.com/github/JohnKellyFerguson/gratitude.png)](https://codeclimate.com/github/JohnKellyFerguson/gratitude)
 [![Coverage Status](https://coveralls.io/repos/JohnKellyFerguson/gratitude/badge.png)](https://coveralls.io/r/JohnKellyFerguson/gratitude)
 
-A simple Ruby wrapper for the [Gittip API](https://github.com/gittip/www.gittip.com#api). Please follow the [Changelog](CHANGELOG.md) to check the status of the project.
+A simple Ruby wrapper for the [Gratipay API](https://github.com/gratipay/www.gratipay.com#api). Please follow the [Changelog](CHANGELOG.md) to check the status of the project.
 
 
 # Installation
@@ -15,7 +15,7 @@ A simple Ruby wrapper for the [Gittip API](https://github.com/gittip/www.gittip.
 
 # Usage
 
-The gratitude gem interacts with the six different endpoints of the Gittip API. They are as follows:
+The gratitude gem interacts with the six different endpoints of the Gratipay API. They are as follows:
 
 * [Charts](#charts-source-code)
 * [Paydays](#paydays-source-code)
@@ -24,10 +24,10 @@ The gratitude gem interacts with the six different endpoints of the Gittip API. 
 * [Profile](#profile-source-code)
 * [Tips](#tips-client-authentication-source-code-tips-source-code)
 
-When using gratitude to retrieve data from the Gittip API, please note that many of the JSON key names have been wrapped in more naturally sounding method names. However, all of the original JSON key names have also been maintained as aliases so as to maitain consistency with the original [Gittip API documentation](https://github.com/gittip/www.gittip.com#api).
+When using gratitude to retrieve data from the Gratipay API, please note that many of the JSON key names have been wrapped in more naturally sounding method names. However, all of the original JSON key names have also been maintained as aliases so as to maitain consistency with the original [Gratipay API documentation](https://github.com/gratipay/www.gratipay.com#api).
 
 ##Charts ([source code](https://github.com/JohnKellyFerguson/gratitude/blob/master/lib/gratitude/chart.rb))
-The Chart endpoint of the Gittip API provides aggregate statistics over time which are used in Gittip's [chart page](https://www.gittip.com/about/charts.html). To retrieve this information, use the following command:
+The Chart endpoint of the Gratipay API provides aggregate statistics over time which are used in Gratipay's [chart page](https://www.gratipay.com/about/charts.html). To retrieve this information, use the following command:
 
 ```ruby
 Gratitude::Chart.all
@@ -67,7 +67,7 @@ Gratitude::Chart.newest
 
 ##Paydays ([source code](https://github.com/JohnKellyFerguson/gratitude/blob/master/lib/gratitude/payday.rb))
 
-The Gittip API provides access to the historical data of all its paydays. To retrieve this information, simply use the following command:
+The Gratipay API provides access to the historical data of all its paydays. To retrieve this information, simply use the following command:
 
 ```ruby
 Gratitude::Payday.all
@@ -113,9 +113,9 @@ Gratitude::Payday.newest
 ```
 
 ##Statistics ([source code](https://github.com/JohnKellyFerguson/gratitude/blob/master/lib/gratitude/statistics.rb))
-The Statistics aspect of the Gittip API provides the current statistics, as of that moment in time, for Gittip. Note that these stats can potentially change when making subsequent requests.
+The Statistics aspect of the Gratipay API provides the current statistics, as of that moment in time, for Gratipay. Note that these stats can potentially change when making subsequent requests.
 
-If you would like to get the current Gittip stats, you can do so by using:
+If you would like to get the current Gratipay stats, you can do so by using:
 
 ```ruby
 Gratitude::Statistics.current
@@ -127,7 +127,7 @@ Alternatively, you can also use:
 Gratitude::Statistics.new
 ```
 
-Each of the above will return an object containing all of the current Gittip stats. You can access each of the Gittip stats using the following methods:
+Each of the above will return an object containing all of the current Gratipay stats. You can access each of the Gratipay stats using the following methods:
 
 * `average_tip_amount` (alias: `average_tip`)
 * `average_number_of_tippees` (alias: `average_tippees`)
@@ -141,12 +141,12 @@ Each of the above will return an object containing all of the current Gittip sta
 * `number_who_give_and_receive` (alias: `noverlap`)
 * `number_of_receivers` (alias: `nreceivers`)
 * `other_people`
-	* This returns a string describing how many people the average person on Gittip tips.
+	* This returns a string describing how many people the average person on Gratipay tips.
 * `percentage_of_users_with_credit_cards` (alias: `pcc`)
 * `punctuation` (alias: `punc`)
-	* This is used internally by the Gittip API for figuring out `last_thursday` and `this_thursday`. It's unlikely that this will need to be utilized by anyone using the gratitude gem.
+	* This is used internally by the Gratipay API for figuring out `last_thursday` and `this_thursday`. It's unlikely that this will need to be utilized by anyone using the gratitude gem.
 * `statements`
-	* This returns an array of 16 hashes. Each hash provides the personal statement of a Gittip user and has the following keys: `statement`, `username`. Note that this will return a different array of hashes each time you query the Gittip API.
+	* This returns an array of 16 hashes. Each hash provides the personal statement of a Gratipay user and has the following keys: `statement`, `username`. Note that this will return a different array of hashes each time you query the Gratipay API.
 * `this_thursday`
 	* This refers to the upcoming Thursday when payments/transfers are set to occur. Possible values include: "this Thursday", "today", "right now!", and "next Thursday"
 * `tip_distribution_json`
@@ -158,7 +158,7 @@ Each of the above will return an object containing all of the current Gittip sta
 * `transfer_volume`
 
 ##User Charts ([source code](https://github.com/JohnKellyFerguson/gratitude/blob/master/lib/gratitude/user_chart.rb))
-The User Chart endpoint of the Gittip API provides aggregate stats over time for a given user.
+The User Chart endpoint of the Gratipay API provides aggregate stats over time for a given user.
 
 To retrieve this information, do the following:
 
@@ -188,7 +188,7 @@ Gratitude::UserChart.newest_for("JohnKellyFerguson")
 
 ##Profile ([source code](https://github.com/JohnKellyFerguson/gratitude/blob/master/lib/gratitude/profile.rb))
 
-The Profile aspect of the Gittip API allows you to get the public profile information of any Gittip user. To do so, just pass their username as an initialization argument to the `Gratitude::Profile` class.
+The Profile aspect of the Gratipay API allows you to get the public profile information of any Gratipay user. To do so, just pass their username as an initialization argument to the `Gratitude::Profile` class.
 
 ```ruby
 Gratitude::Profile.new("JohnKellyFerguson")
@@ -241,9 +241,9 @@ The above will retrieve the public profile of the above user. You can then acces
 * `amount_receiving` (alias: `receiving`)
   * returns an estimate as a float of what the given user is expected to receive this week.
 * `number_of_patrons` (alias: `npatrons`)
-	*  returns the number of other gittipers that donate to the user being queried.
+	*  returns the number of other gratipayers that donate to the user being queried.
 * `on`
-	* returns the platform name: "gittip"
+	* returns the platform name: "gratipay"
 * `goal`
   * returns the amount (as a float) that the user would like to receive weekly if the user set such a goal.
   * returns `nil` if the user has defined themselves as a patron or has not set a specific monetary goal.
@@ -254,9 +254,9 @@ The above will retrieve the public profile of the above user. You can then acces
 
 
 ##Tips ([client authentication source code](https://github.com/JohnKellyFerguson/gratitude/blob/master/lib/gratitude/client.rb), [tips source code](https://github.com/JohnKellyFerguson/gratitude/blob/master/lib/gratitude/tips.rb))
-The Tips aspect of the Gittip API allows you to retrieve and update the current tips of an authenticated user. In order to interact with this aspect of the API, you will need your username and API_KEY. To find out your API Key, log into your Gittip account, go to your profile and at the bottom of the page you will find your API_KEY.
+The Tips aspect of the Gratipay API allows you to retrieve and update the current tips of an authenticated user. In order to interact with this aspect of the API, you will need your username and API_KEY. To find out your API Key, log into your Gratipay account, go to your profile and at the bottom of the page you will find your API_KEY.
 
-![Gittip API Key](api_key.png)
+![Gratipay API Key](api_key.png)
 
 Now that you have your API_KEY, you can find out your current tips or update your tips using Gratitude.
 
@@ -264,7 +264,7 @@ Now that you have your API_KEY, you can find out your current tips or update you
 To find out the current tips of a user, follow these instructions:
 
 ```ruby
-# First establish a connection to the Gittip API by passing in your credentials to Gratitude::Client.new
+# First establish a connection to the Gratipay API by passing in your credentials to Gratitude::Client.new
 # You will need to pass in your username and api key like so.
 client = Gratitude::Client.new(:username => "my_username", :api_key => "my_api_key")
 # Then, to find out your current tips, simply call the current_tips method.
@@ -274,9 +274,9 @@ This will will return an array of hashes that represent your current tips and wi
 
 
     [
-      {"amount"=>"2.00", "platform"=>"gittip", "username"=>"gittip"},
-      {"amount"=>"1.00", "platform"=>"gittip", "username"=>"whit537"},
-      {"amount"=>"0.25", "platform"=>"gittip", "username"=>"JohnKellyFerguson"}
+      {"amount"=>"2.00", "platform"=>"gratipay", "username"=>"gratipay"},
+      {"amount"=>"1.00", "platform"=>"gratipay", "username"=>"whit537"},
+      {"amount"=>"0.25", "platform"=>"gratipay", "username"=>"JohnKellyFerguson"}
     ]
 
 Please be aware that all of the amounts in the hash are strings and not floats.
@@ -298,7 +298,7 @@ client = Gratitude::Client.new(:username => "my_username", :api_key => "my_api_k
 We can then call the `update_tips` method, which accepts an array of hashes containing a user's username and desired tip amount.
 
 ```ruby
-client.update_tips([ { :username => "gittip", :amount => "3.50" },
+client.update_tips([ { :username => "gratipay", :amount => "3.50" },
 					  { :username => "whit537", :amount => "3.50"},
 					  { :username => "JohnKellyFerguson", :amount = "3.50" }])
 ```
@@ -307,9 +307,9 @@ When tips are successfully updated, the `update_tips` method will return an arra
 
 ```ruby
 [
-  {"amount"=>"3.50", "platform"=>"gittip", "username"=>"gittip"},
-  {"amount"=>"3.50", "platform"=>"gittip", "username"=>"whit537"},
-  {"amount"=>"3.50", "platform"=>"gittip", "username"=>"JohnKellyFerguson"}
+  {"amount"=>"3.50", "platform"=>"gratipay", "username"=>"gratipay"},
+  {"amount"=>"3.50", "platform"=>"gratipay", "username"=>"whit537"},
+  {"amount"=>"3.50", "platform"=>"gratipay", "username"=>"JohnKellyFerguson"}
 ]
 ```
 Please note that you do not have to update all of a user's tips when using the `update_tips` method and that it is possible to either update only a subset of a user's tips or to add new tips.
@@ -317,16 +317,16 @@ Please note that you do not have to update all of a user's tips when using the `
 For example:
 
 ```ruby
-client.update_tips([ { :username => "gittip", :amount => "4.50" } ])
+client.update_tips([ { :username => "gratipay", :amount => "4.50" } ])
 ```
-will only updates the tips going to the "gittip"" user. All other tips will remain unchanged. We can see this by continuing our example and running the `current_tips` method.
+will only updates the tips going to the "gratipay"" user. All other tips will remain unchanged. We can see this by continuing our example and running the `current_tips` method.
 
 ```ruby
 client.current_tips
 => [
-    {"amount"=>"4.50", "platform"=>"gittip", "username"=>"gittip"},
-    {"amount"=>"3.50", "platform"=>"gittip", "username"=>"whit537"},
-    {"amount"=>"3.50", "platform"=>"gittip", "username"=>"JohnKellyFerguson"}
+    {"amount"=>"4.50", "platform"=>"gratipay", "username"=>"gratipay"},
+    {"amount"=>"3.50", "platform"=>"gratipay", "username"=>"whit537"},
+    {"amount"=>"3.50", "platform"=>"gratipay", "username"=>"JohnKellyFerguson"}
    ]
 ```
 
@@ -340,24 +340,24 @@ The new tip will be added to the previously existing tips.
 ```ruby
 client.current_tips
 => [
-    {"amount"=>"4.50", "platform"=>"gittip", "username"=>"gittip"},
-    {"amount"=>"3.50", "platform"=>"gittip", "username"=>"whit537"},
-    {"amount"=>"3.50", "platform"=>"gittip", "username"=>"JohnKellyFerguson"},
-    {"amount"=>"1.00", "platform"=>"gittip", "username"=>"steveklabnik"}
+    {"amount"=>"4.50", "platform"=>"gratipay", "username"=>"gratipay"},
+    {"amount"=>"3.50", "platform"=>"gratipay", "username"=>"whit537"},
+    {"amount"=>"3.50", "platform"=>"gratipay", "username"=>"JohnKellyFerguson"},
+    {"amount"=>"1.00", "platform"=>"gratipay", "username"=>"steveklabnik"}
    ]
 ```
 
 Finally, gratitude comes with the ability to update a specific tip and remove all other tips. This can be accomplished by using the `update_tips_and_prune` method, which again takes an array of hashes containing a user's username and desired tip amount.
 
 ```ruby
-client.update_tips_and_prune([ { :username => "gittip", :amount => "25.00" } ])
+client.update_tips_and_prune([ { :username => "gratipay", :amount => "25.00" } ])
 ```
 
 Like the `update_tips` method, `update_tips_and_prune` will return an array of the successfully updated tips.
 
 ```ruby
 [
-  {"amount"=>"25.00", "platform"=>"gittip", "username"=>"gittip"}
+  {"amount"=>"25.00", "platform"=>"gratipay", "username"=>"gratipay"}
 ]
 ```
 
@@ -366,7 +366,7 @@ All other tips have been removed, which we can see by using the `current_tips` m
 ```ruby
 client.current_tips
 => [
-     {"amount"=>"25.00", "platform"=>"gittip", "username"=>"gittip"}
+     {"amount"=>"25.00", "platform"=>"gratipay", "username"=>"gratipay"}
    ]
 ```
 

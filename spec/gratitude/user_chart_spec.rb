@@ -20,31 +20,31 @@ describe Gratitude::UserChart do
     before(:each) { Gratitude::UserChart::USER_CHARTS = [] }
     describe "#all_for_user" do
       it "returns an array" do
-        expect(Gratitude::UserChart.all_for_user("Gittip").class)
+        expect(Gratitude::UserChart.all_for_user("Gratipay").class)
           .to be(Array)
       end
 
-      context "when the requested Gittip user exists" do
+      context "when the requested Gratipay user exists" do
         it "updates the USER_CHARTS constant when it is empty" do
-          expect { Gratitude::UserChart.all_for_user("Gittip") }
+          expect { Gratitude::UserChart.all_for_user("Gratipay") }
             .to change { Gratitude::UserChart::USER_CHARTS.size }.from(0)
         end
 
         it "its array should be comprised of User_Chart objects" do
-          Gratitude::UserChart.all_for_user("Gittip").each do |user_chart|
+          Gratitude::UserChart.all_for_user("Gratipay").each do |user_chart|
             expect(user_chart.class).to eq(Gratitude::UserChart)
           end
         end
 
         it "only includes charts for a given username" do
           Gratitude::UserChart.all_for_user("whit537")
-          Gratitude::UserChart.all_for_user("Gittip").each do |user_chart|
-            expect(user_chart.username).to eq("Gittip")
+          Gratitude::UserChart.all_for_user("Gratipay").each do |user_chart|
+            expect(user_chart.username).to eq("Gratipay")
           end
         end
       end
 
-      context "when the requested Gittip user does not exist" do
+      context "when the requested Gratipay user does not exist" do
         before { VCR.insert_cassette "user_chart_not_found" }
         after { VCR.eject_cassette }
 
@@ -55,25 +55,21 @@ describe Gratitude::UserChart do
       end
     end
 
-    describe "#sort_by_date_for_user" do
-      it "places the newest user chart before the oldest user chart" do
-        expect(Gratitude::UserChart.sort_by_date_for_user("Gittip").first.date)
-          .to be >
-            (Gratitude::UserChart.sort_by_date_for_user("Gittip").last.date)
-      end
-    end
-
     describe "#newest_for" do
       it "returns the most recent payday" do
-        expect(Gratitude::UserChart.newest_for("Gittip"))
-          .to eq(Gratitude::UserChart.sort_by_date_for_user("Gittip").first)
+        expect(Gratitude::UserChart.newest_for("Gratipay"))
+          .to eq(
+            Gratitude::UserChart.send(:sort_by_date_for_user, "Gratipay").first
+          )
       end
     end
 
     describe "#oldest" do
       it "returns the oldest payday" do
-        expect(Gratitude::UserChart.oldest_for("Gittip"))
-          .to eq(Gratitude::UserChart.sort_by_date_for_user("Gittip").last)
+        expect(Gratitude::UserChart.oldest_for("Gratipay"))
+          .to eq(
+            Gratitude::UserChart.send(:sort_by_date_for_user, "Gratipay").last
+          )
       end
     end
   end
@@ -87,7 +83,7 @@ describe Gratitude::UserChart do
 
     let(:user_chart) do
       Gratitude::UserChart.new(
-          "username" => "Gittip",
+          "username" => "Gratipay",
           "date" => "2014-03-27",
           "npatrons" => 137,
           "receipts" => 416.94
@@ -96,7 +92,7 @@ describe Gratitude::UserChart do
 
     describe "#username" do
       it "sets the correct username" do
-        expect(user_chart.username).to eq("Gittip")
+        expect(user_chart.username).to eq("Gratipay")
       end
     end
 

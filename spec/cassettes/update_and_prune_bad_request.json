@@ -3,14 +3,14 @@
     {
       "request": {
         "method": "post",
-        "uri": "https://5962b93a-5bf7-4cb6-ae6f-aa4114c5e4f2:@www.gittip.com/gratitude_test/tips.json?also_prune=true",
+        "uri": "https://5962b93a-5bf7-4cb6-ae6f-aa4114c5e4f2:@gratipay.com/gratitude_test/tips.json?also_prune=true",
         "body": {
           "encoding": "UTF-8",
-          "string": "[{\"amount\":\"1.00\",\"platform\":\"gittip\",\"username\":\"not_a_user_so_fake\"},{\"amount\":\"0.25\",\"platform\":\"gittip\",\"username\":\"will_be_an_error\"}]"
+          "string": "[{\"amount\":\"1.00\",\"platform\":\"gratipay\",\"username\":\"not_a_user_so_fake\"},{\"amount\":\"0.25\",\"platform\":\"gratipay\",\"username\":\"will_be_an_error\"}]"
         },
         "headers": {
           "User-Agent": [
-            "Faraday v0.8.9"
+            "Faraday v0.9.0"
           ],
           "Accept-Encoding": [
             "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
@@ -33,17 +33,16 @@
             "application/json"
           ],
           "Date": [
-            "Sat, 17 May 2014 00:13:35 GMT"
+            "Mon, 13 Oct 2014 20:40:43 GMT"
           ],
           "Expires": [
             "Thu, 01 Jan 1970 00:00:00 GMT"
           ],
           "Server": [
-            "Aspen! Cheroot!"
+            "gunicorn/18.0"
           ],
           "Set-Cookie": [
-            "csrf_token=wUHY6OcgDiagpsZC4DloBXMV9XL2wb1L; expires=Sat, 24 May 2014 00:13:35 GMT; Path=/",
-            "session=456dbf6a2d524e72ae45bc72ff8e8378; expires=Sat, 24 May 2014 00:13:35 GMT; httponly; Path=/; secure"
+            "csrf_token=89PlqK6E1iNku4Ckg3p8W8D28vWOUUxU; expires=Mon, 20 Oct 2014 20:40:43 GMT; Path=/; secure"
           ],
           "Vary": [
             "Cookie"
@@ -51,8 +50,8 @@
           "X-Frame-Options": [
             "SAMEORIGIN"
           ],
-          "X-Gittip-Version": [
-            "12.11.2"
+          "X-Gratipay-Version": [
+            "17.1.3"
           ],
           "Content-Length": [
             "284"
@@ -63,12 +62,12 @@
         },
         "body": {
           "encoding": "UTF-8",
-          "string": "[\n    {\n        \"amount\": \"e\",\n        \"error\": \"IntegrityError\",\n        \"platform\": \"gittip\",\n        \"username\": \"not_a_user_so_fake\"\n    },\n    {\n        \"amount\": \"e\",\n        \"error\": \"IntegrityError\",\n        \"platform\": \"gittip\",\n        \"username\": \"will_be_an_error\"\n    }\n]"
+          "string": "[\n    {\n        \"amount\": \"error\",\n        \"error\": \"NoTippee\",\n        \"platform\": \"gratipay\",\n        \"username\": \"not_a_user_so_fake\"\n    },\n    {\n        \"amount\": \"error\",\n        \"error\": \"NoTippee\",\n        \"platform\": \"gratipay\",\n        \"username\": \"will_be_an_error\"\n    }\n]"
         },
         "http_version": null
       },
-      "recorded_at": "Sat, 17 May 2014 00:13:35 GMT"
+      "recorded_at": "Mon, 13 Oct 2014 20:40:43 GMT"
     }
   ],
-  "recorded_with": "VCR 2.9.0"
+  "recorded_with": "VCR 2.9.2"
 }

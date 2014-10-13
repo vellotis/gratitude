@@ -9,93 +9,54 @@ module Gratitude
       @username = username
     end
 
-    def avatar_url
-      response_body["avatar"]
-    end
-    alias_method :avatar, :avatar_url
-
-    def bitcoin
-      response_body["bitcoin"]
-    end
-
-    def bitbucket
-      response_body["elsewhere"]["bitbucket"]
+    %w(
+      avatar
+      elsewhere
+      id
+      npatrons
+      number
+      on
+    ).each do |response_key|
+      define_method(response_key) { response_body.fetch(response_key) }
     end
 
-    def bitbucket_username
-      bitbucket["user_name"] if bitbucket
-    end
+    alias_method :avatar_url, :avatar
+    alias_method :account_type, :number
+    alias_method :number_of_patrons, :npatrons
 
-    def bountysource
-      response_body["elsewhere"]["bountysource"]
+    def giving
+      response_body.fetch("giving").to_f
     end
-
-    def bountysource_username
-      bountysource["user_name"] if bountysource
-    end
-
-    def github
-      response_body["elsewhere"]["bountysource"]
-    end
-
-    def github_username
-      github["user_name"] if github
-    end
-
-    def openstreetmap
-      response_body["elsewhere"]["openstreetmap"]
-    end
-
-    def openstreetmap_username
-      openstreetmap["user_name"] if openstreetmap
-    end
-
-    def twitter
-      response_body["elsewhere"]["twitter"]
-    end
-
-    def twitter_username
-      twitter["user_name"] if twitter
-    end
-
-    def venmo
-      response_body["elsewhere"]["venmo"]
-    end
-
-    def venmo_username
-      venmo["user_name"] if venmo
-    end
-
-    def amount_giving
-      response_body["giving"].to_f
-    end
-    alias_method :giving, :amount_giving
+    alias_method :amount_giving, :giving
 
     def amount_receiving
-      response_body["receiving"].to_f
+      response_body.fetch("receiving").to_f
     end
     alias_method :receiving, :amount_receiving
 
     def goal
-      response_body["goal"].to_f if response_body["goal"]
+      response_body.fetch("goal").to_f if response_body["goal"]
     end
 
-    def account_type
-      response_body["number"]
-    end
-    alias_method :number, :account_type
-
-    def id
-      response_body["id"]
+    def bitcoin
+      response_body.fetch("bitcoin") { nil }
     end
 
-    def number_of_patrons
-      response_body["npatrons"]
-    end
-    alias_method :npatrons, :number_of_patrons
+    %w(
+      bitbucket
+      bountysource
+      github
+      openstreetmap
+      twitter
+      venmo
+    ).each do |other_account|
+      define_method(other_account) { elsewhere[other_account] }
 
-    def on
-      response_body["on"]
+      define_method("#{other_account}_username") do
+        if send(other_account.to_sym)
+          send(other_account.to_sym).fetch("user_name")
+        end
+      end
     end
 
     private

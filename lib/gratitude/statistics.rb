@@ -8,95 +8,51 @@ module Gratitude
       alias_method :current, :new
     end
 
-    def average_tip_amount
-      response_body["average_tip"]
+    def nach
+      Integer(response_body.fetch("nach"))
     end
-    alias_method :average_tip, :average_tip_amount
+    alias_method :number_of_ach_credits, :nach
+    alias_method :number_of_achs, :nach
 
-    def average_number_of_tippees
-      response_body["average_tippees"]
+    def pcc
+      response_body.fetch("pcc").strip
     end
-    alias_method :average_tippees, :average_number_of_tippees
+    alias_method :percentage_of_users_with_credit_cards, :pcc
 
-    def amount_in_escrow
-      response_body["escrow"]
-    end
-    alias_method :escrow, :amount_in_escrow
-
-    def last_thursday
-      response_body["last_thursday"]
-    end
-
-    def number_of_ach_credits
-      response_body["nach"].to_i
-    end
-    alias_method :nach, :number_of_ach_credits
-    alias_method :number_of_achs, :number_of_ach_credits
-
-    def number_of_active_users
-      response_body["nactive"]
-    end
-    alias_method :nactive, :number_of_active_users
-
-    def number_of_credit_cards
-      response_body["ncc"]
-    end
-    alias_method :ncc, :number_of_credit_cards
-
-    def number_of_givers
-      response_body["ngivers"]
-    end
-    alias_method :ngivers, :number_of_givers
-
-    def number_who_give_and_receive
-      response_body["noverlap"]
-    end
-    alias_method :noverlap, :number_who_give_and_receive
-
-    def number_of_receivers
-      response_body["nreceivers"]
-    end
-    alias_method :nreceivers, :number_of_receivers
-
-    def other_people
-      response_body["other_people"]
+    %w(
+      average_tip
+      average_tippees
+      escrow
+      last_thursday
+      nactive
+      ncc
+      ngivers
+      noverlap
+      nreceivers
+      other_people
+      punc
+      statements
+      this_thursday
+      tip_distribution
+      tip_n
+      total_backed_tips
+      transfer_volume
+    ).each do |response_key|
+      define_method(response_key) { response_body.fetch(response_key) }
     end
 
-    def percentage_of_users_with_credit_cards
-      response_body["pcc"].strip
-    end
-    alias_method :pcc, :percentage_of_users_with_credit_cards
-
-    def punctuation
-      response_body["punc"]
-    end
-    alias_method :punc, :punctuation
-
-    def statements
-      response_body["statements"]
-    end
-
-    def this_thursday
-      response_body["this_thursday"]
-    end
-
-    def tip_distribution_json
-      response_body["tip_distribution_json"]
-    end
-
-    def number_of_tips
-      response_body["tip_n"]
-    end
-    alias_method :tip_n, :number_of_tips
-
-    def value_of_total_backed_tips
-      response_body["total_backed_tips"]
-    end
-    alias_method :total_backed_tips, :value_of_total_backed_tips
-
-    def transfer_volume
-      response_body["transfer_volume"]
-    end
+    alias_method :average_tip_amount, :average_tip
+    alias_method :average_number_of_tippees, :average_tippees
+    alias_method :amount_in_escrow, :escrow
+    alias_method :number_of_active_users, :nactive
+    alias_method :number_of_credit_cards, :ncc
+    alias_method :number_of_givers, :ngivers
+    alias_method :number_who_give_and_receive, :noverlap
+    alias_method :number_of_receivers, :nreceivers
+    alias_method :punctuation, :punc
+    alias_method :tip_distribution_json, :tip_distribution
+    alias_method :number_of_tips, :tip_n
+    alias_method :value_of_total_backed_tips, :total_backed_tips
 
     private
 
