@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Gratitude::VERSION
   spec.authors       = ["John Kelly Ferguson"]
   spec.email         = ["hello@johnkellyferguson.com"]
-  spec.description   = %q(A simple Ruby wrapper for the Gittip API.)
-  spec.summary       = %q(A simple Ruby wrapper for the Gittip API.)
+  spec.description   = %q(A simple Ruby wrapper for the Gratipay API.)
+  spec.summary       = %q(A simple Ruby wrapper for the Gratipay API.)
   spec.homepage      = "https://github.com/JohnKellyFerguson/gratitude"
   spec.license       = "MIT"
 

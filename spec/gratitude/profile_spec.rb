@@ -11,7 +11,7 @@ describe Gratitude::Profile do
   end
 
   describe "instance methods" do
-    context "when the requested Gittip user does not exist" do
+    context "when the requested Gratipay user does not exist" do
       it "raises a UsernameNotFoundError" do
         expect { Gratitude::Profile.new("non_existing_user").send(:response) }
           .to raise_error(Gratitude::UsernameNotFoundError)

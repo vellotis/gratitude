@@ -5,7 +5,7 @@ module Gratitude
     def initialize(username)
       super(
         "The requested username, '#{username}', could not be found."\
-        "Please note that Gittip API requests are case sensitive.")
+        "Please note that Gratipay API requests are case sensitive.")
     end
   end
 
@@ -13,7 +13,7 @@ module Gratitude
     def initialize
       super(
         "The supplied username and api_key could not properly authenticate "\
-        "with Gittip.")
+        "with Gratipay.")
     end
   end
 

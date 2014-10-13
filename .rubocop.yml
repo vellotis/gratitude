@@ -3,6 +3,7 @@ AllCops:
     - vendor/**/**
     - bin/**
     - gratitude.gemspec
+    - Guardfile
 
 CollectionMethods:
   # Mapping from undesired method to desired_method

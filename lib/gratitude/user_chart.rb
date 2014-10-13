@@ -31,21 +31,21 @@ module Gratitude
     end
 
     def self.sort_by_date_for_user(username)
-      all_for_user(username).sort_by { |chart| chart.date }.reverse
+      all_for_user(username).sort_by(&:date).reverse
     end
 
     def self.user_charts_contains_other_usernames?(username)
-      USER_CHARTS.collect { |chart| chart.username }.uniq != [username]
+      USER_CHARTS.collect(&:username).uniq != [username]
     end
 
-    def self.user_charts_from_gittip(username)
+    def self.user_charts_from_gratipay(username)
       response = faraday.get("/#{username}/charts.json").body.to_a
       raise UsernameNotFoundError, username if response.empty?
       response
     end
 
     def self.collect_charts_for(username)
-      user_charts_from_gittip(username).each do |chart_hash|
+      user_charts_from_gratipay(username).each do |chart_hash|
         UserChart.new(chart_hash.merge("username" => username))
       end
     end

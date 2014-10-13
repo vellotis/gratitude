@@ -21,7 +21,7 @@ describe Gratitude::Payday do
       before { Gratitude::Payday::PAYDAYS = [] }
 
       it "returns an array" do
-        expect(Gratitude::Payday.all.class).to be(Array)
+        expect(Gratitude::Payday.all).to be_a(Array)
       end
 
       it "updates the PAYDAYS constant when it is empty" do

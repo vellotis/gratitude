@@ -21,7 +21,7 @@ describe Gratitude::Chart do
       before { Gratitude::Chart::CHARTS = [] }
 
       it "returns an array" do
-        expect(Gratitude::Chart.all.class).to be(Array)
+        expect(Gratitude::Chart.all).to be_a(Array)
       end
 
       it "updates the CHARTS constant when it is empty" do

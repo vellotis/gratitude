@@ -14,7 +14,7 @@ module Gratitude
                 :transfer_start_time
 
     # Provide aliases so all methods can correspond to the original
-    # Gittip API names.
+    # Gratipay API names.
     alias_method :nachs, :number_of_ach_credits
     alias_method :number_of_achs, :number_of_ach_credits
     alias_method :nactive, :number_of_active_users
@@ -66,17 +66,15 @@ module Gratitude
     end
 
     def self.sort_by_ts_end
-      all.sort_by { |p| p.ts_end }.reverse
+      all.sort_by(&:ts_end).reverse
     end
 
-    def self.paydays_from_gittip
+    def self.paydays_from_gratipay
       faraday.get("/about/paydays.json").body.to_a
     end
 
     def self.collect_paydays
-      paydays_from_gittip.each do |payday_hash|
-        Payday.new(payday_hash)
-      end
+      paydays_from_gratipay.each { |payday_hash| Payday.new(payday_hash) }
     end
   end # Payday
 end # Gratitude
