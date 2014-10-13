@@ -5,7 +5,8 @@ module Gratitude
     module Tips
       def current_tips
         response = faraday.get(tips_path)
-        return_response_body_or_raise_error(response.body)
+        raise_any_errors_based_upon(response)
+        response.body
       end
 
       def current_tips_total
@@ -26,7 +27,8 @@ module Gratitude
 
       def post_tips_to_gratipay(array_of_hashes, options = {})
         response = faraday_post_response(array_of_hashes, options)
-        return_response_body_or_raise_error(response.body)
+        raise_any_errors_based_upon(response)
+        response.body
       end
 
       def faraday_post_response(array_of_hashes, options = {})
@@ -57,13 +59,11 @@ module Gratitude
         }
       end
 
-      def return_response_body_or_raise_error(response_body)
-        if response_body.is_a?(Hash) && response_body.key?("error_code")
+      def raise_any_errors_based_upon(response)
+        if response.body.is_a?(Hash) && response.body.key?("error_code")
           raise AuthenticationError
-        elsif usernames_with_errors(response_body).size > 0
-          raise TipUpdateError, usernames_with_errors(response_body)
-        else
-          response_body
+        elsif usernames_with_errors(response.body).size > 0
+          raise TipUpdateError, usernames_with_errors(response.body)
         end
       end
 
