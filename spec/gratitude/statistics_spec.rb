@@ -35,18 +35,18 @@ describe Gratitude::Statistics do
               punc
               statements
               this_thursday
-              tip_distribution_json
+              tip_distribution
               tip_n
               total_backed_tips
               transfer_volume
-              )
+            )
           )
       end
     end
 
     describe "#average_tip_amount" do
       it "returns a float" do
-        expect(stats.average_tip_amount.class).to be(Float)
+        expect(stats.average_tip_amount).to be_a(Float)
       end
 
       it "returns the same value as its alias: #average_tip" do
@@ -56,7 +56,7 @@ describe Gratitude::Statistics do
 
     describe "#average_number_of_tippees" do
       it "returns a fixnum" do
-        expect(stats.average_number_of_tippees.class).to be(Fixnum)
+        expect(stats.average_number_of_tippees).to be_a(Fixnum)
       end
 
       it "returns the same value as its alias: #average_tippees" do
@@ -66,7 +66,7 @@ describe Gratitude::Statistics do
 
     describe "#amount_in_escrow" do
       it "returns a float" do
-        expect(stats.amount_in_escrow.class).to be(Float)
+        expect(stats.amount_in_escrow).to be_a(Float)
       end
 
       it "returns the same value as its alias: #escrow" do
@@ -76,13 +76,13 @@ describe Gratitude::Statistics do
 
     describe "#last_thursday" do
       it "returns a string" do
-        expect(stats.last_thursday.class).to be(String)
+        expect(stats.last_thursday).to be_a(String)
       end
     end
 
     describe "#number_of_achs" do
       it "returns a fixnum" do
-        expect(stats.number_of_ach_credits.class).to be(Fixnum)
+        expect(stats.number_of_ach_credits).to be_a(Fixnum)
       end
 
       it "returns the same value as its alias: #nach" do
@@ -96,7 +96,7 @@ describe Gratitude::Statistics do
 
     describe "#number_of_active_users" do
       it "returns a fixnum" do
-        expect(stats.number_of_active_users.class).to be(Fixnum)
+        expect(stats.number_of_active_users).to be_a(Fixnum)
       end
 
       it "returns the same value as its alias: #nactive" do
@@ -106,7 +106,7 @@ describe Gratitude::Statistics do
 
     describe "#number_of_credit_cards" do
       it "returns a fixnum" do
-        expect(stats.number_of_credit_cards.class).to be(Fixnum)
+        expect(stats.number_of_credit_cards).to be_a(Fixnum)
       end
 
       it "returns the same value as its alias: #ncc" do
@@ -116,7 +116,7 @@ describe Gratitude::Statistics do
 
     describe "#number_of_givers" do
       it "returns a fixnum" do
-        expect(stats.number_of_givers.class).to be(Fixnum)
+        expect(stats.number_of_givers).to be_a(Fixnum)
       end
 
       it "returns the same value as its alias: #ngivers" do
@@ -126,7 +126,7 @@ describe Gratitude::Statistics do
 
     describe "#number_who_give_and_receive" do
       it "returns a fixnum" do
-        expect(stats.number_who_give_and_receive.class).to be(Fixnum)
+        expect(stats.number_who_give_and_receive).to be_a(Fixnum)
       end
 
       it "returns the same value as its alias: #noverlap" do
@@ -136,7 +136,7 @@ describe Gratitude::Statistics do
 
     describe "#number_of_receivers" do
       it "returns a fixnum" do
-        expect(stats.number_of_receivers.class).to be(Fixnum)
+        expect(stats.number_of_receivers).to be_a(Fixnum)
       end
 
       it "returns the same value as its alias: #nreceivers" do
@@ -146,13 +146,13 @@ describe Gratitude::Statistics do
 
     describe "#other_people" do
       it "returns a string" do
-        expect(stats.other_people.class).to be(String)
+        expect(stats.other_people).to be_a(String)
       end
     end
 
     describe "#percentage_of_users_with_credit_cards" do
       it "returns a string" do
-        expect(stats.percentage_of_users_with_credit_cards.class).to be(String)
+        expect(stats.percentage_of_users_with_credit_cards).to be_a(String)
       end
 
       it "returns the same value as its alias: #pcc" do
@@ -162,7 +162,7 @@ describe Gratitude::Statistics do
 
     describe "#punctuation" do
       it "returns a string" do
-        expect(stats.punctuation.class).to be(String)
+        expect(stats.punctuation).to be_a(String)
       end
 
       it "returns the same value as its alias: #pcc" do
@@ -172,7 +172,7 @@ describe Gratitude::Statistics do
 
     describe "#statements" do
       it "returns an array" do
-        expect(stats.statements.class).to be(Array)
+        expect(stats.statements).to be_a(Array)
       end
 
       it "contain the currect number of elements in the array" do
@@ -180,7 +180,7 @@ describe Gratitude::Statistics do
       end
 
       it "has a hash for each element in the array" do
-        expect(stats.statements.first.class).to be(Hash)
+        expect(stats.statements.first).to be_a(Hash)
       end
 
       it "has statement as a key in each hash element" do
@@ -198,19 +198,23 @@ describe Gratitude::Statistics do
 
     describe "#this_thursday" do
       it "returns a string" do
-        expect(stats.this_thursday.class).to be(String)
+        expect(stats.this_thursday).to be_a(String)
       end
     end
 
-    describe "#tip_distribution_json" do
+    describe "#tip_distribution" do
       it "returns a hash" do
-        expect(stats.tip_distribution_json.class).to be(Hash)
+        expect(stats.tip_distribution).to be_a(Hash)
+      end
+
+      it "returns the same value as its alias: #tip_distribution_json" do
+        expect(stats.tip_distribution).to eq(stats.tip_distribution_json)
       end
     end
 
     describe "#number_of_tips" do
       it "returns a fixnum" do
-        expect(stats.number_of_tips.class).to be(Fixnum)
+        expect(stats.number_of_tips).to be_a(Fixnum)
       end
 
       it "returns the same value as its alias: #tip_n" do
@@ -220,7 +224,7 @@ describe Gratitude::Statistics do
 
     describe "#value_of_total_backed_tips" do
       it "returns a float" do
-        expect(stats.value_of_total_backed_tips.class).to be(Float)
+        expect(stats.value_of_total_backed_tips).to be_a(Float)
       end
 
       it "returns the same value as its alias: #total_backed_tips" do
@@ -230,7 +234,7 @@ describe Gratitude::Statistics do
 
     describe "#transfer_volume" do
       it "returns a float" do
-        expect(stats.transfer_volume.class).to be(Float)
+        expect(stats.transfer_volume).to be_a(Float)
       end
     end
   end
